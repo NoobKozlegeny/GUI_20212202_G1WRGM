@@ -24,5 +24,17 @@ namespace GUI_20212202_G1WRGM
         {
             InitializeComponent();
         }
+
+        //Creates a Listbox for the scoreboard
+        private void Scoreboard_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox listBox = new ListBox()
+            {
+                Margin = new Thickness((int)(grid.ActualWidth * 0.03))
+            };
+            Grid.SetColumn(listBox, 2);
+
+            grid.Children.Add(listBox);
+        }
     }
 }
