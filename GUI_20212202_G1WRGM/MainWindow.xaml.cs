@@ -20,6 +20,7 @@ namespace GUI_20212202_G1WRGM
     /// </summary>
     public partial class MainWindow : Window
     {
+        //GameLogic logic;
         public MainWindow()
         {
             InitializeComponent();
