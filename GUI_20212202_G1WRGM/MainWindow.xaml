@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
         xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
         mc:Ignorable="d"
-        Title="Dude, touch some grass" Height="450" Width="800">
+        Title="Dude, touch some grass" Height="450" Width="800" SizeChanged="Window_SizeChanged">
     <Window.DataContext>
         <renderer:Display x:Name="display"/>
     </Window.DataContext>

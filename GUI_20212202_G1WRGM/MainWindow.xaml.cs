@@ -43,6 +43,13 @@ namespace GUI_20212202_G1WRGM
             //Removes all objects in the grid, like buttons, labels, stackpanels etc.
             grid.Children.Clear();
 
+            //display.SetupLogic(new GameLogic((int)grid.ActualWidth, (int)grid.ActualHeight));
+            display.InvalidateVisual();
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //display.SetupLogic(new GameLogic((int)grid.ActualWidth, (int)grid.ActualHeight));
             display.InvalidateVisual();
         }
     }
