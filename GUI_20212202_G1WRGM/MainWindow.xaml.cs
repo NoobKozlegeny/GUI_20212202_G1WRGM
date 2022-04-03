@@ -36,5 +36,13 @@ namespace GUI_20212202_G1WRGM
 
             grid.Children.Add(listBox);
         }
+
+        private void StartGame_Click(object sender, RoutedEventArgs e)
+        {
+            //Removes all objects in the grid, like buttons, labels, stackpanels etc.
+            grid.Children.Clear();
+
+            display.InvalidateVisual();
+        }
     }
 }

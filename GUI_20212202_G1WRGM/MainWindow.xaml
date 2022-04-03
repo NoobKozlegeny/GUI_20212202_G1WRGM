@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
+        xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
         mc:Ignorable="d"
         Title="Dude, touch some grass" Height="450" Width="800">
     <Window.DataContext>
-        <local:MainWindowViewModel/>
+        <renderer:Display x:Name="display"/>
     </Window.DataContext>
     <Grid x:Name="grid">
         <Grid.Background>
@@ -24,7 +25,7 @@
         <!--2. column-->
         <StackPanel Grid.Column="1" x:Name="menuStack">
             <Label Content="Dude, touch some grass" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White" Margin="0,25" FontSize="20"/>
-            <Button Content="Start Game" Height="40" Width="100" Margin="15"/>
+            <Button Content="Start Game" Height="40" Width="100" Margin="15" Click="StartGame_Click"/>
             <Button Content="Scoreboard" Height="40" Width="100" Margin="15" Click="Scoreboard_Click"/>
             <Button Content="Close Game" Height="40" Width="100" Margin="15"/>
         </StackPanel>
