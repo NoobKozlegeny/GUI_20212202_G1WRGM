@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Collectible
+    public class Collectible : Item
     {
         public string Description { get; set; }
     }
