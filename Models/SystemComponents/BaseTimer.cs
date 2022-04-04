@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Threading;
 
-namespace GUI_20212202_G1WRGM.SystemComponents
+namespace Models.SystemComponents
 {
     public abstract class BaseTimer
     {
@@ -32,4 +33,5 @@ namespace GUI_20212202_G1WRGM.SystemComponents
             this.CurrentTick++;
         }
     }
+    
 }
