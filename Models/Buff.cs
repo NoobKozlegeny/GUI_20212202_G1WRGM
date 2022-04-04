@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Buff
+    public enum BuffType
     {
+        Health,
+        Damage,
+        Ammo
+    }
+    public class Buff : Item
+    {
+        public BuffType Affected { get; set; }
+        public TimeSpan? Duration { get; set; }
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Weapon
+    public class Weapon : Item
     {
+        public int Damage { get; set; }
+        public TimeSpan FireRate { get; set; }
+        public int AmmoAmount { get; set; }
     }
 }

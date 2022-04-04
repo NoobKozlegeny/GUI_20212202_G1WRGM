@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Player
+    public class Player : Character
     {
+        public ICollection<Item> Inventory { get; set; }
+        public Item SelectedItem { get; set; }
     }
 }
