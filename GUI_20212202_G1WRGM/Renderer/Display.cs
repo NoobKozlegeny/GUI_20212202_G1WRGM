@@ -17,6 +17,7 @@ namespace GUI_20212202_G1WRGM.Renderer
         public void Resize(Size size)
         {
             this.size = size;
+            this.InvalidateVisual();
         }
 
         public void SetupModel(IGameModel model)
@@ -31,7 +32,7 @@ namespace GUI_20212202_G1WRGM.Renderer
             if (model != null && size.Width > 50 && size.Height > 50)
             {
                 drawingContext.DrawRectangle(Brushes.Black, new Pen(Brushes.Black, 0),
-                    new Rect(0, 0, 100, 100));
+                    new Rect(100, 100, 100, 100));
             }
         }
     }

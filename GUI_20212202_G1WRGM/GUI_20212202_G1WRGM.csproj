@@ -6,4 +6,30 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\Levels\Youtube\yt_platform-1.png" />
+    <None Remove="Images\Levels\Youtube\yt_platform-2.png" />
+    <None Remove="Images\Levels\Youtube\yt_platform-3.png" />
+    <None Remove="Images\MainMenuBackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Levels\Youtube\yt_platform-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Levels\Youtube\yt_platform-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Levels\Youtube\yt_platform-3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MainMenuBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+  </ItemGroup>
+
 </Project>
