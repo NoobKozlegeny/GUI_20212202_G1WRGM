@@ -15,6 +15,7 @@ namespace Models
     public class Buff : Item
     {
         public BuffType Affected { get; set; }
+        // Ohh fuck this, okay try to solve struct mapping to EF...
         public TimeSpan? Duration { get; set; }
     }
 }

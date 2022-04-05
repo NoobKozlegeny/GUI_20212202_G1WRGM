@@ -14,6 +14,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
         public void Configure(EntityTypeBuilder<Player> builder)
         {
              builder.HasBaseType<Character>();
+
         }
     }
 }

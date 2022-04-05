@@ -33,6 +33,8 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // so DB almost ready but have some semantical issue with relations
+            // to fix those models need changes, finish DB once models ready
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DudeDbContext).Assembly);
         }
     }

@@ -14,7 +14,7 @@ namespace Models
         // Pk for EF
         public int Id { get; set; }
         // Fk + Navigation prop for EF
-        public int MapLevel { get; set; }
+        public int? MapLevel { get; set; }
         public virtual Map Map { get; set; }
     }
 }
