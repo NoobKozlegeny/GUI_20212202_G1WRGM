@@ -11,9 +11,9 @@ namespace Models
     {
         public int Level { get; set; }
         public Size Size { get; set; }
-        public ICollection<Character> Characters { get; set; }
-        public ICollection<Item> Items { get; set; }
-        public ICollection<WorldBuildingElements> WorldElements { get; set; }
+        public virtual ICollection<Character> Characters { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
+        public virtual ICollection<WorldBuildingElements> WorldElements { get; set; }
 
         public Map()
         {
