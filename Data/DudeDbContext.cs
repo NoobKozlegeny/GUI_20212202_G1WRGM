@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Models;
 using System;
+using System.Drawing;
+using System.Text.Json;
 
 namespace Data
 {
@@ -10,7 +12,7 @@ namespace Data
         public virtual DbSet<Map> MapTable { get; set; }
         public virtual DbSet<Character> CharacterTable { get; set; }
         public virtual DbSet<Item> ItemTable { get; set; }
-        public virtual DbSet<WorldBuildingElements> WorldBuildingElementTable { get; set; }
+        public virtual DbSet<WorldBuildingElement> WorldBuildingElementTable { get; set; }
         public DudeDbContext()
         {
             Database.EnsureCreated();
@@ -31,6 +33,8 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // so DB almost ready but have some semantical issue with relations
+            // to fix those models need changes, finish DB once models ready
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DudeDbContext).Assembly);
         }
     }

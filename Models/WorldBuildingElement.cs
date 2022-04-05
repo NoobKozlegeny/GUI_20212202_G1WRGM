@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class WorldBuildingElements
+    public class WorldBuildingElement
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public Point Position { get; set; }
-        public int MapLevel { get; set; }
+        // Pk for EF
+        public int Id { get; set; }
+        // Fk + Navigation prop for EF
+        public int? MapLevel { get; set; }
         public virtual Map Map { get; set; }
     }
 }
