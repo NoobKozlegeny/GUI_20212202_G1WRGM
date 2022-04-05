@@ -15,11 +15,13 @@ namespace Data.ModelTypeFluentAPIConfigurations
         {
             builder.ToTable("Character");
             builder.HasKey(pk => pk.Id);
+            builder.Property(pk => pk.Id).ValueGeneratedOnAdd();
             builder.Ignore(MapNavProp => MapNavProp.Map);
 
             builder.HasOne(CharacterNavProp => CharacterNavProp.Map)
                    .WithMany(MapNavProp => MapNavProp.Characters)
-                   .HasForeignKey(CharacterFk => CharacterFk.MapLevel);
+                   .HasForeignKey(CharacterFk => CharacterFk.MapLevel)
+                   .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

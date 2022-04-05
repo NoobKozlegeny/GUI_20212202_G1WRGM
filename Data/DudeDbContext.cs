@@ -10,7 +10,7 @@ namespace Data
         public virtual DbSet<Map> MapTable { get; set; }
         public virtual DbSet<Character> CharacterTable { get; set; }
         public virtual DbSet<Item> ItemTable { get; set; }
-        public virtual DbSet<WorldBuildingElements> WorldBuildingElementTable { get; set; }
+        public virtual DbSet<WorldBuildingElement> WorldBuildingElementTable { get; set; }
         public DudeDbContext()
         {
             Database.EnsureCreated();
