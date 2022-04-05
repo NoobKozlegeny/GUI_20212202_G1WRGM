@@ -20,6 +20,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
             builder.Property(Pk => Pk.Id)
                    .ValueGeneratedOnAdd();
             builder.Ignore(MapNavProp => MapNavProp.Map);
+            builder.Property(CharacterFk => CharacterFk.MapLevel)
+                   .IsRequired(false);
 
             builder.Property(Character => Character.Size)
                    .HasConversion(Size => JsonSerializer.Serialize(Size, null),

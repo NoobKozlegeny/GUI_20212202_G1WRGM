@@ -20,6 +20,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
             builder.Property(Pk => Pk.Id)
                    .ValueGeneratedOnAdd();
             builder.Ignore(ItemNavPop => ItemNavPop.Map);
+            builder.Property(ItemFk => ItemFk.MapLevel)
+                   .IsRequired(false);
 
             builder.Property(Item => Item.Position)
                    .HasConversion(Position => JsonSerializer.Serialize(Position, null),
