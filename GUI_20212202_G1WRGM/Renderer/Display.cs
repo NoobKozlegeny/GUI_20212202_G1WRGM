@@ -1,4 +1,5 @@
 ﻿using GUI_20212202_G1WRGM.Logic;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,28 +12,28 @@ namespace GUI_20212202_G1WRGM.Renderer
 {
     public class Display : FrameworkElement
     {
-        IGameModel model;
-        Size size;
+        Map map { get; set; }
+        System.Drawing.Size size;
 
-        public void Resize(Size size)
+        public void Resize(System.Drawing.Size size)
         {
             this.size = size;
             this.InvalidateVisual();
         }
 
-        public void SetupModel(IGameModel model)
+        public void SetupMap(Map map)
         {
-            this.model = model;
+            this.map = map;            
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
 
-            if (model != null && size.Width > 50 && size.Height > 50)
+            if (map != null)
             {
                 drawingContext.DrawRectangle(Brushes.Black, new Pen(Brushes.Black, 0),
-                    new Rect(100, 100, 100, 100));
+                    new Rect(225, 200, 200, 200));
             }
         }
     }

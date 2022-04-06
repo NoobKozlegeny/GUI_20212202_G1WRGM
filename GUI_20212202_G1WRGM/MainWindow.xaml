@@ -6,10 +6,7 @@
         xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
         xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
         mc:Ignorable="d"
-        Title="Dude, touch some grass" Height="450" Width="800">
-    <Window.DataContext>
-        <renderer:Display x:Name="display"/>
-    </Window.DataContext>
+        Title="Dude, touch some grass" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid x:Name="grid">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/MainMenuBackground.png"/>
@@ -21,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <!--1. column-->
-        
+
         <!--2. column-->
         <StackPanel Grid.Column="1" x:Name="menuStack">
             <Label Content="Dude, touch some grass" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White" Margin="0,25" FontSize="20"/>
@@ -31,7 +28,6 @@
         </StackPanel>
         <!--3. column-->
 
+        <renderer:Display x:Name="display"/>
     </Grid>
-    
-    
 </Window>

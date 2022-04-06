@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace GUI_20212202_G1WRGM
 {
@@ -39,10 +41,31 @@ namespace GUI_20212202_G1WRGM
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
-            //Removes all objects in the grid, like buttons, labels, stackpanels etc.
-            grid.Children.Clear();
+            //Removes all objects in the grid, like buttons, labels, stackpanels etc except the Display.
+            foreach (var item in grid.Children)
+            {
+                if (item is StackPanel)
+                {
+                    (item as StackPanel).Children.Clear();
+                }
+            }
 
+            //Updates visual
             display.InvalidateVisual();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Starts rendering
+            Map map = new Map()
+            {
+                Level = 1,
+                Size = new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight),
+                Characters = new List<Character>(),
+                Items = new List<Item>(),
+                WorldElements = new List<WorldBuildingElement>(),
+            };
+            display.SetupMap(map);
         }
     }
 }
