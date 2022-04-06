@@ -61,7 +61,6 @@
 
   <ItemGroup>
     <Folder Include="Images\Items\" />
-    <Folder Include="Renderer\" />
   </ItemGroup>
 
 </Project>

@@ -11,10 +11,10 @@ using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_G1WRGM.Renderer
 {
-    public class Display : FrameworkElement
+    public class Display : FrameworkElement, IDisplay
     {
-        Map map { get; set; }
-        System.Drawing.Size size;
+        public Map map { get; set; }
+        public System.Drawing.Size size { get; set; }
 
         public void Resize(System.Drawing.Size size)
         {
@@ -28,7 +28,7 @@ namespace GUI_20212202_G1WRGM.Renderer
 
         public void SetupMap(Map map)
         {
-            this.map = map;            
+            this.map = map;
         }
 
         protected override void OnRender(DrawingContext drawingContext)
@@ -37,7 +37,7 @@ namespace GUI_20212202_G1WRGM.Renderer
 
             if (map != null)
             {
-                double FHDRatio = 1920 / 1080;
+                //double FHDRatio = 1920 / 1080;
 
                 //Display WorldBuildingElements
                 int xElement = 0;
@@ -53,16 +53,17 @@ namespace GUI_20212202_G1WRGM.Renderer
 
 
                 //Display Characters
-                int xChar = 0;
-                foreach (Character character in map.Characters)
-                {
-                    drawingContext.DrawRectangle(
-                        new ImageBrush(new BitmapImage(character.PathToImg)),
-                        new Pen(Brushes.Black, 0),
-                        new Rect(xChar, map.Size.Height - (map.Size.Height / 12 + map.Size.Height / 24), map.Size.Width / 18, map.Size.Height / 12));
 
-                    xChar += 150;
-                }
+                //int xChar = 0;
+                //foreach (Character character in map.Characters)
+                //{
+                //    drawingContext.DrawRectangle(
+                //        new ImageBrush(new BitmapImage(character.PathToImg)),
+                //        new Pen(Brushes.Black, 0),
+                //        new Rect(xChar, map.Size.Height - (map.Size.Height / 12 + map.Size.Height / 24), map.Size.Width / 18, map.Size.Height / 12));
+
+                //    xChar += 150;
+                //}
             }
         }
     }

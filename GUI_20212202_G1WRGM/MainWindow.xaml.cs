@@ -81,7 +81,9 @@ namespace GUI_20212202_G1WRGM
             grid.Background = new ImageBrush(new BitmapImage(map.PathToImg));
 
             display.SetupMap(map);
+            characterDisplay.SetupMap(map);
             display.InvalidateVisual();
+            characterDisplay.InvalidateVisual();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -92,17 +94,9 @@ namespace GUI_20212202_G1WRGM
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             display.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
             display.InvalidateVisual();
-        }
-
-        public void BlinkingButton(ImageBrush imageBrush)
-        {
-            DoubleAnimation doubleAnimation = new DoubleAnimation()
-            {
-                From = 1.0,
-                To = 0.0,
-                Duration = new Duration()
-            };
+            characterDisplay.InvalidateVisual();
         }
     }
 }
