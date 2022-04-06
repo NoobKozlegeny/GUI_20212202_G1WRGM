@@ -9,6 +9,7 @@ namespace Models
 {
     public class Map
     {
+        public Uri PathToImg { get; set; }
         public Size Size { get; set; }
         // Pk for EF 
         public int Level { get; set; }

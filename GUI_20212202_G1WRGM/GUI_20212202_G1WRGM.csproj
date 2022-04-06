@@ -10,10 +10,12 @@
     <None Remove="Images\Characters\Chad.png" />
     <None Remove="Images\Characters\DreadsChad.png" />
     <None Remove="Images\Characters\NPCS\TwistBrainlet.png" />
+    <None Remove="Images\Levels\Youtube\bunnygirlcpp.jpg" />
     <None Remove="Images\Levels\Youtube\yt_platform-1.png" />
     <None Remove="Images\Levels\Youtube\yt_platform-2.png" />
     <None Remove="Images\Levels\Youtube\yt_platform-3.png" />
     <None Remove="Images\MainMenuBackground.png" />
+    <None Remove="Images\Others\PlayNowButton.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +23,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Characters\Players\DreadsChad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Levels\Youtube\bunnygirlcpp.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Levels\Youtube\yt_platform-1.png">
@@ -39,6 +44,9 @@
 
   <ItemGroup>
     <Content Include="Images\Characters\NPCS\TwistBrainlet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Others\PlayNowButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

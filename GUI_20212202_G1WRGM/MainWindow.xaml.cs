@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.IO;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace GUI_20212202_G1WRGM
 {
@@ -22,6 +23,8 @@ namespace GUI_20212202_G1WRGM
     /// </summary>
     public partial class MainWindow : Window
     {
+        static Random r = new Random();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,15 +53,10 @@ namespace GUI_20212202_G1WRGM
                 }
             }
 
-            //Updates visual
-            display.InvalidateVisual();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
             //Starts rendering
             Map map = new Map()
             {
+                PathToImg = new Uri(System.IO.Path.Combine("Images", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
                 Level = 1,
                 Size = new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight),
                 Characters = new List<Character>()
@@ -68,9 +66,43 @@ namespace GUI_20212202_G1WRGM
                     new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Images", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
                 },
                 Items = new List<Item>(),
-                WorldElements = new List<WorldBuildingElement>(),
+                WorldElements = new List<WorldBuildingElement>()
             };
+
+            //Add platforms
+            for (int i = 0; i < 21; i++)
+            {
+                map.WorldElements.Add(new WorldBuildingElement() 
+                { PathToImg = new Uri(System.IO.Path.Combine("Images", "Levels", "Youtube", $"yt_platform-{r.Next(1,3)}.png"),
+                UriKind.RelativeOrAbsolute) });
+            }
+
+            //Set level specific background img
+            grid.Background = new ImageBrush(new BitmapImage(map.PathToImg));
+
             display.SetupMap(map);
+            display.InvalidateVisual();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            display.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            display.InvalidateVisual();
+        }
+
+        public void BlinkingButton(ImageBrush imageBrush)
+        {
+            DoubleAnimation doubleAnimation = new DoubleAnimation()
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = new Duration()
+            };
         }
     }
 }
