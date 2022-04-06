@@ -22,7 +22,7 @@
         <!--2. column-->
         <StackPanel Grid.Column="1" x:Name="menuStack">
             <Label Content="Dude, touch some grass" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White" Margin="0,25" FontSize="20"/>
-            <Button Height="40" Width="100" Margin="15" Click="StartGame_Click">
+            <Button Height="40" Width="100" Margin="15" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/Others/PlayNowButton.png"/>
                 </Button.Background>
