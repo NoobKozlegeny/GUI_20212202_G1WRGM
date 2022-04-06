@@ -9,7 +9,7 @@
         Title="Dude, touch some grass" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid x:Name="grid">
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/MainMenuBackground.png"/>
+            <ImageBrush ImageSource="/Images/Background/MainMenuBackground.png"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

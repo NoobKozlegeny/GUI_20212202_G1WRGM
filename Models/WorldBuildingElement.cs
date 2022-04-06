@@ -10,6 +10,7 @@ namespace Models
     public class WorldBuildingElement
     {
         public string Name { get; set; }
+        public Uri PathToImg { get; set; }
         public Point Position { get; set; }
         // Pk for EF
         public int Id { get; set; }

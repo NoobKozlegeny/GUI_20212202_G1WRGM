@@ -20,6 +20,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             builder.Property(Pk => Pk.Id)
                    .ValueGeneratedOnAdd();
             builder.Ignore(WorldBuildingElementNavProp => WorldBuildingElementNavProp.Map);
+            builder.Ignore(PathToImg => PathToImg.PathToImg);
             builder.Property(WorldBuildingElementFk => WorldBuildingElementFk.MapLevel)
                    .IsRequired(false);
 

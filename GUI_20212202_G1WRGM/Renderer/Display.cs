@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_G1WRGM.Renderer
 {
@@ -32,8 +33,22 @@ namespace GUI_20212202_G1WRGM.Renderer
 
             if (map != null)
             {
-                drawingContext.DrawRectangle(Brushes.Black, new Pen(Brushes.Black, 0),
-                    new Rect(225, 200, 200, 200));
+                //Display WorldBuildingElements
+
+
+
+                //Display Characters
+                int x = 50;
+                foreach (Character character in map.Characters)
+                {
+                    drawingContext.DrawRectangle(
+                        new ImageBrush(new BitmapImage(character.PathToImg)),
+                        new Pen(Brushes.Black, 0),
+                        new Rect(x, 200, 100, 100));
+
+                    x += 150;
+                }
+
             }
         }
     }

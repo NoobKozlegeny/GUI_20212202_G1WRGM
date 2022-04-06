@@ -12,8 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.IO;
 using System.Windows.Shapes;
-using System.Linq;
 
 namespace GUI_20212202_G1WRGM
 {
@@ -61,7 +61,12 @@ namespace GUI_20212202_G1WRGM
             {
                 Level = 1,
                 Size = new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight),
-                Characters = new List<Character>(),
+                Characters = new List<Character>()
+                {
+                    new Player() { Name = "Player1", PathToImg = new Uri(System.IO.Path.Combine("Images", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute) },
+                    new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Images", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
+                    new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Images", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
+                },
                 Items = new List<Item>(),
                 WorldElements = new List<WorldBuildingElement>(),
             };

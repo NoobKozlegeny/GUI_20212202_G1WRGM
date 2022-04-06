@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Characters\Chad.png" />
+    <None Remove="Images\Characters\DreadsChad.png" />
+    <None Remove="Images\Characters\NPCS\TwistBrainlet.png" />
     <None Remove="Images\Levels\Youtube\yt_platform-1.png" />
     <None Remove="Images\Levels\Youtube\yt_platform-2.png" />
     <None Remove="Images\Levels\Youtube\yt_platform-3.png" />
@@ -14,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\Characters\Players\Chad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Characters\Players\DreadsChad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Levels\Youtube\yt_platform-1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -23,7 +32,13 @@
     <Content Include="Images\Levels\Youtube\yt_platform-3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MainMenuBackground.png">
+    <Content Include="Images\Background\MainMenuBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Characters\NPCS\TwistBrainlet.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -37,6 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Images\Items\" />
     <Folder Include="Renderer\" />
   </ItemGroup>
 
