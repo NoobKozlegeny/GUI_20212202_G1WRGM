@@ -17,5 +17,7 @@ namespace Models
         // Fk + NavProp for EF
         public int? MapLevel { get; set; }
         public virtual Map Map { get; set; }
+        public int? InventoryId { get; set; }
+        public virtual Inventory Inventory { get; set; }
     }
 }
