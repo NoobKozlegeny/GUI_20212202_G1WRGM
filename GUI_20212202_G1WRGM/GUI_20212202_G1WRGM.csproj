@@ -7,52 +7,73 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Characters\Chad.png" />
-    <None Remove="Images\Characters\DreadsChad.png" />
-    <None Remove="Images\Characters\NPCS\TwistBrainlet.png" />
-    <None Remove="Images\Levels\Youtube\bunnygirlcpp.jpg" />
-    <None Remove="Images\Levels\Youtube\yt_platform-1.png" />
-    <None Remove="Images\Levels\Youtube\yt_platform-2.png" />
-    <None Remove="Images\Levels\Youtube\yt_platform-3.png" />
-    <None Remove="Images\MainMenuBackground.png" />
-    <None Remove="Images\Others\PlayNowButton.png" />
+    <None Remove="Assets\Characters\Chad.png" />
+    <None Remove="Assets\Characters\DreadsChad.png" />
+    <None Remove="Assets\Characters\NPCS\TwistBrainlet.png" />
+    <None Remove="Assets\Levels\Youtube\bunnygirlcpp.jpg" />
+    <None Remove="Assets\Levels\Youtube\yt_platform-1.png" />
+    <None Remove="Assets\Levels\Youtube\yt_platform-2.png" />
+    <None Remove="Assets\Levels\Youtube\yt_platform-3.png" />
+    <None Remove="Assets\MainMenuBackground.png" />
+    <None Remove="Assets\Others\Doom2016\Doom2016Left-RpJDA.ttf" />
+    <None Remove="Assets\Others\Doom2016\Doom2016Right-VGz0z.ttf" />
+    <None Remove="Assets\Others\Doom2016\Doom2016Text-GOlBq.ttf" />
+    <None Remove="Assets\Others\PlayNowButton.png" />
+    <None Remove="Assets\Sounds\Songs\imgonnacoom.mp3" />
+    <None Remove="Assets\Sounds\Songs\mainMenu.mp3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\Characters\Players\Chad.png">
+    <Content Include="Assets\Characters\Players\Chad.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Characters\Players\DreadsChad.png">
+    <Content Include="Assets\Characters\Players\DreadsChad.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Levels\Youtube\bunnygirlcpp.jpg">
+    <Content Include="Assets\Levels\Youtube\bunnygirlcpp.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Levels\Youtube\yt_platform-1.png">
+    <Content Include="Assets\Levels\Youtube\yt_platform-1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Levels\Youtube\yt_platform-2.png">
+    <Content Include="Assets\Levels\Youtube\yt_platform-2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Levels\Youtube\yt_platform-3.png">
+    <Content Include="Assets\Levels\Youtube\yt_platform-3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Background\MainMenuBackground.png">
+    <Content Include="Assets\Background\MainMenuBackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\Characters\NPCS\TwistBrainlet.png">
+    <Content Include="Assets\Characters\NPCS\TwistBrainlet.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Others\PlayNowButton.png">
+    <Content Include="Assets\Sounds\Songs\imgonnacoom.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\Others\Doom2016\Doom2016Left-RpJDA.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Others\Doom2016\Doom2016Right-VGz0z.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Others\Doom2016\Doom2016Text-GOlBq.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Assets\Others\PlayNowButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\mainMenu.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,7 +81,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\Items\" />
+    <Folder Include="Assets\Items\" />
+    <Folder Include="Assets\Sounds\Characters\" />
   </ItemGroup>
 
 </Project>

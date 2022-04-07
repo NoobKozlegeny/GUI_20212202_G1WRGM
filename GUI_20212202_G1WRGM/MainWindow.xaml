@@ -3,17 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
         xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
         mc:Ignorable="d"
-        Title="Dude, touch some grass" Height="450" Width="800" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+        Title="Dude, touch some grass" Height="800" Width="1600" WindowState="Maximized" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid x:Name="grid">
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/Background/MainMenuBackground.png"/>
+            <ImageBrush ImageSource="/Assets/Background/MainMenuBackground.png"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
@@ -21,10 +25,17 @@
 
         <!--2. column-->
         <StackPanel Grid.Column="1" x:Name="menuStack">
-            <Label Content="Dude, touch some grass" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White" Margin="0,25" FontSize="20"/>
-            <Button Height="40" Width="100" Margin="15" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}">
+            <Label Content="Dude, touch some grass" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,50" FontSize="120" Style="{StaticResource Doom2016}">
+                <Label.Foreground>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="DarkGray" Offset="0.0"/>
+                        <GradientStop Color="Orange" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+            </Label>
+            <Button Height="80" Width="200" Margin="30" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}" Command="{Binding LoadedCommand}">
                 <Button.Background>
-                    <ImageBrush ImageSource="/Images/Others/PlayNowButton.png"/>
+                    <ImageBrush ImageSource="/Assets/Others/PlayNowButton.png"/>
                 </Button.Background>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent = "Button.Loaded">
@@ -43,10 +54,11 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <Button Content="Scoreboard" Height="40" Width="100" Margin="15" Click="Scoreboard_Click" Background="White"/>
-            <Button Content="Close Game" Height="40" Width="100" Margin="15"/>
+            <Button Content="Scoreboard" Height="80" Width="200" Margin="30" Click="Scoreboard_Click" Background="White"/>
+            <Button Content="Close Game" Height="80" Width="200" Margin="30"/>
         </StackPanel>
         <!--3. column-->
+
 
         <renderer:Display x:Name="display"/>
         <renderer:CharacterDisplay x:Name="characterDisplay"/>

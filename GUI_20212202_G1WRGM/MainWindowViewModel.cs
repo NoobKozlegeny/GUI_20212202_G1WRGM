@@ -12,17 +12,19 @@ namespace GUI_20212202_G1WRGM
 {
     public class MainWindowViewModel : ObservableRecipient
     {
-        //public ICommand OpenScoreboardCommand { get; set; }
+        public ICommand LoadedCommand { get; set; }
+        public ICommand OpenScoreboardCommand { get; set; }
 
-        //public MainWindowViewModel()
-        //{
-        //    OpenScoreboardCommand = new RelayCommand(
-        //        () =>
-        //        {
-        //            ListBox listBox = new ListBox();
-                    
-        //        }
-        //        );
-        //}
+        public MainWindowViewModel()
+        {
+            OpenScoreboardCommand = new RelayCommand(
+                () =>
+                {
+                    ListBox listBox = new ListBox();
+
+                }
+                );
+
+        }
     }
 }
