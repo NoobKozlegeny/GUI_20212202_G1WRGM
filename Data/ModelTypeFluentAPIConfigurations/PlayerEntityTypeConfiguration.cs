@@ -13,8 +13,12 @@ namespace Data.ModelTypeFluentAPIConfigurations
     {
         public void Configure(EntityTypeBuilder<Player> builder)
         {
-             builder.HasBaseType<Character>();
+            builder.HasBaseType<Character>();
 
+            builder.HasOne(PlayerNavProp => PlayerNavProp.Inventory)
+                   .WithOne(InventoryNavProp => InventoryNavProp.Player)
+                   .HasForeignKey<Inventory>(PlayerFk => PlayerFk.PlayerId)
+                   .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

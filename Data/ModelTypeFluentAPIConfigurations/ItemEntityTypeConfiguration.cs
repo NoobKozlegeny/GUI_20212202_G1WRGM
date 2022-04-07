@@ -31,6 +31,10 @@ namespace Data.ModelTypeFluentAPIConfigurations
                    .WithMany(MapNavprop => MapNavprop.Items)
                    .HasForeignKey(ItemFk => ItemFk.MapLevel)
                    .OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(ItemNavProp => ItemNavProp.Inventory)
+                   .WithMany(InventoryNavProp => InventoryNavProp.Items)
+                   .HasForeignKey(ItemFk => ItemFk.InventoryId)
+                   .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
