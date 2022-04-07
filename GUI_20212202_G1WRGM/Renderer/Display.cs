@@ -1,4 +1,5 @@
 ﻿using GUI_20212202_G1WRGM.Logic;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,33 +7,63 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_G1WRGM.Renderer
 {
-    public class Display : FrameworkElement
+    public class Display : FrameworkElement, IDisplay
     {
-        IGameModel model;
-        Size size;
+        public Map map { get; set; }
+        public System.Drawing.Size size { get; set; }
 
-        public void Resize(Size size)
+        public void Resize(System.Drawing.Size size)
         {
             this.size = size;
-            this.InvalidateVisual();
+            if (map != null)
+            {
+                map.Size = size;
+                this.InvalidateVisual();
+            }
         }
 
-        public void SetupModel(IGameModel model)
+        public void SetupMap(Map map)
         {
-            this.model = model;
+            this.map = map;
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
 
-            if (model != null && size.Width > 50 && size.Height > 50)
+            if (map != null)
             {
-                drawingContext.DrawRectangle(Brushes.Black, new Pen(Brushes.Black, 0),
-                    new Rect(100, 100, 100, 100));
+                //double FHDRatio = 1920 / 1080;
+
+                //Display WorldBuildingElements
+                int xElement = 0;
+                foreach (WorldBuildingElement worldElement in map.WorldElements)
+                {
+                    drawingContext.DrawRectangle(
+                        new ImageBrush(new BitmapImage(worldElement.PathToImg)),
+                        new Pen(Brushes.Black, 0),
+                        new Rect(xElement, map.Size.Height - map.Size.Height / 24, map.Size.Width / 12, map.Size.Height / 24));
+
+                    xElement += map.Size.Width / 12;
+                }
+
+
+                //Display Characters
+
+                //int xChar = 0;
+                //foreach (Character character in map.Characters)
+                //{
+                //    drawingContext.DrawRectangle(
+                //        new ImageBrush(new BitmapImage(character.PathToImg)),
+                //        new Pen(Brushes.Black, 0),
+                //        new Rect(xChar, map.Size.Height - (map.Size.Height / 12 + map.Size.Height / 24), map.Size.Width / 18, map.Size.Height / 12));
+
+                //    xChar += 150;
+                //}
             }
         }
     }

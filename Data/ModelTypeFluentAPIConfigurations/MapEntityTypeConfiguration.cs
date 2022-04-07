@@ -18,6 +18,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             builder.ToTable("Map");
             builder.HasKey(Pk => Pk.Level);
             builder.Property(Pk => Pk.Level).ValueGeneratedOnAdd();
+            builder.Ignore(MapNavProp => MapNavProp.PathToImg);
             builder.Ignore(MapNavProp => MapNavProp.Characters);
             builder.Ignore(MapNavProp => MapNavProp.Items);
             builder.Ignore(MapNavProp => MapNavProp.WorldElements);

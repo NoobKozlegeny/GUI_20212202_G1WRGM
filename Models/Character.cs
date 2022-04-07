@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Windows;
 
 namespace Models
 {
@@ -9,6 +10,7 @@ namespace Models
         public int HealthPoints { get; set; }
         public int Armour { get; set; }
         public int Speed { get; set; }
+        public Uri PathToImg { get; set; }
         public Size Size { get; set; }
         public Point Position { get; set; }
 
