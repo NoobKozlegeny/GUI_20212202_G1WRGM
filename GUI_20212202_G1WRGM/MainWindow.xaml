@@ -33,9 +33,9 @@
                     </LinearGradientBrush>
                 </Label.Foreground>
             </Label>
-            <Button Height="80" Width="200" Margin="30" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}" Command="{Binding LoadedCommand}">
+            <Button Height="100" Width="250" Margin="30" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}" Command="{Binding LoadedCommand}">
                 <Button.Background>
-                    <ImageBrush ImageSource="/Assets/Others/PlayNowButton.png"/>
+                    <ImageBrush ImageSource="/Assets/Others/PlayNow.png"/>
                 </Button.Background>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent = "Button.Loaded">
@@ -54,8 +54,16 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <Button Content="Scoreboard" Height="80" Width="200" Margin="30" Click="Scoreboard_Click" Background="White"/>
-            <Button Content="Close Game" Height="80" Width="200" Margin="30"/>
+            <Button Height="100" Width="250" Margin="30" Style="{StaticResource NoMouseOverEffectButton}" Click="Scoreboard_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Assets/Others/Rankings.png"/>
+                </Button.Background>
+            </Button>
+            <Button Height="100" Width="250" Margin="30" Style="{StaticResource NoMouseOverEffectButton}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Assets/Others/CloseGame.png"/>
+                </Button.Background>
+            </Button>
         </StackPanel>
         <!--3. column-->
 

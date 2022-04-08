@@ -15,10 +15,15 @@
     <None Remove="Assets\Levels\Youtube\yt_platform-2.png" />
     <None Remove="Assets\Levels\Youtube\yt_platform-3.png" />
     <None Remove="Assets\MainMenuBackground.png" />
+    <None Remove="Assets\Others\CloseGame.png" />
     <None Remove="Assets\Others\Doom2016\Doom2016Left-RpJDA.ttf" />
     <None Remove="Assets\Others\Doom2016\Doom2016Right-VGz0z.ttf" />
     <None Remove="Assets\Others\Doom2016\Doom2016Text-GOlBq.ttf" />
+    <None Remove="Assets\Others\PlayNow.png" />
+    <None Remove="Assets\Others\playNow.svg" />
     <None Remove="Assets\Others\PlayNowButton.png" />
+    <None Remove="Assets\Others\Rankings.png" />
+    <None Remove="Assets\Others\ScoreBoard.png" />
     <None Remove="Assets\Sounds\Songs\imgonnacoom.mp3" />
     <None Remove="Assets\Sounds\Songs\mainMenu.mp3" />
   </ItemGroup>
@@ -49,6 +54,21 @@
 
   <ItemGroup>
     <Content Include="Assets\Characters\NPCS\TwistBrainlet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Others\CloseGame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Others\PlayNow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Others\playNow.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Others\Rankings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Others\ScoreBoard.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Sounds\Songs\imgonnacoom.mp3">
