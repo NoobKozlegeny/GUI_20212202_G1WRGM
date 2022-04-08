@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:svg="clr-namespace:System.Media;assembly=System"
         xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
         xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
@@ -35,7 +36,7 @@
             </Label>
             <Button Height="80" Width="200" Margin="30" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}" Command="{Binding LoadedCommand}">
                 <Button.Background>
-                    <ImageBrush ImageSource="/Assets/Others/PlayNowButton.png"/>
+                    <ImageBrush ImageSource="/Assets/Others/PlayNow.png"/>
                 </Button.Background>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent = "Button.Loaded">
@@ -54,10 +55,19 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <Button Content="Scoreboard" Height="80" Width="200" Margin="30" Click="Scoreboard_Click" Background="White"/>
-            <Button Content="Close Game" Height="80" Width="200" Margin="30"/>
+            <Button Content="Scoreboard" Height="80" Width="200" Margin="30" Click="Scoreboard_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Assets/Others/Rankings.png"/>
+                </Button.Background>
+            </Button>
+            <Button Content="Close Game" Height="80" Width="200" Margin="30">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Assets/Others/CloseGame.png"/>
+                </Button.Background>
+            </Button>
         </StackPanel>
         <!--3. column-->
+
 
 
         <renderer:Display x:Name="display"/>
