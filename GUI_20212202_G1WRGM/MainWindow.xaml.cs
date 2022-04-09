@@ -99,8 +99,8 @@ namespace GUI_20212202_G1WRGM
         //https://github.com/Microsoft/XamlBehaviorsWpf/wiki/PlaySoundAction
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
-            mediaPlayer.Play();
+            //mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
+            //mediaPlayer.Play();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
