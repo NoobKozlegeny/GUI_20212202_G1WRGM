@@ -37,9 +37,10 @@ namespace GUI_20212202_G1WRGM
         {
             ListBox listBox = new ListBox()
             {
-                Margin = new Thickness((int)(grid.ActualWidth * 0.03))
+                Margin = new Thickness((int)(grid.ActualWidth * 0.02))
             };
             Grid.SetColumn(listBox, 2);
+            Grid.SetRow(listBox, 1);
 
             grid.Children.Add(listBox);
         }
@@ -94,12 +95,9 @@ namespace GUI_20212202_G1WRGM
             mediaPlayer.Play();
         }
 
-        //TODO: Play songs on load with Behaviors.Wpf nuget package or smth else or binding
-        //https://github.com/Microsoft/XamlBehaviorsWpf/wiki/PlaySoundAction
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
-            //mediaPlayer.Play();
+
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

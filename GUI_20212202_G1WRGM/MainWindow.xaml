@@ -8,10 +8,11 @@
         xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
         xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
+        xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels"
         mc:Ignorable="d"
         Title="Dude, touch some grass" Height="800" Width="1600" WindowStyle="None" WindowState="Maximized" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
     <Window.DataContext>
-        <local:MainWindowViewModel/>
+        <vm:MainWindowViewModel/>
     </Window.DataContext>
 
     <!--Starts main menu song when UI starts-->
@@ -27,7 +28,7 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="36*"/>
+            <RowDefinition Height="52*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -38,9 +39,15 @@
         
 
         <!--1. row-->
-        <Menu Grid.ColumnSpan="3" Grid.Row="0" Background="Orange">
+        <Menu Grid.ColumnSpan="3" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
+            <Menu.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="DarkGray" Offset="0.0"/>
+                    <GradientStop Color="Orange" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Menu.Background>
             <!--1. column-->
-            <MenuItem Header="Select OST">
+            <MenuItem Header="Select OST" VerticalAlignment="Center" VerticalContentAlignment="Center">
                 <MenuItem.Icon>
                     <Image Source="/Assets/Others/SelectOST.png"/>
                 </MenuItem.Icon>

@@ -2,6 +2,7 @@
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,10 +13,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace GUI_20212202_G1WRGM
+namespace GUI_20212202_G1WRGM.ViewModels
 {
-    public class MainWindowViewModel : ObservableRecipient
+    public class MainWindowViewModel : ViewModelBase
     {
+        public ViewModelBase CurrentViewModel { get; }
+
         //Slow on responding
         public static MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -25,13 +28,29 @@ namespace GUI_20212202_G1WRGM
         public ICommand StartNeedyStreamerOverloadOSTCommand { get; set; }
         public ICommand CloseGameCommand { get; set; }
 
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                return
+                    (bool)DependencyPropertyDescriptor
+                    .FromProperty(DesignerProperties.
+                    IsInDesignModeProperty,
+                    typeof(FrameworkElement))
+                    .Metadata.DefaultValue;
+            }
+        }
+
+        //public MainViewModel() : this(IsInDesignMode ? null : Ioc.Default.GetService<IGameLogic>()) { }
         public MainWindowViewModel()
         {
             StartDefaultOSTCommand = new RelayCommand(
                 () =>
                 {
-                    DispatcherTimer dt = new DispatcherTimer(TimeSpan.Zero, DispatcherPriority.ApplicationIdle, dispatcherTimer_Tick, Application.Current.Dispatcher);
-                    dt.Interval = TimeSpan.FromMinutes(5);
+                    DispatcherTimer dt = new DispatcherTimer(TimeSpan.Zero, DispatcherPriority.ApplicationIdle, DispatcherTimer_Tick, Application.Current.Dispatcher)
+                    {
+                        Interval = TimeSpan.FromMinutes(5)
+                    };
                     dt.Start();
                 }
                 );
@@ -75,7 +94,7 @@ namespace GUI_20212202_G1WRGM
             Application.Current.Shutdown();
         }
 
-        private static void dispatcherTimer_Tick(object sender, EventArgs e)
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
             mediaPlayer.Play();

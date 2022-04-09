@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI_20212202_G1WRGM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,5 +15,15 @@ namespace GUI_20212202_G1WRGM
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainWindowViewModel()
+            };
+            MainWindow.Show();
+
+            base.OnStartup(e);
+        }
     }
 }
