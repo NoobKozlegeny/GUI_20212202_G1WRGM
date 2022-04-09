@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -20,6 +21,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
         public ICommand StartDoom2016OSTCommand { get; set; }
         public ICommand StartNeedyStreamerOverloadOSTCommand { get; set; }
         public ICommand CloseGameCommand { get; set; }
+        public ICommand StartGameCommand { get; set; }
 
         private ICommand goToScoreboard;
 
@@ -36,15 +38,20 @@ namespace GUI_20212202_G1WRGM.ViewModels
 
         public MainMenuViewModel()
         {
+            //Idk why but the song doesn't start automatically when () => !mediaPlayer.HasAudio is in with the DispatcherTimer
             StartDefaultOSTCommand = new RelayCommand(
                 () =>
                 {
-                    DispatcherTimer dt = new DispatcherTimer(TimeSpan.Zero, DispatcherPriority.ApplicationIdle, DispatcherTimer_Tick, Application.Current.Dispatcher)
-                    {
-                        Interval = TimeSpan.FromMinutes(5)
-                    };
-                    dt.Start();
-                }
+                    //DispatcherTimer dt = new DispatcherTimer(TimeSpan.Zero, DispatcherPriority.ApplicationIdle, DispatcherTimer_Tick, Application.Current.Dispatcher)
+                    //{
+                    //    Interval = TimeSpan.FromMinutes(5)
+                    //};
+                    //dt.Start();
+                    Thread.Sleep(2);
+                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
+                    mediaPlayer.Play();
+                },
+                () => !mediaPlayer.HasAudio
                 );
 
             StartDoomEternalOSTCommand = new RelayCommand(
@@ -78,6 +85,16 @@ namespace GUI_20212202_G1WRGM.ViewModels
                     mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "XPShutdown.mp3"), UriKind.RelativeOrAbsolute));
                     mediaPlayer.Play();
                     mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+                });
+
+            StartGameCommand = new RelayCommand(
+                () =>
+                {
+                    //Plays sussy sound
+                    //mediaPlayer.Stop();
+                    //mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "amongUsEmergency.mp3"), UriKind.RelativeOrAbsolute));
+                    //mediaPlayer.Play();
+
                 });
         }
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)

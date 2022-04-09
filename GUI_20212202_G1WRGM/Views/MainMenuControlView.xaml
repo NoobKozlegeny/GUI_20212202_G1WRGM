@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:GUI_20212202_G1WRGM.Views" 
              xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
              xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels" 
-             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=vm:MainMenuViewModel}"
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors" 
+             d:DataContext="{d:DesignInstance Type=vm:MainMenuViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1600">
     <!--<Window.DataContext>
@@ -46,37 +47,52 @@
                     <GradientStop Color="Orange" Offset="0.5"/>
                 </LinearGradientBrush>
             </Menu.Background>
-            
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
             <!--1. column-->
     
-            <MenuItem Header="Select OST" VerticalAlignment="Center" VerticalContentAlignment="Center">
+            <MenuItem Header="Select OST" VerticalAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">
                 <MenuItem.Icon>
                     <Image Source="/Assets/Others/SelectOST.png"/>
                 </MenuItem.Icon>
-                <MenuItem Header="Doom Eternal" Command="{Binding StartDoomEternalOSTCommand}">
+                <MenuItem Header="Doom Eternal" Command="{Binding StartDoomEternalOSTCommand}" MinHeight="30" Foreground="White">
                     <MenuItem.Icon>
                         <Image Source="/Assets/Others/RPG.png"/>
                     </MenuItem.Icon>
                     <MenuItem.Background>
-                        <ImageBrush ImageSource="/Assets/Levels/Youtube/bunnygirlcpp.jpg"/>
+                        <ImageBrush ImageSource="/Assets/Others/doomGuyEternal.jpg"/>
                     </MenuItem.Background>
                 </MenuItem>
-                <MenuItem Header="Doom 2016" Command="{Binding StartDoom2016OSTCommand}">
+                <MenuItem Header="Doom 2016" Command="{Binding StartDoom2016OSTCommand}" MinHeight="30" Foreground="White">
                     <MenuItem.Icon>
                         <Image Source="/Assets/Others/shotgun.png"/>
                     </MenuItem.Icon>
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/Assets/Others/doomGuy2016.jpg"/>
+                    </MenuItem.Background>
                 </MenuItem>
-                <MenuItem Header="Needy Streamer Overload" Command="{Binding StartNeedyStreamerOverloadOSTCommand}">
+                <MenuItem Header="Needy Streamer Overload" Command="{Binding StartNeedyStreamerOverloadOSTCommand}" MinHeight="30">
                     <MenuItem.Icon>
                         <Image Source="/Assets/Others/streamer.png"/>
                     </MenuItem.Icon>
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/Assets/Others/NSO.jpg"/>
+                    </MenuItem.Background>
                 </MenuItem>
             </MenuItem>
             
             <!--2. column-->
 
             <!--3. column-->
-    
+            <MenuItem Header="Exit" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Command="{Binding CloseGameCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Others/windows.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
         </Menu>
         
         
@@ -90,7 +106,7 @@
                     </LinearGradientBrush>
                 </Label.Foreground>
             </Label>
-            <Button Height="100" Width="250" Margin="40" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}">
+            <Button Height="100" Width="250" Margin="40" Command="{Binding StartGameCommand}" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Assets/Others/PlayNow.png"/>
                 </Button.Background>

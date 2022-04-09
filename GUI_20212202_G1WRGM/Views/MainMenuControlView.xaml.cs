@@ -1,8 +1,10 @@
-﻿using Models;
+﻿using GUI_20212202_G1WRGM.ViewModels;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,19 +31,6 @@ namespace GUI_20212202_G1WRGM.Views
             InitializeComponent();
         }
 
-        //Creates a Listbox for the scoreboard
-        //private void Scoreboard_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ListBox listBox = new ListBox()
-        //    {
-        //        Margin = new Thickness((int)(grid.ActualWidth * 0.02))
-        //    };
-        //    Grid.SetColumn(listBox, 2);
-        //    Grid.SetRow(listBox, 1);
-
-        //    grid.Children.Add(listBox);
-        //}
-
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
             //Removes all objects in the grid, like buttons, labels, stackpanels etc except the Display.
@@ -53,6 +42,39 @@ namespace GUI_20212202_G1WRGM.Views
                 }
             }
 
+            //Loads Youtube level, duuh
+            if (!mediaPlayer.HasAudio)
+            {
+                LoadYTLevel();
+            }  
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            display.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            display.InvalidateVisual();
+            characterDisplay.InvalidateVisual();
+        }
+
+        private void LoadYTLevel()
+        {
+            //Plays sussy sound
+            MainMenuViewModel.mediaPlayer.Stop();
+            MainMenuViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "amongUsEmergency.mp3"), UriKind.RelativeOrAbsolute));
+            MainMenuViewModel.mediaPlayer.Play();
+
+            //Runs when the sus stops
+            MainMenuViewModel.mediaPlayer.MediaEnded += MediaPlayer_MediaEnded; 
+        }
+
+        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        {
             //Starts rendering
             Map map = new Map()
             {
@@ -89,22 +111,9 @@ namespace GUI_20212202_G1WRGM.Views
             characterDisplay.InvalidateVisual();
 
             //Starts sound
-            mediaPlayer.Stop();
-            mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "imgonnacoom.mp3"), UriKind.RelativeOrAbsolute));
-            mediaPlayer.Play();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            display.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            display.InvalidateVisual();
-            characterDisplay.InvalidateVisual();
+            MainMenuViewModel.mediaPlayer.Stop();
+            MainMenuViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "imgonnacoom.mp3"), UriKind.RelativeOrAbsolute));
+            MainMenuViewModel.mediaPlayer.Play();
         }
     }
 }
