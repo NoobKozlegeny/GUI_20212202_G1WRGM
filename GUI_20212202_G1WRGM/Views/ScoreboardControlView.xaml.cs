@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GUI_20212202_G1WRGM.Views
 {
     /// <summary>
-    /// Interaction logic for ScoreboardView.xaml
+    /// Interaction logic for ScoreboardControlView.xaml
     /// </summary>
-    public partial class ScoreboardView : Window
+    public partial class ScoreboardControlView : UserControl
     {
-        public ScoreboardView()
+        public ScoreboardControlView()
         {
             InitializeComponent();
         }

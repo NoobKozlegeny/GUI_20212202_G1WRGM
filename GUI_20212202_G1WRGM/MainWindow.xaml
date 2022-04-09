@@ -12,33 +12,22 @@
         xmlns:views="clr-namespace:GUI_20212202_G1WRGM.Views"
         mc:Ignorable="d"
         Title="Dude, touch some grass" Height="800" Width="1600" WindowStyle="None" WindowState="Maximized" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <vm:MainWindowViewModel/>
-    </Window.DataContext>
-
-    <!--<Grid>
-        <Grid.Resources>
-            <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
-                <views:MainMenuView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:ScoreboardViewModel}">
-                <views:ScoreboardView/>
-            </DataTemplate>
-        </Grid.Resources>
-    </Grid>-->
-    <!--Selects the appropiate ViewModel-->
-    
-
-    
+    </Window.DataContext>-->
 
     <!--Starts main menu song when UI starts-->
-    <behaviors:Interaction.Triggers>
+    <!--<behaviors:Interaction.Triggers>
         <behaviors:EventTrigger EventName="Loaded">
             <behaviors:InvokeCommandAction Command="{Binding StartDefaultOSTCommand}"/>
         </behaviors:EventTrigger>
-    </behaviors:Interaction.Triggers>
+    </behaviors:Interaction.Triggers>-->
 
-    <Grid x:Name="grid">
+    <Grid>
+        <ContentControl Content="{Binding CurrentPageViewModel}" />
+    </Grid>
+
+    <!--<Grid x:Name="grid">
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/Background/MainMenuBackground.png"/>
         </Grid.Background>
@@ -54,7 +43,7 @@
 
         
 
-        <!--1. row-->
+        --><!--1. row--><!--
         <Menu Grid.ColumnSpan="3" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
             <Menu.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -62,7 +51,7 @@
                     <GradientStop Color="Orange" Offset="0.5"/>
                 </LinearGradientBrush>
             </Menu.Background>
-            1. column
+            --><!--1. column--><!--
             <MenuItem Header="Select OST" VerticalAlignment="Center" VerticalContentAlignment="Center">
                 <MenuItem.Icon>
                     <Image Source="/Assets/Others/SelectOST.png"/>
@@ -86,12 +75,12 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <!--2. column-->
+            --><!--2. column-->
 
-            <!--3. column-->
+            <!--3. column--><!--
         </Menu>
         
-        <!--2. row-->
+        --><!--2. row--><!--
         <StackPanel Grid.Column="1" Grid.Row="1" x:Name="menuStack">
             <Label Content="Dude, touch some grass" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,50" FontSize="120" Style="{StaticResource Doom2016}">
                 <Label.Foreground>
@@ -137,5 +126,5 @@
 
         <renderer:Display x:Name="display"/>
         <renderer:CharacterDisplay x:Name="characterDisplay"/>
-    </Grid>
+    </Grid>-->
 </Window>

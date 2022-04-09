@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using GUI_20212202_G1WRGM.Others;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,34 @@ using System.Windows.Threading;
 
 namespace GUI_20212202_G1WRGM.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : BaseViewModel
     {
+        private IPageViewModel _currentPageViewModel;
+        private List<IPageViewModel> _pageViewModels;
 
-        //Slow on responding
-        public static MediaPlayer mediaPlayer = new MediaPlayer();
+        public List<IPageViewModel> PageViewModels
+        {
+            get
+            {
+                if (_pageViewModels == null)
+                    _pageViewModels = new List<IPageViewModel>();
 
-        public ICommand StartDefaultOSTCommand { get; set; }
-        public ICommand StartDoomEternalOSTCommand { get; set; }
-        public ICommand StartDoom2016OSTCommand { get; set; }
-        public ICommand StartNeedyStreamerOverloadOSTCommand { get; set; }
-        public ICommand CloseGameCommand { get; set; }
+                return _pageViewModels;
+            }
+        }
+
+        public IPageViewModel CurrentPageViewModel
+        {
+            get
+            {
+                return _currentPageViewModel;
+            }
+            set
+            {
+                _currentPageViewModel = value;
+                OnPropertyChanged("CurrentPageViewModel");
+            }
+        }
 
         public static bool IsInDesignMode
         {
@@ -45,61 +63,46 @@ namespace GUI_20212202_G1WRGM.ViewModels
         {
             if (!IsInDesignMode)
             {
-                StartDefaultOSTCommand = new RelayCommand(
-                () =>
-                {
-                    DispatcherTimer dt = new DispatcherTimer(TimeSpan.Zero, DispatcherPriority.ApplicationIdle, DispatcherTimer_Tick, Application.Current.Dispatcher)
-                    {
-                        Interval = TimeSpan.FromMinutes(5)
-                    };
-                    dt.Start();
-                }
-                );
+                // Add available pages and set page
+                PageViewModels.Add(new MainMenuViewModel());
+                PageViewModels.Add(new ScoreboardViewModel());
 
-                StartDoomEternalOSTCommand = new RelayCommand(
-                    () =>
-                    {
-                        mediaPlayer.Stop();
-                        mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
-                        mediaPlayer.Play();
-                    });
+                CurrentPageViewModel = PageViewModels[0];
 
-                StartDoom2016OSTCommand = new RelayCommand(
-                    () =>
-                    {
-                        mediaPlayer.Stop();
-                        mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute));
-                        mediaPlayer.Play();
-                    });
+                //Messenger.Register<MainWindowViewModel, string, string>(this, "GoTo1Screen", (recipient, msg) =>
+                //{
+                //    ChangeViewModel(PageViewModels[0]);
+                //});
+                //Messenger.Register<MainWindowViewModel, string, string>(this, "GoTo2Screen", (recipient, msg) =>
+                //{
+                //    ChangeViewModel(PageViewModels[1]);
+                //});
+                Mediator.Subscribe("GoTo1Screen", OnGo1Screen);
+                Mediator.Subscribe("GoTo2Screen", OnGo2Screen);
 
-                StartNeedyStreamerOverloadOSTCommand = new RelayCommand(
-                    () =>
-                    {
-                        mediaPlayer.Stop();
-                        mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_NSO.mp3"), UriKind.RelativeOrAbsolute));
-                        mediaPlayer.Play();
-                    });
 
-                CloseGameCommand = new RelayCommand(
-                    () =>
-                    {
-                        mediaPlayer.Stop();
-                        mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "XPShutdown.mp3"), UriKind.RelativeOrAbsolute));
-                        mediaPlayer.Play();
-                        mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-                    });
+                
             }  
         }
 
-        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        
+        private void ChangeViewModel(IPageViewModel viewModel)
         {
-            Application.Current.Shutdown();
+            if (!PageViewModels.Contains(viewModel))
+                PageViewModels.Add(viewModel);
+
+            CurrentPageViewModel = PageViewModels
+                .FirstOrDefault(vm => vm == viewModel);
         }
 
-        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        private void OnGo1Screen(object obj)
         {
-            mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
-            mediaPlayer.Play();
+            ChangeViewModel(PageViewModels[0]);
+        }
+
+        private void OnGo2Screen(object obj)
+        {
+            ChangeViewModel(PageViewModels[1]);
         }
     }
 }

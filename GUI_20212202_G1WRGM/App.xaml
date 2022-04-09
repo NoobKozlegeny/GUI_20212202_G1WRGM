@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
-             StartupUri="MainWindow.xaml">
+             xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels"
+             xmlns:views="clr-namespace:GUI_20212202_G1WRGM.Views">
     <Application.Resources>
         <!--Doom Font styles-->
         <Style x:Key="Doom2016" TargetType="Label">
@@ -24,5 +25,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
+            <views:MainMenuControlView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ScoreboardViewModel}">
+            <views:ScoreboardControlView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
