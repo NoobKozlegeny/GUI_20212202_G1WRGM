@@ -23,12 +23,17 @@
     <None Remove="Assets\Others\playNow.svg" />
     <None Remove="Assets\Others\PlayNowButton.png" />
     <None Remove="Assets\Others\Rankings.png" />
+    <None Remove="Assets\Others\RPG.png" />
     <None Remove="Assets\Others\ScoreBoard.png" />
+    <None Remove="Assets\Others\SelectOST.png" />
+    <None Remove="Assets\Others\shotgun.png" />
+    <None Remove="Assets\Others\streamer.png" />
     <None Remove="Assets\Sounds\Songs\imgonnacoom.mp3" />
     <None Remove="Assets\Sounds\Songs\mainMenu.mp3" />
     <None Remove="Assets\Sounds\Songs\mainMenu_Doom2016.mp3" />
     <None Remove="Assets\Sounds\Songs\mainMenu_DoomEternal.mp3" />
     <None Remove="Assets\Sounds\Songs\mainMenu_NSO.mp3" />
+    <None Remove="Assets\Sounds\Songs\XPShutdown.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,7 +76,19 @@
     <Content Include="Assets\Others\Rankings.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Others\RPG.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Others\ScoreBoard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Others\SelectOST.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Others\shotgun.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Others\streamer.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Sounds\Songs\imgonnacoom.mp3">
@@ -84,6 +101,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Sounds\Songs\mainMenu_NSO.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\XPShutdown.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Assets\Others\Doom2016\Doom2016Left-RpJDA.ttf">

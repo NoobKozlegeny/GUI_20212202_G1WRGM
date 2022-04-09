@@ -9,11 +9,12 @@
         xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
         xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
         mc:Ignorable="d"
-        Title="Dude, touch some grass" Height="800" Width="1600" WindowState="Maximized" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+        Title="Dude, touch some grass" Height="800" Width="1600" WindowStyle="None" WindowState="Maximized" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
 
+    <!--Starts main menu song when UI starts-->
     <behaviors:Interaction.Triggers>
         <behaviors:EventTrigger EventName="Loaded">
             <behaviors:InvokeCommandAction Command="{Binding StartDefaultOSTCommand}"/>
@@ -47,6 +48,9 @@
                     <MenuItem.Icon>
                         <Image Source="/Assets/Others/RPG.png"/>
                     </MenuItem.Icon>
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/Assets/Levels/Youtube/bunnygirlcpp.jpg"/>
+                    </MenuItem.Background>
                 </MenuItem>
                 <MenuItem Header="Doom 2016" Command="{Binding StartDoom2016OSTCommand}">
                     <MenuItem.Icon>
@@ -74,7 +78,7 @@
                     </LinearGradientBrush>
                 </Label.Foreground>
             </Label>
-            <Button Height="100" Width="250" Margin="40" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}" Command="{Binding LoadedCommand}">
+            <Button Height="100" Width="250" Margin="40" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Assets/Others/PlayNow.png"/>
                 </Button.Background>
@@ -100,7 +104,7 @@
                     <ImageBrush ImageSource="/Assets/Others/Rankings.png"/>
                 </Button.Background>
             </Button>
-            <Button Height="100" Width="250" Margin="40" Style="{StaticResource NoMouseOverEffectButton}">
+            <Button Height="100" Width="250" Margin="40" Style="{StaticResource NoMouseOverEffectButton}" Command="{Binding CloseGameCommand}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Assets/Others/CloseGame.png"/>
                 </Button.Background>
