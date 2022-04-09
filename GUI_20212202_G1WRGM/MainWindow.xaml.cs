@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.IO;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using Microsoft.Win32;
 
 namespace GUI_20212202_G1WRGM
 {
@@ -24,6 +25,7 @@ namespace GUI_20212202_G1WRGM
     public partial class MainWindow : Window
     {
         static Random r = new Random();
+        public MediaPlayer mediaPlayer = new MediaPlayer();
 
         public MainWindow()
         {
@@ -56,14 +58,14 @@ namespace GUI_20212202_G1WRGM
             //Starts rendering
             Map map = new Map()
             {
-                PathToImg = new Uri(System.IO.Path.Combine("Images", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
                 Level = 1,
                 Size = new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight),
                 Characters = new List<Character>()
                 {
-                    new Player() { Name = "Player1", PathToImg = new Uri(System.IO.Path.Combine("Images", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute) },
-                    new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Images", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
-                    new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Images", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
+                    new Player() { Name = "Player1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute) },
+                    new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
+                    new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
                 },
                 Items = new List<Item>(),
                 WorldElements = new List<WorldBuildingElement>()
@@ -73,22 +75,31 @@ namespace GUI_20212202_G1WRGM
             for (int i = 0; i < 21; i++)
             {
                 map.WorldElements.Add(new WorldBuildingElement() 
-                { PathToImg = new Uri(System.IO.Path.Combine("Images", "Levels", "Youtube", $"yt_platform-{r.Next(1,3)}.png"),
+                { PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{r.Next(1,3)}.png"),
                 UriKind.RelativeOrAbsolute) });
             }
 
             //Set level specific background img
             grid.Background = new ImageBrush(new BitmapImage(map.PathToImg));
 
+            //Setup displays and renders them
             display.SetupMap(map);
             characterDisplay.SetupMap(map);
             display.InvalidateVisual();
             characterDisplay.InvalidateVisual();
+
+            //Starts sound
+            mediaPlayer.Stop();
+            mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "imgonnacoom.mp3"), UriKind.RelativeOrAbsolute));
+            mediaPlayer.Play();
         }
 
+        //TODO: Play songs on load with Behaviors.Wpf nuget package or smth else or binding
+        //https://github.com/Microsoft/XamlBehaviorsWpf/wiki/PlaySoundAction
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu.mp3"), UriKind.RelativeOrAbsolute));
+            mediaPlayer.Play();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
