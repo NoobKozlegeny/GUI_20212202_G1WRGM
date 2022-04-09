@@ -5,14 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Interfaces
+namespace Logic.Interfaces
 {
-    public interface IMapRepository
+    interface IMapLogic
     {
+        public void Create(int level);
         public Map Read(int level);
         public IQueryable<Map> ReadAll();
-        public void Create(int level);
         public void Delete(int level);
+
 
     }
 }
