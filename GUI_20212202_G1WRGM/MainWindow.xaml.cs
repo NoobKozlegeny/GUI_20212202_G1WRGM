@@ -95,10 +95,11 @@ namespace GUI_20212202_G1WRGM
         }
 
         //TODO: Play songs on load with Behaviors.Wpf nuget package or smth else or binding
+        //TODO: Somehow stop this mediaPlayer instance when I start a new song in the ViewModel
         //https://github.com/Microsoft/XamlBehaviorsWpf/wiki/PlaySoundAction
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu.mp3"), UriKind.RelativeOrAbsolute));
+            mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
             mediaPlayer.Play();
         }
 

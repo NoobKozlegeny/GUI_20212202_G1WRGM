@@ -15,17 +15,47 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/Background/MainMenuBackground.png"/>
         </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="36*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <!--1. column-->
+        <!--1. row-->
+        <Menu Grid.ColumnSpan="3" Grid.Row="0" Background="Orange">
+            <!--1. column-->
+            <MenuItem Header="Select OST">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Others/SelectOST.png"/>
+                </MenuItem.Icon>
+                <MenuItem Header="Doom Eternal" Command="{Binding StartDoomEternalOSTCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Others/RPG.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Doom 2016" Command="{Binding StartDoom2016OSTCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Others/shotgun.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Needy Streamer Overload" Command="{Binding StartNeedyStreamerOverloadOSTCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Others/streamer.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <!--2. column-->
 
-        <!--2. column-->
-        <StackPanel Grid.Column="1" x:Name="menuStack">
-            <Label Content="Dude, touch some grass" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,50" FontSize="120" Style="{StaticResource Doom2016}">
+            <!--3. column-->
+        </Menu>
+        
+        <!--2. row-->
+        <StackPanel Grid.Column="1" Grid.Row="1" x:Name="menuStack">
+            <Label Content="Dude, touch some grass" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,50" FontSize="120" Style="{StaticResource Doom2016}">
                 <Label.Foreground>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Color="DarkGray" Offset="0.0"/>
@@ -33,7 +63,7 @@
                     </LinearGradientBrush>
                 </Label.Foreground>
             </Label>
-            <Button Height="100" Width="250" Margin="30" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}" Command="{Binding LoadedCommand}">
+            <Button Height="100" Width="250" Margin="40" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}" Command="{Binding LoadedCommand}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Assets/Others/PlayNow.png"/>
                 </Button.Background>
@@ -54,18 +84,17 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <Button Height="100" Width="250" Margin="30" Style="{StaticResource NoMouseOverEffectButton}" Click="Scoreboard_Click">
+            <Button Height="100" Width="250" Margin="40" Style="{StaticResource NoMouseOverEffectButton}" Click="Scoreboard_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/Assets/Others/Rankings.png"/>
                 </Button.Background>
             </Button>
-            <Button Height="100" Width="250" Margin="30" Style="{StaticResource NoMouseOverEffectButton}">
+            <Button Height="100" Width="250" Margin="40" Style="{StaticResource NoMouseOverEffectButton}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Assets/Others/CloseGame.png"/>
                 </Button.Background>
             </Button>
         </StackPanel>
-        <!--3. column-->
 
 
         <renderer:Display x:Name="display"/>

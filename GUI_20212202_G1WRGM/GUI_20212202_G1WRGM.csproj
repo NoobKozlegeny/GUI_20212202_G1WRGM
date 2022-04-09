@@ -26,6 +26,9 @@
     <None Remove="Assets\Others\ScoreBoard.png" />
     <None Remove="Assets\Sounds\Songs\imgonnacoom.mp3" />
     <None Remove="Assets\Sounds\Songs\mainMenu.mp3" />
+    <None Remove="Assets\Sounds\Songs\mainMenu_Doom2016.mp3" />
+    <None Remove="Assets\Sounds\Songs\mainMenu_DoomEternal.mp3" />
+    <None Remove="Assets\Sounds\Songs\mainMenu_NSO.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -72,6 +75,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Sounds\Songs\imgonnacoom.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\mainMenu_Doom2016.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\mainMenu_DoomEternal.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\mainMenu_NSO.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Assets\Others\Doom2016\Doom2016Left-RpJDA.ttf">
