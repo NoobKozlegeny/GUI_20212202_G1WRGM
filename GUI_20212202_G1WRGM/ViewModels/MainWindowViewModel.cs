@@ -17,7 +17,6 @@ namespace GUI_20212202_G1WRGM.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
 
         //Slow on responding
         public static MediaPlayer mediaPlayer = new MediaPlayer();
@@ -44,7 +43,9 @@ namespace GUI_20212202_G1WRGM.ViewModels
         //public MainViewModel() : this(IsInDesignMode ? null : Ioc.Default.GetService<IGameLogic>()) { }
         public MainWindowViewModel()
         {
-            StartDefaultOSTCommand = new RelayCommand(
+            if (!IsInDesignMode)
+            {
+                StartDefaultOSTCommand = new RelayCommand(
                 () =>
                 {
                     DispatcherTimer dt = new DispatcherTimer(TimeSpan.Zero, DispatcherPriority.ApplicationIdle, DispatcherTimer_Tick, Application.Current.Dispatcher)
@@ -55,38 +56,39 @@ namespace GUI_20212202_G1WRGM.ViewModels
                 }
                 );
 
-            StartDoomEternalOSTCommand = new RelayCommand(
-                () =>
-                {
-                    mediaPlayer.Stop();
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
-                    mediaPlayer.Play();
-                });
+                StartDoomEternalOSTCommand = new RelayCommand(
+                    () =>
+                    {
+                        mediaPlayer.Stop();
+                        mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
+                        mediaPlayer.Play();
+                    });
 
-            StartDoom2016OSTCommand = new RelayCommand(
-                () =>
-                {
-                    mediaPlayer.Stop();
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute));
-                    mediaPlayer.Play();
-                });
+                StartDoom2016OSTCommand = new RelayCommand(
+                    () =>
+                    {
+                        mediaPlayer.Stop();
+                        mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute));
+                        mediaPlayer.Play();
+                    });
 
-            StartNeedyStreamerOverloadOSTCommand = new RelayCommand(
-                () =>
-                {
-                    mediaPlayer.Stop();
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_NSO.mp3"), UriKind.RelativeOrAbsolute));
-                    mediaPlayer.Play();
-                });
+                StartNeedyStreamerOverloadOSTCommand = new RelayCommand(
+                    () =>
+                    {
+                        mediaPlayer.Stop();
+                        mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_NSO.mp3"), UriKind.RelativeOrAbsolute));
+                        mediaPlayer.Play();
+                    });
 
-            CloseGameCommand = new RelayCommand(
-                () =>
-                {
-                    mediaPlayer.Stop();
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "XPShutdown.mp3"), UriKind.RelativeOrAbsolute));
-                    mediaPlayer.Play();
-                    mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-                });
+                CloseGameCommand = new RelayCommand(
+                    () =>
+                    {
+                        mediaPlayer.Stop();
+                        mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "XPShutdown.mp3"), UriKind.RelativeOrAbsolute));
+                        mediaPlayer.Play();
+                        mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+                    });
+            }  
         }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)

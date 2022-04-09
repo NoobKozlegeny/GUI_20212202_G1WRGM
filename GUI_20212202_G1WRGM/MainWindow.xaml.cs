@@ -75,9 +75,11 @@ namespace GUI_20212202_G1WRGM
             //Add platforms
             for (int i = 0; i < 21; i++)
             {
-                map.WorldElements.Add(new WorldBuildingElement() 
-                { PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{r.Next(1,3)}.png"),
-                UriKind.RelativeOrAbsolute) });
+                map.WorldElements.Add(new WorldBuildingElement()
+                {
+                    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{r.Next(1, 3)}.png"),
+                UriKind.RelativeOrAbsolute)
+                });
             }
 
             //Set level specific background img
