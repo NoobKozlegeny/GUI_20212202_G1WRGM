@@ -13,7 +13,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
     public class ScoreboardViewModel : BaseViewModel, IPageViewModel
     {
         //Mediaplayer is kinda slow on responding when the music has just started.
-        public static MediaPlayer mediaPlayer = new MediaPlayer();
+        //public static MediaPlayer mediaPlayer = new MediaPlayer();
 
         public ICommand StartDefaultOSTCommand { get; set; }
         public ICommand StartDoomEternalOSTCommand { get; set; }
@@ -29,7 +29,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
             {
                 return goToMainMenu ?? (goToMainMenu = new RelayCommand(() =>
                 {
-                    Mediator.Notify("GoTo1Screen", "");
+                    Mediator.Notify("GoToMainMenu", "");
                 }));
             }
         }

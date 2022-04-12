@@ -66,6 +66,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
                 // Add available pages and set page
                 PageViewModels.Add(new MainMenuViewModel());
                 PageViewModels.Add(new ScoreboardViewModel());
+                PageViewModels.Add(new GameLevelViewModel());
 
                 CurrentPageViewModel = PageViewModels[0];
 
@@ -77,11 +78,12 @@ namespace GUI_20212202_G1WRGM.ViewModels
                 //{
                 //    ChangeViewModel(PageViewModels[1]);
                 //});
-                Mediator.Subscribe("GoTo1Screen", OnGo1Screen);
-                Mediator.Subscribe("GoTo2Screen", OnGo2Screen);
+                Mediator.Subscribe("GoToMainMenu", OnGoToMainMenu);
+                Mediator.Subscribe("GoToScoreboard", OnGoToScoreboard);
+                Mediator.Subscribe("GoToGameLevel", OnGoToGameLevel);
 
 
-                
+
             }  
         }
 
@@ -95,14 +97,19 @@ namespace GUI_20212202_G1WRGM.ViewModels
                 .FirstOrDefault(vm => vm == viewModel);
         }
 
-        private void OnGo1Screen(object obj)
+        private void OnGoToMainMenu(object obj)
         {
             ChangeViewModel(PageViewModels[0]);
         }
 
-        private void OnGo2Screen(object obj)
+        private void OnGoToScoreboard(object obj)
         {
             ChangeViewModel(PageViewModels[1]);
+        }
+
+        private void OnGoToGameLevel(object obj)
+        {
+            ChangeViewModel(PageViewModels[2]);
         }
     }
 }

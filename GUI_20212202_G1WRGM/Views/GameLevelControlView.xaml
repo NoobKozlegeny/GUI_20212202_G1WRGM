@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="GUI_20212202_G1WRGM.Views.GameLevelControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_20212202_G1WRGM.Views"
+             xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
+             xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels" 
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors" 
+             d:DataContext="{d:DesignInstance Type=vm:GameLevelViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
+
+    <!--Loads game level-->
+    <behaviors:Interaction.Triggers>
+        <behaviors:EventTrigger EventName="Loaded">
+            <behaviors:InvokeCommandAction Command="{Binding LoadLevelCommand}"/>
+        </behaviors:EventTrigger>
+    </behaviors:Interaction.Triggers>
+
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="52*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
+            <Menu.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="DarkGray" Offset="0.0"/>
+                    <GradientStop Color="Orange" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+
+            <MenuItem Header="Select OST" VerticalAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Others/SelectOST.png"/>
+                </MenuItem.Icon>
+                <MenuItem Header="Doom Eternal" Command="{Binding StartDoomEternalOSTCommand}" MinHeight="30" Foreground="White">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Others/RPG.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/Assets/Others/doomGuyEternal.jpg"/>
+                    </MenuItem.Background>
+                </MenuItem>
+                <MenuItem Header="Doom 2016" Command="{Binding StartDoom2016OSTCommand}" MinHeight="30" Foreground="White">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Others/shotgun.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/Assets/Others/doomGuy2016.jpg"/>
+                    </MenuItem.Background>
+                </MenuItem>
+                <MenuItem Header="Needy Streamer Overload" Command="{Binding StartNeedyStreamerOverloadOSTCommand}" MinHeight="30">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Others/streamer.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/Assets/Others/NSO.jpg"/>
+                    </MenuItem.Background>
+                </MenuItem>
+            </MenuItem>
+
+            <!--2. column-->
+
+            <!--3. column-->
+            <MenuItem Header="Exit" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Command="{Binding CloseGameCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Others/windows.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+        </Menu>
+
+        <!--2. row-->
+
+        <renderer:Display x:Name="display"/>
+        <renderer:CharacterDisplay x:Name="characterDisplay"/>
+    </Grid>
+</UserControl>

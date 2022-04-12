@@ -11,6 +11,10 @@ namespace GUI_20212202_G1WRGM.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        //Mediaplayer is kinda slow on responding when the music has just started.
+        public static MediaPlayer mediaPlayer = new MediaPlayer();
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
