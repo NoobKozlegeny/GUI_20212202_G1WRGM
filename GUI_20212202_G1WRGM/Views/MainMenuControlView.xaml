@@ -47,6 +47,7 @@
                     <GradientStop Color="Orange" Offset="0.5"/>
                 </LinearGradientBrush>
             </Menu.Background>
+            
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <DockPanel HorizontalAlignment="Stretch"/>
@@ -106,7 +107,7 @@
                     </LinearGradientBrush>
                 </Label.Foreground>
             </Label>
-            <Button Height="100" Width="250" Margin="40" Command="{Binding StartGameCommand}" Click="StartGame_Click" Style="{StaticResource NoMouseOverEffectButton}">
+            <Button Height="100" Width="250" Margin="40" Command="{Binding GoToGameLevel}" Style="{StaticResource NoMouseOverEffectButton}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Assets/Others/PlayNow.png"/>
                 </Button.Background>
