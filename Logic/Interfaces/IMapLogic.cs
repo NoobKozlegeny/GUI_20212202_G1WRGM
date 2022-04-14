@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Interfaces
 {
-    interface IMapLogic
+    public interface IMapLogic
     {
         public void Create(int level);
         public Map Read(int level);

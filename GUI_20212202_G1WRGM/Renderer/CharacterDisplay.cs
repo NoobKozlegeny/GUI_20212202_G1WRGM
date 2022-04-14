@@ -12,6 +12,8 @@ namespace GUI_20212202_G1WRGM.Renderer
 {
     public class CharacterDisplay : FrameworkElement, IDisplay
     {
+        // Ennek nem mapot kell átvenni, ez csak a karakterekkel foglalkozik, egy karakter collectiont kell átvennie és azokat rajzolgatnia
+        // csak ez a része lesz itt még kicsit érdekes mert itt kellene grouppolni a karaktert alkotó részeket + a fegyvert ami mozog vele stb.
         public Map map { get; set; }
         public System.Drawing.Size size { get; set; }
 
