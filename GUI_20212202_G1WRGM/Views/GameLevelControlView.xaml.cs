@@ -31,20 +31,16 @@ namespace GUI_20212202_G1WRGM.Views
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //Removes all objects in the grid, like buttons, labels, stackpanels etc except the Display.
-            foreach (var item in grid.Children)
-            {
-                if (item is StackPanel)
-                {
-                    (item as StackPanel).Children.Clear();
-                }
-            }
+            //Adds main menu's background for the illusion of still being on the main menu
+            grid.Background = new ImageBrush(new BitmapImage(new Uri(System.IO.Path.Combine("Assets", "Background", "MainMenuBackground.png"), UriKind.RelativeOrAbsolute)));
 
-            //Loads Youtube level, duuh
-            if (!GameLevelViewModel.mediaPlayer.HasAudio)
-            {
-                LoadYTLevel();
-            }
+            //Plays sussy sound
+            GameLevelViewModel.mediaPlayer.Stop();
+            GameLevelViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "amongUsEmergency.mp3"), UriKind.RelativeOrAbsolute));
+            GameLevelViewModel.mediaPlayer.Play();
+
+            //Loads the level when the sus stops
+            GameLevelViewModel.mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -55,19 +51,17 @@ namespace GUI_20212202_G1WRGM.Views
             characterDisplay.InvalidateVisual();
         }
 
-        private void LoadYTLevel()
-        {
-            //Plays sussy sound
-            GameLevelViewModel.mediaPlayer.Stop();
-            GameLevelViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "amongUsEmergency.mp3"), UriKind.RelativeOrAbsolute));
-            GameLevelViewModel.mediaPlayer.Play();
-
-            //Runs when the sus stops
-            GameLevelViewModel.mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-        }
-
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
         {
+            //Removes all objects in the grid, like buttons, labels, stackpanels etc except the Display.
+            foreach (var item in grid.Children)
+            {
+                if (item is StackPanel)
+                {
+                    (item as StackPanel).Children.Clear();
+                }
+            }
+
             //Starts rendering
             Map map = new Map()
             {
