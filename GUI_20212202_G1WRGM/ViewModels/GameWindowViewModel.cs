@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GUI_20212202_G1WRGM.ViewModels
 {
-    class GameWindowViewModel
+    public class GameWindowViewModel
     {
         // ide kellene majd bekötni a rendereket és a logicot? 
         // lehet hogy itt kéne a főbb dolgokat megírni és összekötni, ezáltal a display cuccok csak annyit csinálnak, hogy kapnak egy mapet, rajzolnak
