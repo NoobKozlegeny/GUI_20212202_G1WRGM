@@ -9,9 +9,9 @@ namespace Repository.Interfaces
 {
     interface IWorldBuildingElementRepository
     {
-        public WorldBuildingElement Read(int level, string name);
+        public WorldBuildingElement Read(int id);
         public IQueryable<WorldBuildingElement> ReadAll();
-        public void Create(WorldBuildingElement wbe);
-        public void Delete(int level, string name);
+        public void Create(int id);
+        public void Delete(int id);
     }
 }
