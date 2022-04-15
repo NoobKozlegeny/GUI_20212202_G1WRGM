@@ -12,27 +12,27 @@ namespace Repository
     public class WorldBuildingElementRepository : IWorldBuildingElementRepository
     {
         DudeDbContext dudeDb;
+
         public WorldBuildingElementRepository(DudeDbContext dudeDb)
         {
             this.dudeDb = dudeDb;
         }
-        public void Create(WorldBuildingElement wbe)
+
+        public void Create(int id)
         {
-            dudeDb.WorldBuildingElementTable.Add(wbe);
+            dudeDb.WorldBuildingElementTable.Add(new WorldBuildingElement { Id=id });
             dudeDb.SaveChanges();
         }
 
-        public void Delete(int level, string name)
+        public void Delete(int id)
         {
-            dudeDb.WorldBuildingElementTable.Remove(Read(level, name));
+            dudeDb.WorldBuildingElementTable.Remove(Read(id));
             dudeDb.SaveChanges();
         }
 
-        public WorldBuildingElement Read(int level, string name)
+        public WorldBuildingElement Read(int id)
         {
-            return dudeDb.WorldBuildingElementTable
-                .Where(wbe => wbe.MapLevel.Equals(level) && wbe.Name.Equals(name))
-                .FirstOrDefault();
+            return dudeDb.WorldBuildingElementTable.FirstOrDefault(worldBuildingElement => worldBuildingElement.Id == id);
         }
 
         public IQueryable<WorldBuildingElement> ReadAll()

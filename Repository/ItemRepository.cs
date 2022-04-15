@@ -12,27 +12,27 @@ namespace Repository
     public class ItemRepository : IItemRepository
     {
         DudeDbContext dudeDb;
+
         public ItemRepository(DudeDbContext dudeDb)
         {
             this.dudeDb = dudeDb;
         }
-        public void Create(Item item)
+
+        public void Create(int id)
         {
-            dudeDb.ItemTable.Add(item);
+            dudeDb.ItemTable.Add(new Item { Id=id });
             dudeDb.SaveChanges();
         }
 
-        public void Delete(int level, string name)
+        public void Delete(int id)
         {
-            dudeDb.ItemTable.Remove(Read(level, name));
+            dudeDb.ItemTable.Remove(Read(id));
             dudeDb.SaveChanges();
         }
 
-        public Item Read(int level, string name)
+        public Item Read(int id)
         {
-            return dudeDb.ItemTable
-                .Where(item => item.MapLevel.Equals(level) && item.Name.Equals(name))
-                .FirstOrDefault();
+            return dudeDb.ItemTable.FirstOrDefault(item => item.Id == id);
         }
 
         public IQueryable<Item> ReadAll()

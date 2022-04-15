@@ -12,27 +12,27 @@ namespace Repository
     public class CharacterRepository : ICharacterRepository
     {
         DudeDbContext dudeDb;
+
         public CharacterRepository(DudeDbContext dudeDb)
         {
             this.dudeDb = dudeDb;
         }
-        public void Create(Character character)
+
+        public void Create(int id)
         {
-            dudeDb.CharacterTable.Add(character);
+            dudeDb.CharacterTable.Add(new Character { Id=id });
             dudeDb.SaveChanges();
         }
 
-        public void Delete(int level, string name)
+        public void Delete(int id)
         {
-            dudeDb.CharacterTable.Remove(Read(level, name));
+            dudeDb.CharacterTable.Remove(Read(id));
             dudeDb.SaveChanges();
         }
 
-        public Character Read(int level, string name)
+        public Character Read(int id)
         {
-            return dudeDb.CharacterTable
-                .Where(character => character.MapLevel.Equals(level) && character.Name.Equals(name))
-                .FirstOrDefault();
+            return dudeDb.CharacterTable.FirstOrDefault(character => character.Id == id);
         }
 
         public IQueryable<Character> ReadAll()

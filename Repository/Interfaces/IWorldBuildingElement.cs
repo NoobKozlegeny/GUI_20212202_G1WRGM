@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Repository.Interfaces
 {
-    public interface IItemRepository
+    public interface IWorldBuildingElementRepository
     {
-        public Item Read(int id);
-        public IQueryable<Item> ReadAll();
+        public WorldBuildingElement Read(int id);
+        public IQueryable<WorldBuildingElement> ReadAll();
         public void Create(int id);
         public void Delete(int id);
     }

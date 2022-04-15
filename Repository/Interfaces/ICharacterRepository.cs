@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Repository.Interfaces
 {
-    interface ICharacterRepository
+    public interface ICharacterRepository
     {
-        public Character Read(int level, string name);
+        public Character Read(int id);
         public IQueryable<Character> ReadAll();
-        public void Create(Character character);
-        public void Delete(int level, string name);
+        public void Create(int id);
+        public void Delete(int id);
     }
 }

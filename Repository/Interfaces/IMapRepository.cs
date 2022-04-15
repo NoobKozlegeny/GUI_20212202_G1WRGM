@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Interfaces
 {
-    interface IMapRepository
+    public interface IMapRepository
     {
         public Map Read(int level);
         public IQueryable<Map> ReadAll();
