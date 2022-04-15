@@ -15,11 +15,12 @@ namespace GUI_20212202_G1WRGM.ViewModels
     {
         //Mediaplayer is kinda slow on responding when the music has just started.
         //public static MediaPlayer mediaPlayer = new MediaPlayer();
+        public Random r = new Random();
 
         public ICommand StartDefaultOSTCommand { get; set; }
-        public ICommand StartDoomEternalOSTCommand { get; set; }
-        public ICommand StartDoom2016OSTCommand { get; set; }
-        public ICommand StartNeedyStreamerOverloadOSTCommand { get; set; }
+        public ICommand StartDoomOSTCommand { get; set; }
+        public ICommand StartCrusaderOSTCommand { get; set; }
+        public ICommand StartWeebOSTCommand { get; set; }
         public ICommand CloseGameCommand { get; set; }
         public ICommand StartGameCommand { get; set; }
 
@@ -61,33 +62,36 @@ namespace GUI_20212202_G1WRGM.ViewModels
                     //};
                     //dt.Start();
                     Thread.Sleep(2);
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
+                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute)); }
                     mediaPlayer.Play();
                 },
                 () => !mediaPlayer.HasAudio
                 );
 
-            StartDoomEternalOSTCommand = new RelayCommand(
+            StartDoomOSTCommand = new RelayCommand(
                 () =>
                 {
                     mediaPlayer.Stop();
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute));
+                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute)); }
                     mediaPlayer.Play();
                 });
 
-            StartDoom2016OSTCommand = new RelayCommand(
+            StartCrusaderOSTCommand = new RelayCommand(
                 () =>
                 {
                     mediaPlayer.Stop();
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute));
+                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_MarchTemplars.mp3"), UriKind.RelativeOrAbsolute));
                     mediaPlayer.Play();
                 });
 
-            StartNeedyStreamerOverloadOSTCommand = new RelayCommand(
+            StartWeebOSTCommand = new RelayCommand(
                 () =>
                 {
                     mediaPlayer.Stop();
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_NSO.mp3"), UriKind.RelativeOrAbsolute));
+                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_NSO.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_BoobaSword.mp3"), UriKind.RelativeOrAbsolute)); }
                     mediaPlayer.Play();
                 });
 

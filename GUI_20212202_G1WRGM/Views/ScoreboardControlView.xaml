@@ -27,7 +27,7 @@
                 <MenuItem.Icon>
                     <Image Source="/Assets/Others/SelectOST.png"/>
                 </MenuItem.Icon>
-                <MenuItem Header="Doom Eternal" Command="{Binding StartDoomEternalOSTCommand}" MinHeight="30" Foreground="White">
+                <MenuItem Header="Doom" Command="{Binding StartDoomOSTCommand}" MinHeight="30" Foreground="White">
                     <MenuItem.Icon>
                         <Image Source="/Assets/Others/RPG.png"/>
                     </MenuItem.Icon>
@@ -35,15 +35,15 @@
                         <ImageBrush ImageSource="/Assets/Others/doomGuyEternal.jpg"/>
                     </MenuItem.Background>
                 </MenuItem>
-                <MenuItem Header="Doom 2016" Command="{Binding StartDoom2016OSTCommand}" MinHeight="30" Foreground="White">
+                <MenuItem Header="Crusader" Command="{Binding StartCrusaderOSTCommand}" MinHeight="30" Foreground="White">
                     <MenuItem.Icon>
                         <Image Source="/Assets/Others/shotgun.png"/>
                     </MenuItem.Icon>
                     <MenuItem.Background>
-                        <ImageBrush ImageSource="/Assets/Others/doomGuy2016.jpg"/>
+                        <ImageBrush ImageSource="/Assets/Others/Crusader.jpg"/>
                     </MenuItem.Background>
                 </MenuItem>
-                <MenuItem Header="Needy Streamer Overload" Command="{Binding StartNeedyStreamerOverloadOSTCommand}" MinHeight="30">
+                <MenuItem Header="Be the degenerate" Command="{Binding StartWeebOSTCommand}" MinHeight="30">
                     <MenuItem.Icon>
                         <Image Source="/Assets/Others/streamer.png"/>
                     </MenuItem.Icon>

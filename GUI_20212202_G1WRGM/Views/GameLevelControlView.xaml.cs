@@ -121,7 +121,7 @@ namespace GUI_20212202_G1WRGM.Views
 
             //Starts sound
             GameLevelViewModel.mediaPlayer.Stop();
-            GameLevelViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "imgonnacoom.mp3"), UriKind.RelativeOrAbsolute));
+            GameLevelViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "TheOnlyThing.mp3"), UriKind.RelativeOrAbsolute));
             GameLevelViewModel.mediaPlayer.Play();
         }
 
