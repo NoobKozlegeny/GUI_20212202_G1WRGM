@@ -11,5 +11,6 @@ namespace Models
         // Holisit i forgot about this one, how to map this since TPH will store this in parent entity but it has other connections
         // Maybe map it to parent and tell EF TPH stays and it will work?? bumm magic...
         public virtual Weapon FireArm { get; set; }
+        public Uri PathToWeaponImg { get; set; }
     }
 }

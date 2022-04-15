@@ -14,6 +14,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
         public void Configure(EntityTypeBuilder<NPC> builder)
         {
             builder.HasBaseType<Character>();
+            builder.Ignore(NPCNavProp => NPCNavProp.PathToWeaponImg);
         }
     }
 }

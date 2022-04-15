@@ -49,21 +49,28 @@ namespace GUI_20212202_G1WRGM.Renderer
                 //as a legitimate GeometryGroup so I left this at this current state, maybe my original idea is still possible
                 Player player = (Player)Characters.FirstOrDefault(x => x is Player);
                 PlayerGG = new GeometryGroup();
-                PlayerGG.Children.Add(new RectangleGeometry(new Rect(0, size.Height - (size.Height / 12 + size.Height / 24), size.Width / 18, size.Height / 12)));
+                PlayerGG.Children.Add(new RectangleGeometry(new Rect(0, size.Height - size.Height / 8, size.Width / 18, size.Height / 12)));
 
                 drawingContext.DrawGeometry(
                     new ImageBrush(new BitmapImage(player.PathToImg)),
                         new Pen(Brushes.Black, 0),
                         PlayerGG);
 
-                //Display NPCS
+                //Display NPCS and their weapons
                 int xChar = 150;
-                foreach (Character character in Characters.Where(x=>x is NPC))
+                foreach (NPC npc in Characters.Where(x=>x is NPC))
                 {
+                    //NPC
                     drawingContext.DrawRectangle(
-                        new ImageBrush(new BitmapImage(character.PathToImg)),
+                        new ImageBrush(new BitmapImage(npc.PathToImg)),
                         new Pen(Brushes.Black, 0),
-                        new Rect(xChar, size.Height - (size.Height / 12 + size.Height / 24), size.Width / 18, size.Height / 12));
+                        new Rect(xChar, size.Height - size.Height / 8, size.Width / 18, size.Height / 12));
+
+                    //NPC's Weapon
+                    drawingContext.DrawRectangle(
+                        new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
+                        new Pen(Brushes.Black, 0),
+                        new Rect(xChar, size.Height - size.Height / 12, size.Width / 18, size.Height / 27));
 
                     xChar += 150;
                 }
