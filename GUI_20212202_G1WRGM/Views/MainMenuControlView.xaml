@@ -47,7 +47,6 @@
                     <GradientStop Color="Orange" Offset="0.5"/>
                 </LinearGradientBrush>
             </Menu.Background>
-            
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <DockPanel HorizontalAlignment="Stretch"/>
