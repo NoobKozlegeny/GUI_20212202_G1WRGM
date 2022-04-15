@@ -1,4 +1,5 @@
 ﻿using GUI_20212202_G1WRGM.Logic;
+using GUI_20212202_G1WRGM.Renderer.Interfaces;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_G1WRGM.Renderer
 {
-    public class MapDisplay : FrameworkElement, IDisplay
+    public class MapDisplay : FrameworkElement, IMapDisplay
     {
         // Ez meg tulajdonképpen semmi mást nem csinálna csak az adott level nagyságáért felel xpixel*ypixel ++ esetleg alap hátteret állít az egészre meg ilyenek
         public Map map { get; set; }

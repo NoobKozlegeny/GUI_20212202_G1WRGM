@@ -68,14 +68,16 @@ namespace GUI_20212202_G1WRGM.Views
                 PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
                 Level = 1,
                 Size = new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight),
-                Characters = new List<Character>()
-                {
-                    new Player() { Name = "Player1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute) },
-                    new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
-                    new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
-                },
+                Characters = new List<Character>(),
                 Items = new List<Item>(),
                 WorldElements = new List<WorldBuildingElement>()
+            };
+
+            List<Character> characters = new List<Character>()
+            {
+                new Player() { Name = "Player1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute) },
+                new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
+                new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
             };
 
             //Add platforms
@@ -93,7 +95,7 @@ namespace GUI_20212202_G1WRGM.Views
 
             //Setup displays and renders them
             display.SetupMap(map);
-            characterDisplay.SetupMap(map);
+            characterDisplay.SetupCharacters(characters);
             display.InvalidateVisual();
             characterDisplay.InvalidateVisual();
 
