@@ -45,10 +45,14 @@ namespace GUI_20212202_G1WRGM.Views
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            display.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            mapDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
             characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            display.InvalidateVisual();
+            itemDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            worldBuildingElementDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            mapDisplay.InvalidateVisual();
             characterDisplay.InvalidateVisual();
+            itemDisplay.InvalidateVisual();
+            worldBuildingElementDisplay.InvalidateVisual();
         }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
@@ -62,7 +66,7 @@ namespace GUI_20212202_G1WRGM.Views
                 }
             }
 
-            //Starts rendering
+            //Map list
             Map map = new Map()
             {
                 PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
@@ -73,17 +77,27 @@ namespace GUI_20212202_G1WRGM.Views
                 WorldElements = new List<WorldBuildingElement>()
             };
 
+            //Character list (player and enemies)
             List<Character> characters = new List<Character>()
             {
-                new Player() { Name = "Player1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute) },
+                new Player() { Name = "Player", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute) },
                 new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
                 new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute) },
             };
 
-            //Add platforms
+            //Item List (collectibles, weapons etc)
+            List<Item> items = new List<Item>()
+            {
+                new Weapon() { Name = "Super Shotgun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) },
+                new Weapon() { Name = "Chaingun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
+                new Weapon() { Name = "Chaingun", IsPickedUp = true, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
+            };
+
+            //WorldBuildingElements lists (platforms, walls etc)
+            List<WorldBuildingElement> worldBuildingElements = new List<WorldBuildingElement>();
             for (int i = 0; i < 21; i++)
             {
-                map.WorldElements.Add(new WorldBuildingElement()
+                worldBuildingElements.Add(new WorldBuildingElement()
                 {
                     PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{r.Next(1, 3)}.png"),
                 UriKind.RelativeOrAbsolute)
@@ -94,10 +108,14 @@ namespace GUI_20212202_G1WRGM.Views
             grid.Background = new ImageBrush(new BitmapImage(map.PathToImg));
 
             //Setup displays and renders them
-            display.SetupMap(map);
+            mapDisplay.SetupMap(map);
             characterDisplay.SetupCharacters(characters);
-            display.InvalidateVisual();
+            itemDisplay.SetupItems(items, characterDisplay);
+            worldBuildingElementDisplay.SetupWorldBuildingElements(worldBuildingElements);
+            mapDisplay.InvalidateVisual();
             characterDisplay.InvalidateVisual();
+            itemDisplay.InvalidateVisual();
+            worldBuildingElementDisplay.InvalidateVisual();
 
             //Starts sound
             GameLevelViewModel.mediaPlayer.Stop();

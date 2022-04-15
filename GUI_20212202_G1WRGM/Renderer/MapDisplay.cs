@@ -37,36 +37,20 @@ namespace GUI_20212202_G1WRGM.Renderer
         {
             base.OnRender(drawingContext);
 
-            if (map != null)
-            {
-                //double FHDRatio = 1920 / 1080;
+            //if (map != null)
+            //{
+            //    //Display WorldBuildingElements
+            //    int xElement = 0;
+            //    foreach (WorldBuildingElement worldElement in map.WorldElements)
+            //    {
+            //        drawingContext.DrawRectangle(
+            //            new ImageBrush(new BitmapImage(worldElement.PathToImg)),
+            //            new Pen(Brushes.Black, 0),
+            //            new Rect(xElement, map.Size.Height - map.Size.Height / 24, map.Size.Width / 12, map.Size.Height / 24));
 
-                //Display WorldBuildingElements
-                int xElement = 0;
-                foreach (WorldBuildingElement worldElement in map.WorldElements)
-                {
-                    drawingContext.DrawRectangle(
-                        new ImageBrush(new BitmapImage(worldElement.PathToImg)),
-                        new Pen(Brushes.Black, 0),
-                        new Rect(xElement, map.Size.Height - map.Size.Height / 24, map.Size.Width / 12, map.Size.Height / 24));
-
-                    xElement += map.Size.Width / 12;
-                }
-
-
-                //Display Characters
-
-                //int xChar = 0;
-                //foreach (Character character in map.Characters)
-                //{
-                //    drawingContext.DrawRectangle(
-                //        new ImageBrush(new BitmapImage(character.PathToImg)),
-                //        new Pen(Brushes.Black, 0),
-                //        new Rect(xChar, map.Size.Height - (map.Size.Height / 12 + map.Size.Height / 24), map.Size.Width / 18, map.Size.Height / 12));
-
-                //    xChar += 150;
-                //}
-            }
+            //        xElement += map.Size.Width / 12;
+            //    }
+            //}
         }
     }
 }

@@ -76,7 +76,9 @@
 
         <!--2. row-->
 
-        <renderer:MapDisplay x:Name="display"/>
+        <renderer:MapDisplay x:Name="mapDisplay"/>
         <renderer:CharacterDisplay x:Name="characterDisplay"/>
+        <renderer:ItemDisplay x:Name="itemDisplay"/>
+        <renderer:WorldBuildingElementDisplay x:Name="worldBuildingElementDisplay"/>
     </Grid>
 </UserControl>

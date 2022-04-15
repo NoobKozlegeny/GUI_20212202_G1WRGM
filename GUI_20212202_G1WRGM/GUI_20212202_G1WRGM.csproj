@@ -11,6 +11,9 @@
     <None Remove="Assets\Characters\Chad.png" />
     <None Remove="Assets\Characters\DreadsChad.png" />
     <None Remove="Assets\Characters\NPCS\TwistBrainlet.png" />
+    <None Remove="Assets\Items\Weapons\Chaingun.png" />
+    <None Remove="Assets\Items\Weapons\Pistol.png" />
+    <None Remove="Assets\Items\Weapons\SuperShotgun.png" />
     <None Remove="Assets\Levels\Youtube\bunnygirlcpp.jpg" />
     <None Remove="Assets\Levels\Youtube\yt_platform-1.png" />
     <None Remove="Assets\Levels\Youtube\yt_platform-2.png" />
@@ -47,6 +50,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Characters\Players\DreadsChad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Weapons\Chaingun.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Weapons\Pistol.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Weapons\SuperShotgun.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Levels\Youtube\bunnygirlcpp.jpg">
@@ -155,7 +167,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\Items\" />
     <Folder Include="Assets\Sounds\Characters\" />
   </ItemGroup>
 

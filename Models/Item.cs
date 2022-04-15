@@ -19,5 +19,7 @@ namespace Models
         public virtual Map Map { get; set; }
         public int? InventoryId { get; set; }
         public virtual Inventory Inventory { get; set; }
+        public Uri PathToImg { get; set; }
+        public bool IsPickedUp { get; set; }
     }
 }

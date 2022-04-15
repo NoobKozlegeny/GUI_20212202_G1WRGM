@@ -18,6 +18,7 @@ namespace GUI_20212202_G1WRGM.Renderer
 
         public IList<Character> Characters { get; set; }
         public System.Drawing.Size size { get; set; }
+        public GeometryGroup PlayerGG { get; set; }
 
         public void Resize(System.Drawing.Size size)
         {
@@ -43,14 +44,26 @@ namespace GUI_20212202_G1WRGM.Renderer
 
             if (Characters != null)
             {
-                //Display Characters
-                int xChar = 0;
-                foreach (Character character in Characters)
+                //Display Player
+                //So I made a GeometryGroup to display the player, but while doing it I realised that maybe I can't merge the player object and the selected item
+                //as a legitimate GeometryGroup so I left this at this current state, maybe my original idea is still possible
+                Player player = (Player)Characters.FirstOrDefault(x => x is Player);
+                PlayerGG = new GeometryGroup();
+                PlayerGG.Children.Add(new RectangleGeometry(new Rect(0, size.Height - (size.Height / 12 + size.Height / 24), size.Width / 18, size.Height / 12)));
+
+                drawingContext.DrawGeometry(
+                    new ImageBrush(new BitmapImage(player.PathToImg)),
+                        new Pen(Brushes.Black, 0),
+                        PlayerGG);
+
+                //Display NPCS
+                int xChar = 150;
+                foreach (Character character in Characters.Where(x=>x is NPC))
                 {
                     drawingContext.DrawRectangle(
                         new ImageBrush(new BitmapImage(character.PathToImg)),
                         new Pen(Brushes.Black, 0),
-                        new Rect(xChar, 200, 150, 200));
+                        new Rect(xChar, size.Height - (size.Height / 12 + size.Height / 24), size.Width / 18, size.Height / 12));
 
                     xChar += 150;
                 }

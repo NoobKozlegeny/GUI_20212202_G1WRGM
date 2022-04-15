@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace GUI_20212202_G1WRGM.Renderer.Interfaces
 {
-    interface IItemDisplay
+    //A little bit of dependency, mehh lemme try it out tho
+    public interface IItemDisplay
     {
         IList<Item> Items { get; set; }
         Size size { get; set; }
+        ICharacterDisplay CharacterDisplay { get; set; }
         void Resize(Size size);
-        void SetupMap(IList<Item> items);
+        void SetupItems(IList<Item> items, ICharacterDisplay characterDisplay);
     }
 }

@@ -13,6 +13,6 @@ namespace GUI_20212202_G1WRGM.Renderer.Interfaces
         IList<WorldBuildingElement> WorldBuildingElements { get; set; }
         Size size { get; set; }
         void Resize(Size size);
-        void SetupMap(IList<WorldBuildingElement> worldBuildingElements);
+        void SetupWorldBuildingElements(IList<WorldBuildingElement> worldBuildingElements);
     }
 }
