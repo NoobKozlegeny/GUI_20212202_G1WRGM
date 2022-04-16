@@ -10,6 +10,7 @@ namespace Models
     {
         public int SlotNumber { get; set; }
         public Item SelectedItem { get; set; }
+        public Uri PathToSelectedItemImg { get; set; }
 
 
         public int Id { get; set; }
