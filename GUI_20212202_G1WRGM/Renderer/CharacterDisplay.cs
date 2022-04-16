@@ -54,6 +54,10 @@ namespace GUI_20212202_G1WRGM.Renderer
                     new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0), 
                     new RectangleGeometry(new Rect(0, size.Height - size.Height / 8, size.Width / 18, size.Height / 12))));
 
+                PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(player.Inventory.PathToSelectedItemImg)), //Player's selected item
+                    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                    new RectangleGeometry(new Rect(0, size.Height - size.Height / 8 + size.Height / 24, size.Width / 18, size.Height / 27))));
+
                 //Rendering the player and their selected item which have been added in the ItemDisplay
                 drawingContext.DrawDrawing(PlayerGG);
 

@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_20212202_G1WRGM.Views" 
              xmlns:viewmodels="clr-namespace:GUI_20212202_G1WRGM.ViewModels" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:ScoreboardViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -16,6 +15,16 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
+            <Menu.DataContext>
+                <viewmodels:ScoreboardViewModel/>
+            </Menu.DataContext>
+            
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            
             <Menu.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Color="DarkGray" Offset="0.0"/>
