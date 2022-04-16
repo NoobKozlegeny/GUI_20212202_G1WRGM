@@ -2,13 +2,16 @@
 using Logic;
 using Logic.Interfaces;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GUI_20212202_G1WRGM.ViewModels
 {
@@ -41,13 +44,26 @@ namespace GUI_20212202_G1WRGM.ViewModels
         ICharacterLogic characterLogic;
         IItemLogic itemLogic;
         IWorldBuildingElementLogic worldBuildingElementLogic;
-
-        public GameWindowViewModel(IMapLogic mapLogic, ICharacterLogic characterLogic, IItemLogic itemLogic, IWorldBuildingElementLogic worldBuildingElementLogic)
+        public GameWindowViewModel(): this(IsInDesignMode ? 
+                                            (null,null,null,null) : 
+                                            (Ioc.Default.GetService<IMapLogic>(), 
+                                            Ioc.Default.GetService<ICharacterLogic>(), 
+                                            Ioc.Default.GetService<IItemLogic>(), 
+                                            Ioc.Default.GetService<IWorldBuildingElementLogic>()))
         {
-            this.mapLogic = mapLogic;
-            this.characterLogic = characterLogic;
-            this.itemLogic = itemLogic;
-            this.worldBuildingElementLogic = worldBuildingElementLogic;
+
+        }
+
+        public GameWindowViewModel((   IMapLogic mapLogic, 
+                                       ICharacterLogic characterLogic,
+                                       IItemLogic itemLogic,
+                                       IWorldBuildingElementLogic worldBuildingElementLogic) 
+                                   logic)
+        {
+            this.mapLogic = logic.mapLogic;
+            this.characterLogic = logic.characterLogic;
+            this.itemLogic = logic.itemLogic;
+            this.worldBuildingElementLogic = logic.worldBuildingElementLogic;
 
             Maps = new ObservableCollection<Map>();
             Characters = new ObservableCollection<Character>();
@@ -60,6 +76,26 @@ namespace GUI_20212202_G1WRGM.ViewModels
             itemLogic.ReadAll().ToList().ForEach(item => Items.Add(item));
             worldBuildingElementLogic.ReadAll().ToList().ForEach(worldBuildingElement => WorldBuildingElements.Add(worldBuildingElement));
 
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                var prop = DesignerProperties.IsInDesignModeProperty;
+                return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
+            }
         }
     }
 }
