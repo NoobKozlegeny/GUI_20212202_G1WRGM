@@ -58,7 +58,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
 
         }
 
-        public GameWindowViewModel((   IMapLogic mapLogic, 
+        public GameWindowViewModel(    (IMapLogic mapLogic, 
                                        ICharacterLogic characterLogic,
                                        IItemLogic itemLogic,
                                        IWorldBuildingElementLogic worldBuildingElementLogic) 
