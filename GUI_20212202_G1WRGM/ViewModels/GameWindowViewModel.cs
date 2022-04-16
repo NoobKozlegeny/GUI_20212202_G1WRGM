@@ -92,14 +92,6 @@ namespace GUI_20212202_G1WRGM.ViewModels
             
         }
 
-
-
-
-
-
-
-
-
         public static bool IsInDesignMode
         {
             get
