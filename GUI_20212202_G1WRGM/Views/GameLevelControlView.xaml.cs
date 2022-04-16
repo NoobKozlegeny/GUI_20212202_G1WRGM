@@ -67,7 +67,8 @@ namespace GUI_20212202_G1WRGM.Views
             }
 
             //Map list
-            Map map = new Map()
+            List<Map> maps = new List<Map>();
+            maps.Add(new Map()
             {
                 PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
                 Level = 1,
@@ -75,12 +76,13 @@ namespace GUI_20212202_G1WRGM.Views
                 Characters = new List<Character>(),
                 Items = new List<Item>(),
                 WorldElements = new List<WorldBuildingElement>()
-            };
+            });
 
             //Character list (player and enemies)
             List<Character> characters = new List<Character>()
             {
-                new Player() { Name = "Player", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute) },
+                new Player() { Name = "Player", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute),
+                            Inventory = new Inventory() { PathToSelectedItemImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) }},
                 new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute), 
                             PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Watergun.png"), UriKind.RelativeOrAbsolute) },
                 new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute),
@@ -107,10 +109,10 @@ namespace GUI_20212202_G1WRGM.Views
             }
 
             //Set level specific background img
-            grid.Background = new ImageBrush(new BitmapImage(map.PathToImg));
+            grid.Background = new ImageBrush(new BitmapImage(maps[0].PathToImg));
 
             //Setup displays and renders them
-            mapDisplay.SetupMap(map);
+            mapDisplay.SetupMap(maps);
             worldBuildingElementDisplay.SetupWorldBuildingElements(worldBuildingElements);
             itemDisplay.SetupItems(items, characterDisplay);
             characterDisplay.SetupCharacters(characters);

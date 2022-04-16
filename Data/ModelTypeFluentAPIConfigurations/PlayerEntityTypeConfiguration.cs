@@ -19,6 +19,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
                    .WithOne(InventoryNavProp => InventoryNavProp.Player)
                    .HasForeignKey<Inventory>(PlayerFk => PlayerFk.PlayerId)
                    .OnDelete(DeleteBehavior.SetNull);
+
         }
     }
 }

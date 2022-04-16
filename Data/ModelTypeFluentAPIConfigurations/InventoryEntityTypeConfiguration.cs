@@ -15,6 +15,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
         {
             builder.HasKey(Pk => Pk.Id);
             builder.Ignore(Inventory => Inventory.SelectedItem);
+            builder.Ignore(Inventory => Inventory.PathToSelectedItemImg);
 
             builder.HasOne(InventoryNavProp => InventoryNavProp.Player)
                    .WithOne(PlayerNavProp => PlayerNavProp.Inventory)

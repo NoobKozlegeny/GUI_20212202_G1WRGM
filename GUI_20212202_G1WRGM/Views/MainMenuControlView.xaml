@@ -7,7 +7,6 @@
              xmlns:renderer="clr-namespace:GUI_20212202_G1WRGM.Renderer"
              xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels" 
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors" 
-             d:DataContext="{d:DesignInstance Type=vm:MainMenuViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1600">
     <!--<Window.DataContext>
@@ -41,17 +40,23 @@
         <!--1. row-->
     
         <Menu Grid.ColumnSpan="3" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
+            <Menu.DataContext>
+                <vm:MainMenuViewModel/>
+            </Menu.DataContext>
+
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
             <Menu.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Color="DarkGray" Offset="0.0"/>
                     <GradientStop Color="Orange" Offset="0.5"/>
                 </LinearGradientBrush>
             </Menu.Background>
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <DockPanel HorizontalAlignment="Stretch"/>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
+            
 
             <!--1. column-->
     
