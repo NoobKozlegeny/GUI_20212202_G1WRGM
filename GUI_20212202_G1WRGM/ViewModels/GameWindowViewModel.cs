@@ -37,6 +37,10 @@ namespace GUI_20212202_G1WRGM.ViewModels
             this.characterDisplay = characterDisplay;
             this.itemDisplay = itemDisplay;
             this.worldBuildingElementDisplay = worldBuildingElementDisplay;
+            mapDisplay.SetupMap(Maps); // RENDERBE BELENYÚLTAM EHHEZ
+            characterDisplay.SetupCharacters(Characters);
+            //itemDisplay.SetupItems(Items); FIX ME IN RENDER FOR THIS
+            worldBuildingElementDisplay.SetupWorldBuildingElements(WorldBuildingElements);
         }
 
         // aztán akkor kéne a logic is valahogy
@@ -79,7 +83,14 @@ namespace GUI_20212202_G1WRGM.ViewModels
         }
 
 
-
+        public void StartGame()
+        {
+            mapDisplay.InvalidateVisual();
+            worldBuildingElementDisplay.InvalidateVisual();
+            characterDisplay.InvalidateVisual();
+            itemDisplay.InvalidateVisual();
+            
+        }
 
 
 

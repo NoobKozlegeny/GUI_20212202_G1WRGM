@@ -29,7 +29,6 @@ namespace GUI_20212202_G1WRGM
                     .AddSingleton<Repository.Interfaces.IItemRepository, Repository.ItemRepository>()
                     .AddSingleton<Repository.Interfaces.IWorldBuildingElementRepository, Repository.WorldBuildingElementRepository>()
                     .AddSingleton<IMapLogic, MapLogic>()
-                    .AddSingleton<IMapLogic, MapLogic>()
                     .AddSingleton<ICharacterLogic, CharacterLogic>()
                     .AddSingleton<IItemLogic, ItemLogic>()
                     .AddSingleton<IWorldBuildingElementLogic, WorldBuildingElementLogic>()

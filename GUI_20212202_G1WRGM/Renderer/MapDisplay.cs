@@ -15,22 +15,26 @@ namespace GUI_20212202_G1WRGM.Renderer
     public class MapDisplay : FrameworkElement, IMapDisplay
     {
         // Ez meg tulajdonképpen semmi mást nem csinálna csak az adott level nagyságáért felel xpixel*ypixel ++ esetleg alap hátteret állít az egészre meg ilyenek
-        public Map map { get; set; }
+        public IList<Map> Maps { get; set; }
+        int currentLevel;
         public System.Drawing.Size size { get; set; }
 
         public void Resize(System.Drawing.Size size)
         {
-            this.size = size;
-            if (map != null)
-            {
-                map.Size = size;
-                this.InvalidateVisual();
-            }
+            // Ez amúgy itt így nem lesz jó mert a map size != a képernyő méretével, ezért mondtam korábban, hogy 2 méret lesz a map-é meg a képernyőé
+            // A képernyőé függ az ablakmérettől a map méretét pedig mi adjuk meg
+
+            //this.size = size;
+            //if (Maps != null)
+            //{
+            //    Maps.Size = size;
+            //    this.InvalidateVisual();
+            //}
         }
 
-        public void SetupMap(Map map)
+        public void SetupMap(IList<Map> maps)
         {
-            this.map = map;
+            this.Maps = maps;
         }
 
         protected override void OnRender(DrawingContext drawingContext)
