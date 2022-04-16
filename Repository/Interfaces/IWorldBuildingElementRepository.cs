@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Interfaces
 {
-    interface IWorldBuildingElementRepository
+    public interface IWorldBuildingElementRepository
     {
         public WorldBuildingElement Read(int id);
         public IQueryable<WorldBuildingElement> ReadAll();
