@@ -1,7 +1,10 @@
 ﻿using GUI_20212202_G1WRGM.Renderer.Interfaces;
 using Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +21,7 @@ namespace GUI_20212202_G1WRGM.Renderer
 
         public IList<Character> Characters { get; set; }
         public System.Drawing.Size size { get; set; }
-        public GeometryGroup PlayerGG { get; set; }
+        public DrawingGroup PlayerGG { get; set; }
 
         public void Resize(System.Drawing.Size size)
         {
@@ -45,36 +48,65 @@ namespace GUI_20212202_G1WRGM.Renderer
             if (Characters != null)
             {
                 //Display Player
-                //So I made a GeometryGroup to display the player, but while doing it I realised that maybe I can't merge the player object and the selected item
-                //as a legitimate GeometryGroup so I left this at this current state, maybe my original idea is still possible
                 Player player = (Player)Characters.FirstOrDefault(x => x is Player);
-                PlayerGG = new GeometryGroup();
-                PlayerGG.Children.Add(new RectangleGeometry(new Rect(0, size.Height - size.Height / 8, size.Width / 18, size.Height / 12)));
+                PlayerGG = new DrawingGroup();
+                PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(player.PathToImg)), //Player image
+                    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0), 
+                    new RectangleGeometry(new Rect(0, size.Height - size.Height / 8, size.Width / 18, size.Height / 12))));
 
-                drawingContext.DrawGeometry(
-                    new ImageBrush(new BitmapImage(player.PathToImg)),
-                        new Pen(Brushes.Black, 0),
-                        PlayerGG);
+                //Rendering the player and their selected item which have been added in the ItemDisplay
+                drawingContext.DrawDrawing(PlayerGG);
 
                 //Display NPCS and their weapons
                 int xChar = 150;
                 foreach (NPC npc in Characters.Where(x=>x is NPC))
                 {
+                    DrawingGroup npcDG = new DrawingGroup();
+                    
+                    //Adding NPC image
+                    npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToImg)),
+                    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                    new RectangleGeometry(new Rect(xChar, size.Height - size.Height / 8, size.Width / 18, size.Height / 12))));
+
+                    //Adding NPC's weapon
+                    npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
+                    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                    new RectangleGeometry(new Rect(xChar, size.Height - size.Height / 12, size.Width / 18, size.Height / 27))));
+
                     //NPC
-                    drawingContext.DrawRectangle(
-                        new ImageBrush(new BitmapImage(npc.PathToImg)),
-                        new Pen(Brushes.Black, 0),
-                        new Rect(xChar, size.Height - size.Height / 8, size.Width / 18, size.Height / 12));
+                    //drawingContext.DrawRectangle(
+                    //    new ImageBrush(new BitmapImage(npc.PathToImg)),
+                    //    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                    //    new Rect(xChar, size.Height - size.Height / 8, size.Width / 18, size.Height / 12));
 
                     //NPC's Weapon
-                    drawingContext.DrawRectangle(
-                        new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
-                        new Pen(Brushes.Black, 0),
-                        new Rect(xChar, size.Height - size.Height / 12, size.Width / 18, size.Height / 27));
+                    //drawingContext.DrawRectangle(
+                    //    new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
+                    //    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                    //    new Rect(xChar, size.Height - size.Height / 12, size.Width / 18, size.Height / 27));
+
+                    drawingContext.DrawDrawing(npcDG);
 
                     xChar += 150;
                 }
+
             }
+        }
+
+        //Merges 2 images into one duuuh (redundant)
+        private static BitmapImage MergeImages(Uri baseImageUri, Uri layerImageUri)
+        {
+            Bitmap baseImage = new Bitmap(baseImageUri.OriginalString, true);
+            for (int i = 0; i < baseImage.Height / 2; i++)
+            {
+                for (int j = 0; j < baseImage.Width / 2; j++)
+                {
+                    baseImage.SetPixel(i, j, System.Drawing.Color.Blue);
+                }
+            }
+            baseImage.Save("kaga.png");
+
+            return new BitmapImage();
         }
     }
 }

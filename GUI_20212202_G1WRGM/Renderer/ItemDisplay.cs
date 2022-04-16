@@ -54,11 +54,10 @@ namespace GUI_20212202_G1WRGM.Renderer
                         double playerPosX = CharacterDisplay.PlayerGG.Children.First().Bounds.X;
                         double playerPosY = CharacterDisplay.PlayerGG.Children.First().Bounds.Y;
 
-                        //Renders the item which should be on the actual character
-                        drawingContext.DrawRectangle(
-                        new ImageBrush(new BitmapImage(item.PathToImg)),
-                        new Pen(Brushes.Black, 0),
-                        new Rect(playerPosX, playerPosY + size.Height / 24, size.Width / 18, size.Height / 27));
+                        //Adding the selected item to the player (The rendering will take place in the CharacterDisplay)
+                        CharacterDisplay.PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(item.PathToImg)), //Player's selected item
+                            new Pen(Brushes.Black, 0),
+                            new RectangleGeometry(new Rect(playerPosX, playerPosY + size.Height / 24, size.Width / 18, size.Height / 27))));
                     }
                     else
                     {

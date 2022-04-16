@@ -111,13 +111,13 @@ namespace GUI_20212202_G1WRGM.Views
 
             //Setup displays and renders them
             mapDisplay.SetupMap(map);
-            characterDisplay.SetupCharacters(characters);
-            itemDisplay.SetupItems(items, characterDisplay);
             worldBuildingElementDisplay.SetupWorldBuildingElements(worldBuildingElements);
+            itemDisplay.SetupItems(items, characterDisplay);
+            characterDisplay.SetupCharacters(characters);
             mapDisplay.InvalidateVisual();
-            characterDisplay.InvalidateVisual();
-            itemDisplay.InvalidateVisual();
             worldBuildingElementDisplay.InvalidateVisual();
+            itemDisplay.InvalidateVisual();
+            characterDisplay.InvalidateVisual();
 
             //Starts sound
             GameLevelViewModel.mediaPlayer.Stop();

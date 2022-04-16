@@ -13,7 +13,7 @@ namespace GUI_20212202_G1WRGM.Renderer.Interfaces
     {
         IList<Character> Characters { get; set; }
         Size size { get; set; }
-        GeometryGroup PlayerGG { get; set; }
+        DrawingGroup PlayerGG { get; set; }
         void Resize(Size size);
         void SetupCharacters(IList<Character> characters);
     }
