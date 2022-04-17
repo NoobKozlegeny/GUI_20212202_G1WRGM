@@ -10,6 +10,9 @@
   <ItemGroup>
     <None Remove="Assets\Characters\Chad.png" />
     <None Remove="Assets\Characters\DreadsChad.png" />
+    <None Remove="Assets\Characters\NPCS\AngryDoge.png" />
+    <None Remove="Assets\Characters\NPCS\MLGShrek.png" />
+    <None Remove="Assets\Characters\NPCS\NikoAvocado.png" />
     <None Remove="Assets\Characters\NPCS\TwistBrainlet.png" />
     <None Remove="Assets\Items\Weapons\Chaingun.png" />
     <None Remove="Assets\Items\Weapons\Pistol.png" />
@@ -18,7 +21,10 @@
     <None Remove="Assets\Levels\Youtube\bunnygirlcpp.jpg" />
     <None Remove="Assets\Levels\Youtube\yt_platform-1.png" />
     <None Remove="Assets\Levels\Youtube\yt_platform-2.png" />
+    <None Remove="Assets\Levels\Youtube\yt_platform-20220417-132539.piskel" />
     <None Remove="Assets\Levels\Youtube\yt_platform-3.png" />
+    <None Remove="Assets\Levels\Youtube\yt_platform-4.png" />
+    <None Remove="Assets\Levels\Youtube\yt_platform-5.png" />
     <None Remove="Assets\MainMenuBackground.png" />
     <None Remove="Assets\Others\CloseGame.png" />
     <None Remove="Assets\Others\Crusader.jpg" />
@@ -52,6 +58,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Characters\NPCS\AngryDoge.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Characters\NPCS\MLGShrek.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Characters\NPCS\NikoAvocado.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Characters\Players\Chad.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -79,6 +94,9 @@
     <Content Include="Assets\Levels\Youtube\yt_platform-2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Levels\Youtube\yt_platform-20220417-132539.piskel">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Levels\Youtube\yt_platform-3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -89,6 +107,12 @@
 
   <ItemGroup>
     <Content Include="Assets\Characters\NPCS\TwistBrainlet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Levels\Youtube\yt_platform-4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Levels\Youtube\yt_platform-5.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Others\CloseGame.png">
