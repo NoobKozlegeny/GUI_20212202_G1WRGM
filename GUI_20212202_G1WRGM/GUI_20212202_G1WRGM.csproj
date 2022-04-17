@@ -11,9 +11,13 @@
     <None Remove="Assets\Characters\Chad.png" />
     <None Remove="Assets\Characters\DreadsChad.png" />
     <None Remove="Assets\Characters\NPCS\AngryDoge.png" />
+    <None Remove="Assets\Characters\NPCS\DreamStan.png" />
     <None Remove="Assets\Characters\NPCS\MLGShrek.png" />
     <None Remove="Assets\Characters\NPCS\NikoAvocado.png" />
     <None Remove="Assets\Characters\NPCS\TwistBrainlet.png" />
+    <None Remove="Assets\Items\Collectibles\Comment.png" />
+    <None Remove="Assets\Items\items-20220417-231209.piskel" />
+    <None Remove="Assets\Items\Others\RedBarrel.png" />
     <None Remove="Assets\Items\Weapons\Chaingun.png" />
     <None Remove="Assets\Items\Weapons\Pistol.png" />
     <None Remove="Assets\Items\Weapons\SuperShotgun.png" />
@@ -25,6 +29,7 @@
     <None Remove="Assets\Levels\Youtube\yt_platform-3.png" />
     <None Remove="Assets\Levels\Youtube\yt_platform-4.png" />
     <None Remove="Assets\Levels\Youtube\yt_platform-5.png" />
+    <None Remove="Assets\Levels\Youtube\yt_platform-6.png" />
     <None Remove="Assets\MainMenuBackground.png" />
     <None Remove="Assets\Others\CloseGame.png" />
     <None Remove="Assets\Others\Crusader.jpg" />
@@ -61,6 +66,9 @@
     <Content Include="Assets\Characters\NPCS\AngryDoge.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Characters\NPCS\DreamStan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Characters\NPCS\MLGShrek.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -71,6 +79,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Characters\Players\DreadsChad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Collectibles\Comment.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\items-20220417-231209.piskel">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Others\RedBarrel.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Items\Weapons\Chaingun.png">
@@ -113,6 +130,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Levels\Youtube\yt_platform-5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Levels\Youtube\yt_platform-6.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Others\CloseGame.png">
