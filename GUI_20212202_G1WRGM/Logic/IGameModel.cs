@@ -13,6 +13,8 @@ namespace GUI_20212202_G1WRGM.Logic
 
         public List<Item> MovingObject { get; set; }
 
+        public List<Bullets> Bullets { get; set; }
+
         public Character Player { get; set; }
 
         public List<Character> Enemies { get; set; }

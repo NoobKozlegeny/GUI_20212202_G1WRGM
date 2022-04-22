@@ -11,6 +11,8 @@ namespace GUI_20212202_G1WRGM.Logic
     {
         public void OneTick();
 
+        public void AI(List<Character> enemies);
+
         public void Move(Character character, int x);
 
         public void Jump(Character character);
