@@ -21,6 +21,10 @@
     </behaviors:Interaction.Triggers>
 
     <Grid x:Name="grid">
+        <Grid.DataContext>
+            <vm:GameWindowViewModel x:Name="gameWindowViewModel"/>
+        </Grid.DataContext>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="52*"/>

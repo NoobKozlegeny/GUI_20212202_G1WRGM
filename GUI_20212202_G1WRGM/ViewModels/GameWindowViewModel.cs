@@ -41,6 +41,8 @@ namespace GUI_20212202_G1WRGM.ViewModels
             characterDisplay.SetupCharacters(Characters);
             //itemDisplay.SetupItems(Items); FIX ME IN RENDER FOR THIS
             worldBuildingElementDisplay.SetupWorldBuildingElements(WorldBuildingElements);
+
+            StartGame();
         }
 
         // aztán akkor kéne a logic is valahogy
@@ -79,16 +81,17 @@ namespace GUI_20212202_G1WRGM.ViewModels
             characterLogic.ReadAll().ToList().ForEach(character => Characters.Add(character));
             itemLogic.ReadAll().ToList().ForEach(item => Items.Add(item));
             worldBuildingElementLogic.ReadAll().ToList().ForEach(worldBuildingElement => WorldBuildingElements.Add(worldBuildingElement));
-
+            ;
         }
 
 
+        //It seems that the renderer renders onto the menu which isn't poggers
         public void StartGame()
         {
             mapDisplay.InvalidateVisual();
             worldBuildingElementDisplay.InvalidateVisual();
             characterDisplay.InvalidateVisual();
-            itemDisplay.InvalidateVisual();
+            //itemDisplay.InvalidateVisual();
             
         }
 

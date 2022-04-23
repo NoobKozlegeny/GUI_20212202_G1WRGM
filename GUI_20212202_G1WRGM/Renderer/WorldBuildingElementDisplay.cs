@@ -35,15 +35,12 @@ namespace GUI_20212202_G1WRGM.Renderer
             if (WorldBuildingElements != null)
             {
                 //Display WorldBuildingElements
-                int xElement = 0;
                 foreach (WorldBuildingElement worldElement in WorldBuildingElements)
                 {
                     drawingContext.DrawRectangle(
                         new ImageBrush(new BitmapImage(worldElement.PathToImg)),
                         new Pen(Brushes.Black, 0),
-                        new Rect(xElement, size.Height - size.Height / 24, size.Width / 12, size.Height / 24));
-
-                    xElement += size.Width / 12;
+                        new Rect(worldElement.Position.X, worldElement.Position.Y, worldElement.Area.Width, worldElement.Area.Height));
                 }
             }
         }

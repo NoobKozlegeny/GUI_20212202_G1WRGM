@@ -44,7 +44,6 @@ namespace GUI_20212202_G1WRGM.Renderer
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-
             if (Characters != null)
             {
                 //Display Player
@@ -52,7 +51,7 @@ namespace GUI_20212202_G1WRGM.Renderer
                 PlayerGG = new DrawingGroup();
                 PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(player.PathToImg)), //Player image
                     new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0), 
-                    new RectangleGeometry(new Rect(0, size.Height - size.Height / 8, size.Width / 18, size.Height / 12))));
+                    new RectangleGeometry(new Rect(player.Position.X, player.Position.Y, player.Size.Width, player.Size.Height))));
 
                 PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(player.Inventory.PathToSelectedItemImg)), //Player's selected item
                     new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),

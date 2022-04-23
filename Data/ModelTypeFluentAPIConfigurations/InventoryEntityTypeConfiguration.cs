@@ -15,7 +15,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
         {
             builder.HasKey(Pk => Pk.Id);
             builder.Ignore(Inventory => Inventory.SelectedItem);
-            builder.Ignore(Inventory => Inventory.PathToSelectedItemImg);
+            //builder.Ignore(Inventory => Inventory.PathToSelectedItemImg);
 
             builder.HasOne(InventoryNavProp => InventoryNavProp.Player)
                    .WithOne(PlayerNavProp => PlayerNavProp.Inventory)
@@ -25,6 +25,20 @@ namespace Data.ModelTypeFluentAPIConfigurations
                    .WithOne(ItemNavProp => ItemNavProp.Inventory)
                    .HasForeignKey(ItemFk => ItemFk.InventoryId)
                    .OnDelete(DeleteBehavior.SetNull);
+
+            //Youtube inventory
+            ConfigureYoutubeLevel(builder);
+        }
+
+        public void ConfigureYoutubeLevel(EntityTypeBuilder<Inventory> builder)
+        {
+            builder.HasData(new Inventory() 
+            { 
+                PathToSelectedItemImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute),
+                Id = 1,
+                PlayerId = 1,
+                Items = new List<Item>()
+            });
         }
     }
 }

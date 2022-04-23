@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,26 @@ namespace Data.ModelTypeFluentAPIConfigurations
                    .HasForeignKey<Inventory>(PlayerFk => PlayerFk.PlayerId)
                    .OnDelete(DeleteBehavior.SetNull);
 
+            //Youtube player
+            ConfigureYoutubeLevel(builder);
+        }
+
+        public void ConfigureYoutubeLevel(EntityTypeBuilder<Player> builder)
+        {
+            //Player
+            builder.HasData(new Player()
+            {
+                Name = "Player",
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute),
+                //Inventory = new Inventory(),
+                Armour = 0,
+                HealthPoints = 5,
+                Speed = 1,
+                MapLevel = 1,
+                Position = new Point(128, 888),
+                Size = new Size(128, 128),
+                Id = 1
+            });
         }
     }
 }

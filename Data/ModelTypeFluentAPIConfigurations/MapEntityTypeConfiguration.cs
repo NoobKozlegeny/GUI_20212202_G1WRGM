@@ -39,6 +39,25 @@ namespace Data.ModelTypeFluentAPIConfigurations
                    .WithOne(MapNavProp => MapNavProp.Map)
                    .HasForeignKey(WorldBuildingElementFk => WorldBuildingElementFk.MapLevel)
                    .OnDelete(DeleteBehavior.SetNull);
+
+            builder.HasData(new Map()
+            {
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
+                Level = 1,
+                Size = new System.Drawing.Size(8000, 1080),
+                Characters = new List<Character>(),
+                Items = new List<Item>(),
+                WorldElements = new List<WorldBuildingElement>()
+            },
+            new Map()
+            {
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Reddit", "Reddit.jpg"), UriKind.RelativeOrAbsolute),
+                Level = 2,
+                Size = new System.Drawing.Size(8000, 1080),
+                Characters = new List<Character>(),
+                Items = new List<Item>(),
+                WorldElements = new List<WorldBuildingElement>()
+            });
         }
     }
 }

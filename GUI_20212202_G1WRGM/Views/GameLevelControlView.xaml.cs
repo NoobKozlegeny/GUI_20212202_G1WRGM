@@ -45,14 +45,14 @@ namespace GUI_20212202_G1WRGM.Views
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            mapDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            itemDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            worldBuildingElementDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            mapDisplay.InvalidateVisual();
-            characterDisplay.InvalidateVisual();
-            itemDisplay.InvalidateVisual();
-            worldBuildingElementDisplay.InvalidateVisual();
+            //mapDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            //characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            //itemDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            //worldBuildingElementDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            //mapDisplay.InvalidateVisual();
+            //characterDisplay.InvalidateVisual();
+            //itemDisplay.InvalidateVisual();
+            //worldBuildingElementDisplay.InvalidateVisual();
         }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
@@ -112,19 +112,21 @@ namespace GUI_20212202_G1WRGM.Views
             grid.Background = new ImageBrush(new BitmapImage(maps[0].PathToImg));
 
             //Setup displays and renders them
-            mapDisplay.SetupMap(maps);
-            worldBuildingElementDisplay.SetupWorldBuildingElements(worldBuildingElements);
-            itemDisplay.SetupItems(items, characterDisplay);
-            characterDisplay.SetupCharacters(characters);
-            mapDisplay.InvalidateVisual();
-            worldBuildingElementDisplay.InvalidateVisual();
-            itemDisplay.InvalidateVisual();
-            characterDisplay.InvalidateVisual();
+            //mapDisplay.SetupMap(maps);
+            //worldBuildingElementDisplay.SetupWorldBuildingElements(worldBuildingElements);
+            //itemDisplay.SetupItems(items, characterDisplay);
+            //characterDisplay.SetupCharacters(characters);
+            //mapDisplay.InvalidateVisual();
+            //worldBuildingElementDisplay.InvalidateVisual();
+            //itemDisplay.InvalidateVisual();
+            //characterDisplay.InvalidateVisual();
 
             //Starts sound
             GameLevelViewModel.mediaPlayer.Stop();
             GameLevelViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "TheOnlyThing.mp3"), UriKind.RelativeOrAbsolute));
             GameLevelViewModel.mediaPlayer.Play();
+
+            gameWindowViewModel.Init(mapDisplay, characterDisplay, itemDisplay, worldBuildingElementDisplay);
         }
 
         
