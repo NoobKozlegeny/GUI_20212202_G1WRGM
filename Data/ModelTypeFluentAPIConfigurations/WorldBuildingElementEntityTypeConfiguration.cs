@@ -50,7 +50,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             int id = 1;
 
             //Adding wall sprites
-            for (int i = id; i < 3; i++)
+            for (int i = id; i < 4; i++)
             {
                 builder.HasData(new WorldBuildingElement()
                 {
@@ -88,7 +88,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 id = i;
             }
 
-            //Above bottom sprites
+            //Above bottom sprites but not floating ones
             id++;
             randomResult = r.Next(4, 6);
 
@@ -102,6 +102,26 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 Id = id,
                 Area = new Size(128, 128)
             });
+
+            //Floating sprites
+            XElement = 256;
+
+            for (int i = id + 1; i < 38; i++)
+            {
+                builder.HasData(new WorldBuildingElement()
+                {
+                    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "yt_platform-3.png"),
+                        UriKind.RelativeOrAbsolute),
+                    MapLevel = 1,
+                    Position = new Point(XElement, 760),
+                    Name = "yt_platform-3",
+                    Id = i,
+                    Area = new Size(128, 32)
+                });
+
+                XElement += 128;
+                id = i;
+            }
         }
     }
 }

@@ -65,7 +65,7 @@ namespace GUI_20212202_G1WRGM.Renderer
                         drawingContext.DrawRectangle(
                         new ImageBrush(new BitmapImage(item.PathToImg)),
                         new Pen(Brushes.Black, 0),
-                        new Rect(xChar, size.Height - (size.Height / 12 + size.Height / 24), size.Width / 18, size.Height / 27));
+                        new Rect(item.Position.X + xChar, item.Position.Y, item.Size.Width, item.Size.Height));
 
                         xChar += 150;
                     }

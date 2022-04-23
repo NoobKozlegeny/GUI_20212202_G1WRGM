@@ -29,7 +29,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             int randomResult;
             int id = 2;
 
-            for (int i = id; i < 32; i++)
+            for (int i = id; i < 4; i++)
             {
                 randomResult = r.Next(1, 3);
                 builder.HasData(new NPC()
@@ -41,12 +41,12 @@ namespace Data.ModelTypeFluentAPIConfigurations
                     HealthPoints = 2,
                     Speed = 1,
                     MapLevel = 1,
-                    Position = new Point(XElement, 952),
+                    Position = new Point(XElement, 888),
                     Size = new Size(128, 128),
                     Id = i
                 });
 
-                XElement += 128;
+                XElement += 256;
                 id = i;
             }
         }

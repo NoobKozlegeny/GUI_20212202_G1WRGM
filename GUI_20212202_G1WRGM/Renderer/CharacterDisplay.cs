@@ -53,9 +53,10 @@ namespace GUI_20212202_G1WRGM.Renderer
                     new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0), 
                     new RectangleGeometry(new Rect(player.Position.X, player.Position.Y, player.Size.Width, player.Size.Height))));
 
+                //TODO: player.Inventory.SelectedItem.Size.Width, player.Inventory.SelectedItem.Size.Height --> player.Inventory.SelectedItem is null
                 PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(player.Inventory.PathToSelectedItemImg)), //Player's selected item
                     new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                    new RectangleGeometry(new Rect(0, size.Height - size.Height / 8 + size.Height / 24, size.Width / 18, size.Height / 27))));
+                    new RectangleGeometry(new Rect(player.Position.X, player.Position.Y + 64, 128, 64))));
 
                 //Rendering the player and their selected item which have been added in the ItemDisplay
                 drawingContext.DrawDrawing(PlayerGG);
@@ -69,24 +70,12 @@ namespace GUI_20212202_G1WRGM.Renderer
                     //Adding NPC image
                     npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToImg)),
                     new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                    new RectangleGeometry(new Rect(xChar, size.Height - size.Height / 8, size.Width / 18, size.Height / 12))));
+                    new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y, npc.Size.Width, npc.Size.Height))));
 
                     //Adding NPC's weapon
                     npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
                     new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                    new RectangleGeometry(new Rect(xChar, size.Height - size.Height / 12, size.Width / 18, size.Height / 27))));
-
-                    //NPC
-                    //drawingContext.DrawRectangle(
-                    //    new ImageBrush(new BitmapImage(npc.PathToImg)),
-                    //    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                    //    new Rect(xChar, size.Height - size.Height / 8, size.Width / 18, size.Height / 12));
-
-                    //NPC's Weapon
-                    //drawingContext.DrawRectangle(
-                    //    new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
-                    //    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                    //    new Rect(xChar, size.Height - size.Height / 12, size.Width / 18, size.Height / 27));
+                    new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y + 64, 128, 64))));
 
                     drawingContext.DrawDrawing(npcDG);
 
@@ -94,22 +83,6 @@ namespace GUI_20212202_G1WRGM.Renderer
                 }
 
             }
-        }
-
-        //Merges 2 images into one duuuh (redundant)
-        private static BitmapImage MergeImages(Uri baseImageUri, Uri layerImageUri)
-        {
-            Bitmap baseImage = new Bitmap(baseImageUri.OriginalString, true);
-            for (int i = 0; i < baseImage.Height / 2; i++)
-            {
-                for (int j = 0; j < baseImage.Width / 2; j++)
-                {
-                    baseImage.SetPixel(i, j, System.Drawing.Color.Blue);
-                }
-            }
-            baseImage.Save("kaga.png");
-
-            return new BitmapImage();
         }
     }
 }

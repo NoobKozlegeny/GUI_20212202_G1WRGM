@@ -39,7 +39,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
             this.worldBuildingElementDisplay = worldBuildingElementDisplay;
             mapDisplay.SetupMap(Maps); // RENDERBE BELENYÚLTAM EHHEZ
             characterDisplay.SetupCharacters(Characters);
-            //itemDisplay.SetupItems(Items); FIX ME IN RENDER FOR THIS
+            itemDisplay.SetupItems(Items, characterDisplay); //FIX ME IN RENDER FOR THIS
             worldBuildingElementDisplay.SetupWorldBuildingElements(WorldBuildingElements);
 
             StartGame();
@@ -91,7 +91,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
             mapDisplay.InvalidateVisual();
             worldBuildingElementDisplay.InvalidateVisual();
             characterDisplay.InvalidateVisual();
-            //itemDisplay.InvalidateVisual();
+            itemDisplay.InvalidateVisual();
             
         }
 

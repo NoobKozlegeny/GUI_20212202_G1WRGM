@@ -21,5 +21,6 @@ namespace Models
         public virtual Inventory Inventory { get; set; }
         public Uri PathToImg { get; set; }
         public bool IsPickedUp { get; set; }
+        public Size Size { get; set; }
     }
 }

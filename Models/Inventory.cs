@@ -9,7 +9,8 @@ namespace Models
     public class Inventory
     {
         public int SlotNumber { get; set; }
-        public Item SelectedItem { get; set; }
+        public int? SelectedItemId { get; set; }
+        public virtual Item SelectedItem { get; set; }
         public Uri PathToSelectedItemImg { get; set; }
 
 
