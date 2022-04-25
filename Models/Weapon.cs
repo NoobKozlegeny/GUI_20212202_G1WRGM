@@ -9,7 +9,10 @@ namespace Models
     public class Weapon : Item
     {
         private int fireRateResetter;
+        public Weapon()
+        {
 
+        }
         public Weapon(int fireRate)
         {
             fireRateResetter = fireRate;
