@@ -22,8 +22,6 @@ namespace GUI_20212202_G1WRGM.Controller
 
     public class GameController : IGameControl, IGameModel
     {
-        private static int JumpTimeAmount = 400;
-        private static int JumpVelocity = 1;
         private List<Item> items;
         private Player player;
         private List<NPC> enemies;
