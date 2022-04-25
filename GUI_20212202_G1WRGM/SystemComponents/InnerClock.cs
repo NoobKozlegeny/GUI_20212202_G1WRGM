@@ -21,6 +21,6 @@ namespace Models.SystemComponents
             {
                 component.TickProcess();
             };
-        }
+        }      
     }
 }
