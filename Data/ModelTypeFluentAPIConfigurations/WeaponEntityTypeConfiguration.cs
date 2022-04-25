@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -12,6 +13,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
 {
     class WeaponEntityTypeConfiguration : IEntityTypeConfiguration<Weapon>
     {
+        int id = 1;
+
         public void Configure(EntityTypeBuilder<Weapon> builder)
         {
             builder.HasBaseType<Item>();
@@ -25,37 +28,28 @@ namespace Data.ModelTypeFluentAPIConfigurations
 
         public void ConfigureYoutubeLevel(EntityTypeBuilder<Weapon> builder)
         {
-            int id = 1;
             //Weapons scattered on the ground, waiting for to be picked up
+            CreateWeapon(builder, new Point(128, 696), "SuperShotgun.png", 12, 2, 1);
+            //CreateWeapon(builder, new Point(1024, 448), "Chaingun.png", 88, 1, 1);
+        }
+
+        public void CreateWeapon(EntityTypeBuilder<Weapon> builder, Point position, string weaponImg, int ammo, int damage, int mapLevel)
+        {
             builder.HasData(new Weapon()
             {
-                Name = "Super Shotgun",
+                Name = weaponImg.Split('.')[0],
                 IsPickedUp = false,
-                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute),
-                AmmoAmount = 12,
-                Damage = 2,
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", weaponImg), UriKind.RelativeOrAbsolute),
+                AmmoAmount = ammo,
+                Damage = damage,
                 Id = id,
-                InventoryId = 1,
-                MapLevel = 1,
-                Position = new System.Drawing.Point(128, 696),
-                Size = new System.Drawing.Size(128, 64)
+                //InventoryId = 1,
+                MapLevel = mapLevel,
+                Position = position,
+                Size = new Size(128, 64)
             });
 
             id++;
-            builder.HasData(new Weapon()
-            {
-                Name = "Chaingun",
-                IsPickedUp = false,
-                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute),
-                AmmoAmount = 88,
-                Damage = 1,
-                Id = id,
-                //InventoryId = 1,
-                MapLevel = 1,
-                Position = new System.Drawing.Point(1024, 448),
-                Size = new System.Drawing.Size(128, 64)
-            });
-            
         }
     }
 }

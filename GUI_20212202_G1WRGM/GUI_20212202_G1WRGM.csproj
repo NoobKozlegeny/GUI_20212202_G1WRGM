@@ -15,6 +15,7 @@
     <None Remove="Assets\Characters\NPCS\MLGShrek.png" />
     <None Remove="Assets\Characters\NPCS\NikoAvocado.png" />
     <None Remove="Assets\Characters\NPCS\TwistBrainlet.png" />
+    <None Remove="Assets\Items\Buffs\protein.png" />
     <None Remove="Assets\Items\Collectibles\Comment.png" />
     <None Remove="Assets\Items\items-20220417-231209.piskel" />
     <None Remove="Assets\Items\Others\RedBarrel.png" />
@@ -79,6 +80,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Characters\Players\DreadsChad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Buffs\Protein.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Items\Collectibles\Comment.png">

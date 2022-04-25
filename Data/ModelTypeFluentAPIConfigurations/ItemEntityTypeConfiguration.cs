@@ -46,24 +46,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
 
         public void ConfigureYoutubeLevel(EntityTypeBuilder<Item> builder)
         {
-            //List<Item> items = new List<Item>()
-            //{
-            //    new Weapon() { Name = "Super Shotgun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) },
-            //    new Weapon() { Name = "Chaingun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
-            //    new Weapon() { Name = "Chaingun", IsPickedUp = true, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
-            //};
 
-            //builder.HasData(new Weapon()
-            //{
-            //    Name = "Super Shotgun",
-            //    IsPickedUp = false,
-            //    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute),
-            //    AmmoAmount = 12,
-            //    Damage = 2,
-            //    Id = 1,
-            //    InventoryId = 1,
-
-            //});
         }
     }
 }
