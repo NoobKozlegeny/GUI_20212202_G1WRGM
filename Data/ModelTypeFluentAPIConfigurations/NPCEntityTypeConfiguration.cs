@@ -13,6 +13,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
     class NPCEntityTypeConfiguration : IEntityTypeConfiguration<NPC>
     {
         Random r = new Random();
+        int id = 2; //Because the id with 1 one is the player
 
         public void Configure(EntityTypeBuilder<NPC> builder)
         {
@@ -25,30 +26,27 @@ namespace Data.ModelTypeFluentAPIConfigurations
 
         public void ConfigureYoutubeLevel(EntityTypeBuilder<NPC> builder)
         {
-            int XElement = 256;
-            int randomResult;
-            int id = 2;
+            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(768, 888), 1, 2, 1, 1);
+            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(1536, 888), 1, 2, 1, 1);
+        }
 
-            for (int i = id; i < 4; i++)
+        public void CreateNPC(EntityTypeBuilder<NPC> builder, string NPCImg, string WeaponImg, Point position, int armour, int health, int speed, int mapLevel)
+        {
+            builder.HasData(new NPC()
             {
-                randomResult = r.Next(1, 3);
-                builder.HasData(new NPC()
-                {
-                    Name = $"NPC{i - 1}",
-                    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute),
-                    PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Watergun.png"), UriKind.RelativeOrAbsolute),
-                    Armour = 0,
-                    HealthPoints = 2,
-                    Speed = 1,
-                    MapLevel = 1,
-                    Position = new Point(XElement, 888),
-                    Size = new Size(128, 128),
-                    Id = i
-                });
-
-                XElement += 256;
-                id = i;
-            }
+                Name = $"NPC{id - 1}",
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", NPCImg), UriKind.RelativeOrAbsolute),
+                PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", WeaponImg), UriKind.RelativeOrAbsolute),
+                Armour = armour,
+                HealthPoints = health,
+                Speed = speed,
+                MapLevel = mapLevel,
+                Position = position,
+                Size = new Size(128, 128),
+                Id = id
+            });
+            
+            id++;
         }
     }
 }

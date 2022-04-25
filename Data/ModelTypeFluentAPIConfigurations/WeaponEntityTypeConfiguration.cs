@@ -25,6 +25,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
 
         public void ConfigureYoutubeLevel(EntityTypeBuilder<Weapon> builder)
         {
+            int id = 1;
+            //Weapons scattered on the ground, waiting for to be picked up
             builder.HasData(new Weapon()
             {
                 Name = "Super Shotgun",
@@ -32,36 +34,28 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute),
                 AmmoAmount = 12,
                 Damage = 2,
-                Id = 1,
+                Id = id,
                 InventoryId = 1,
                 MapLevel = 1,
                 Position = new System.Drawing.Point(128, 696),
                 Size = new System.Drawing.Size(128, 64)
             });
 
-            int XElement = 512;
-            int id = 2;
-
-            //Weapons scattered on the ground, waiting for to be picked up
-            for (int i = id; i < 4; i++)
+            id++;
+            builder.HasData(new Weapon()
             {
-                builder.HasData(new Weapon()
-                {
-                    Name = "Chaingun",
-                    IsPickedUp = false,
-                    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute),
-                    AmmoAmount = 88,
-                    Damage = 1,
-                    Id = i,
-                    //InventoryId = 1,
-                    MapLevel = 1,
-                    Position = new System.Drawing.Point(XElement, 952),
-                    Size = new System.Drawing.Size(128, 64)
-                });
-
-                XElement += 256;
-                id = i;
-            }
+                Name = "Chaingun",
+                IsPickedUp = false,
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute),
+                AmmoAmount = 88,
+                Damage = 1,
+                Id = id,
+                //InventoryId = 1,
+                MapLevel = 1,
+                Position = new System.Drawing.Point(1024, 448),
+                Size = new System.Drawing.Size(128, 64)
+            });
+            
         }
     }
 }

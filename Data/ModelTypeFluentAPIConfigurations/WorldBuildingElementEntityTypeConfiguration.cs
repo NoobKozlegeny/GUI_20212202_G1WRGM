@@ -14,6 +14,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
     class WorldBuildingElementEntityTypeConfiguration : IEntityTypeConfiguration<WorldBuildingElement>
     {
         Random r = new Random();
+        int id = 1;
 
         public void Configure(EntityTypeBuilder<WorldBuildingElement> builder)
         {
@@ -47,81 +48,64 @@ namespace Data.ModelTypeFluentAPIConfigurations
         {
             int XElement = 0;
             int randomResult;
-            int id = 1;
 
-            //Adding wall sprites
+            //Adding wall sprites on the left
             for (int i = id; i < 4; i++)
             {
-                builder.HasData(new WorldBuildingElement()
-                {
-                    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "yt_platform-6.png"),
-                        UriKind.RelativeOrAbsolute),
-                    MapLevel = 1,
-                    Position = new Point(0, 1016 - XElement), //1080 - 64 - 384 -> grid.ActualHeight - bottomFloor.Area.Height - wall.Area.Height
-                    Name = "yt_platform-6",
-                    Id = i,
-                    Area = new Size(128, 384)
-                });
-
+                CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(0, 1016 - XElement), 1, new Size(128, 384));
                 XElement += 384;
-                id = i;
             }
 
             //Adding the bottom sprites
             XElement = 0;
-
-            for (int i = id + 1; i < 32; i++)
+            for (int i = id; i < 32; i++)
             {
-                randomResult = r.Next(1, 3);
-                builder.HasData(new WorldBuildingElement()
-                {
-                    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{randomResult}.png"),
-                        UriKind.RelativeOrAbsolute),
-                    MapLevel = 1,
-                    Position = new Point(XElement, 1016), //1080 - 64 -> grid.ActualHeight - bottomFloor.Area.Height
-                    Name = $"yt_platform-{randomResult}",
-                    Id = i,
-                    Area = new Size(128, 64)
-                });
-
+                CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(1, 3)}.png", new Point(XElement, 1016), 1, new Size(128, 64));
                 XElement += 128;
-                id = i;
             }
 
             //Above bottom sprites but not floating ones
-            id++;
-            randomResult = r.Next(4, 6);
-
-            builder.HasData(new WorldBuildingElement()
-            {
-                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{randomResult}.png"),
-                        UriKind.RelativeOrAbsolute),
-                MapLevel = 1,
-                Position = new Point(1024, 1080 - 192),
-                Name = $"yt_platform-{randomResult}",
-                Id = id,
-                Area = new Size(128, 128)
-            });
+            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(896, 1080 - 192), 1, new Size(128, 128));
+            CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(1280, 632), 1, new Size(128, 384));
 
             //Floating sprites
             XElement = 256;
-
-            for (int i = id + 1; i < 38; i++)
+            for (int i = id; i < 38; i++)
             {
-                builder.HasData(new WorldBuildingElement()
+                CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 760), 1, new Size(128, 32));
+                XElement += 128;
+            }
+
+            XElement = 640;
+            while (id < 44)
+            {
+                if (XElement < 1152)
                 {
-                    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "yt_platform-3.png"),
-                        UriKind.RelativeOrAbsolute),
-                    MapLevel = 1,
-                    Position = new Point(XElement, 760),
-                    Name = "yt_platform-3",
-                    Id = i,
-                    Area = new Size(128, 32)
-                });
+                    CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 512), 1, new Size(128, 32));
+                }
+                else if (XElement > 1408)
+                {
+                    CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 512), 1, new Size(128, 32));
+                }
 
                 XElement += 128;
-                id = i;
             }
+        }
+
+        public void CreateWorldBuildingElement(EntityTypeBuilder<WorldBuildingElement> builder, string WBEImg, Point position, int mapLevel, Size size)
+        {
+            builder.HasData(new WorldBuildingElement()
+            {
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", WBEImg),
+                                    UriKind.RelativeOrAbsolute),
+                MapLevel = mapLevel,
+                Position = position,
+                Name = WBEImg,
+                Id = id,
+                Area = size
+            });
+
+            id++;
         }
     }
 }
