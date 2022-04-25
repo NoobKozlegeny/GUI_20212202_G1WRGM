@@ -1,22 +1,24 @@
 ﻿using Models;
+using Models.SystemComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace GUI_20212202_G1WRGM.Logic
 {
     public interface IGameModel
     {
-        public List<Item> StaticObject { get; set; }
+        public DispatcherTimer Time { get; }
 
-        public List<Item> MovingObject { get; set; }
+        public List<Item> Items { get; set; }
 
-        public List<Bullets> Bullets { get; set; }
+        public List<Bullet> Bullets { get; set; }
 
-        public Character Player { get; set; }
+        public Player Player { get; set; }
 
-        public List<Character> Enemies { get; set; }
+        public List<NPC> Enemies { get; set; }
     }
 }

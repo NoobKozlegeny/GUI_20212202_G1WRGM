@@ -8,20 +8,29 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Bullets
+    public class Bullet 
     {
-        private Size position;
+        
+        private Vector2 position;
         private Vector2 direction;
         private int damage;
+        private bool isPlayer;
 
-        public Bullets(Size position, int damage, Vector2 direction, int velocity)
+        public Bullet(Vector2 position, int damage, Vector2 direction, int velocity, bool isPlayer)
         {
             this.position = position;
             this.damage = damage;
             this.direction = direction * velocity;
+            this.isPlayer = isPlayer;
         }
 
-        public Size Position
+        public bool IsPlayer
+        {
+            get { return isPlayer; }
+            set { isPlayer = value; }
+        }
+
+        public Vector2 Position
         {
             get { return position; }
             set { position = value; }
@@ -40,6 +49,5 @@ namespace Models
             get { return damage; }
             set { damage = value; }
         }
-
     }
 }
