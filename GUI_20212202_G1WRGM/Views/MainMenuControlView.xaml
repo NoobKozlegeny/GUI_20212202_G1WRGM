@@ -9,9 +9,9 @@
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors" 
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1600">
-    <!--<Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>-->
+    <UserControl.DataContext>
+        <vm:MainMenuViewModel/>
+    </UserControl.DataContext>
 
     <!--Starts main menu song when UI starts-->
     <behaviors:Interaction.Triggers>
@@ -38,12 +38,8 @@
 
         
         <!--1. row-->
-    
-        <Menu Grid.ColumnSpan="3" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
-            <Menu.DataContext>
-                <vm:MainMenuViewModel/>
-            </Menu.DataContext>
 
+        <Menu Grid.ColumnSpan="3" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <DockPanel HorizontalAlignment="Stretch"/>
@@ -143,9 +139,5 @@
                 </Button.Background>
             </Button>
         </StackPanel>
-
-
-        <renderer:MapDisplay x:Name="display"/>
-        <renderer:CharacterDisplay x:Name="characterDisplay"/>
     </Grid>
 </UserControl>

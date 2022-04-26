@@ -13,8 +13,6 @@ namespace GUI_20212202_G1WRGM.ViewModels
 {
     public class MainMenuViewModel : BaseViewModel, IPageViewModel
     {
-        //Mediaplayer is kinda slow on responding when the music has just started.
-        //public static MediaPlayer mediaPlayer = new MediaPlayer();
         public Random r = new Random();
 
         public ICommand StartDefaultOSTCommand { get; set; }
@@ -22,7 +20,6 @@ namespace GUI_20212202_G1WRGM.ViewModels
         public ICommand StartCrusaderOSTCommand { get; set; }
         public ICommand StartWeebOSTCommand { get; set; }
         public ICommand CloseGameCommand { get; set; }
-        public ICommand StartGameCommand { get; set; }
 
         private ICommand goToScoreboard;
 
@@ -102,16 +99,6 @@ namespace GUI_20212202_G1WRGM.ViewModels
                     mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "XPShutdown.mp3"), UriKind.RelativeOrAbsolute));
                     mediaPlayer.Play();
                     mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-                });
-
-            StartGameCommand = new RelayCommand(
-                () =>
-                {
-                    //Plays sussy sound
-                    //mediaPlayer.Stop();
-                    //mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "amongUsEmergency.mp3"), UriKind.RelativeOrAbsolute));
-                    //mediaPlayer.Play();
-
                 });
         }
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)

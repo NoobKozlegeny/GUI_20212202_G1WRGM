@@ -2,6 +2,7 @@
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,7 +86,9 @@ namespace GUI_20212202_G1WRGM.ViewModels
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
+            Environment.Exit(0);
+            //Process.GetCurrentProcess().Kill();
         }
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)

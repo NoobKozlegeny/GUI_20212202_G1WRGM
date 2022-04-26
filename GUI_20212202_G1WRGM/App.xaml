@@ -1,8 +1,6 @@
 ﻿<Application x:Class="GUI_20212202_G1WRGM.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
              xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels"
              xmlns:views="clr-namespace:GUI_20212202_G1WRGM.Views">
     <Application.Resources>
