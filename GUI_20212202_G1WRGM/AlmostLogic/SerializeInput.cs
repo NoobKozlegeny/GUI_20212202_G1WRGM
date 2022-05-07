@@ -54,10 +54,9 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
 
         }
 
-        public void MousePosition(object sender, KeyEventArgs e)
+        public void MousePosition(object sender, System.Windows.Point mousePosition)
         {
-            
-            //playerMovementLogic.SetDirection(Mouse.GetPosition());
+            playerMovementLogic.SetDirection(mousePosition);
         }
     }
 }

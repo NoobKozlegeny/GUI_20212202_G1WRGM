@@ -20,7 +20,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             builder.Property(Pk => Pk.Id)
                    .ValueGeneratedOnAdd();
             builder.Ignore(ItemNavPop => ItemNavPop.Map);
-            //builder.Ignore(ItemNavProp => ItemNavProp.PathToImg);
+            builder.Ignore(ItemNavPop => ItemNavPop.DirectionToLook);
             builder.Property(ItemFk => ItemFk.MapLevel)
                    .IsRequired(false);
 

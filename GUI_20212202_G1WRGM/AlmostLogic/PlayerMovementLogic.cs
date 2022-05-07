@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Drawing;
+using GUI_20212202_G1WRGM.Others;
 
 namespace GUI_20212202_G1WRGM.AlmostLogic
 {
@@ -101,9 +104,21 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
         }
         // For this we might need an additional prop in models rotation, and then here only change that and when render draw it will rotate to the right direction
         // But here still, we need to calc angle, how???
-        public void SetDirection(Point mousePosition)
+        public void SetDirection(System.Windows.Point mousePosition)
         {
+            if (Player.Inventory.SelectedItem != null)
+            {
+                Player.Inventory.SelectedItem.DirectionToLook = new System.Drawing.Point((int)mousePosition.X, (int)mousePosition.Y);
+            }
 
+            if (mousePosition.X > Player.Position.X)
+            {
+                Player.IsTransform = true;
+            }
+            else
+            {
+                Player.IsTransform = false;
+            }
         }
 
 

@@ -10,7 +10,17 @@ namespace Models
     {
         public int SlotNumber { get; set; }
         public int? SelectedItemId { get; set; }
-        public virtual Item SelectedItem { get; set; }
+        public virtual Item SelectedItem 
+        { 
+            get 
+            {
+                return Items.Where(x => x.Id == SelectedItemId).First();
+            }
+            set
+            {
+
+            }
+        }
         public Uri PathToSelectedItemImg { get; set; }
 
 

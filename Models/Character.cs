@@ -25,6 +25,8 @@ namespace Models
         // Fk + Navigation prop for EF
         public int? MapLevel { get; set; }
         public virtual Map Map { get; set; }
+        //True: It should transform, False: nope
+        public bool IsTransform { get; set; }
 
         public bool isJumping(int deltatime)
         {
