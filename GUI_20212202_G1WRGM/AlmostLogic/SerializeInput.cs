@@ -13,6 +13,8 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
     public class SerializeInput : ObservableRecipient
     {
         PlayerMovementLogic playerMovementLogic = Ioc.Default.GetRequiredService<PlayerMovementLogic>();
+        
+
         public void KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -33,6 +35,7 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
 
                 case Key.Up:
                     playerMovementLogic.Jump();
+
                     break;
                 case Key.W:
                     playerMovementLogic.Jump();

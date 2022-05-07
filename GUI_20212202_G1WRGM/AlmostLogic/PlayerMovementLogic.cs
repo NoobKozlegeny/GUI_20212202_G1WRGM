@@ -18,40 +18,44 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
     public class PlayerMovementLogic
     {
         public Player Player { get; set; }
-        public bool IsJumping { get; set; }
+        public bool IsJumping { get; set; } = false;
         public PlayerMovementLogic()
         {
             Player = Ioc.Default.GetService<CharacterDisplay>().Player;
         }
         public void MoveForward()
         {
-            Player.Position = new System.Drawing.Point(Player.Position.X+25, Player.Position.Y);
+            Player.Position = new System.Drawing.Point(Player.Position.X + 75, Player.Position.Y);
         }
         public void MoveBackward()
         {
-            Player.Position = new System.Drawing.Point(Player.Position.X-25, Player.Position.Y);
+            Player.Position = new System.Drawing.Point(Player.Position.X-75, Player.Position.Y);
         }
 
         public void Jump()
         {
-
             Task jump = new Task(
                 async () =>
                 {
+                    IsJumping = true;
                     for (int i = 10; i > 0; i--)
                     {
-                        Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - 5 * i);
-                        await Task.Delay(20);
+                        Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - 7 * i);
+                        await Task.Delay(3 * i);
                     }
-                    await Task.Delay(40);
-                    for (int i = 10; i > 0; i--)
+                    await Task.Delay(100);
+                    for (int i = 1; i <= 10; i++)
                     {
-                        Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 5 * i);
-                        await Task.Delay(20);
-                    }  
-                  
+                        Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 7 * i);
+                        await Task.Delay(3 * i);
+                    }
+                    IsJumping = false;
                 });
-            jump.Start();
+            if (!IsJumping)
+            {
+                jump.Start();
+            }
+
         }
         // For this we might need an additional prop in models rotation, and then here only change that and when render draw it will rotate to the right direction
         // But here still, we need to calc angle, how???
