@@ -144,8 +144,5 @@
             </Button>
         </StackPanel>
 
-
-        <renderer:MapDisplay x:Name="display"/>
-        <renderer:CharacterDisplay x:Name="characterDisplay"/>
     </Grid>
 </UserControl>

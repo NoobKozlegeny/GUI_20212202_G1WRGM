@@ -126,7 +126,7 @@ namespace GUI_20212202_G1WRGM.Views
             GameLevelViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "TheOnlyThing.mp3"), UriKind.RelativeOrAbsolute));
             GameLevelViewModel.mediaPlayer.Play();
 
-            gameWindowViewModel.Init(mapDisplay, characterDisplay, itemDisplay, worldBuildingElementDisplay);
+            //gameWindowViewModel.Init(mapDisplay, characterDisplay, itemDisplay, worldBuildingElementDisplay);
         }
 
         

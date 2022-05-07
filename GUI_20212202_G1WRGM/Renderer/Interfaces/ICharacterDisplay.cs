@@ -12,9 +12,9 @@ namespace GUI_20212202_G1WRGM.Renderer.Interfaces
     public interface ICharacterDisplay
     {
         IList<Character> Characters { get; set; }
-        Size size { get; set; }
+        //Size size { get; set; }
         DrawingGroup PlayerGG { get; set; }
-        void Resize(Size size);
+        //void Resize(Size size);
         void SetupCharacters(IList<Character> characters);
     }
 }

@@ -12,7 +12,7 @@ namespace Models.SystemComponents
     {
         public const int TicksPerSecond = 60;
 
-        readonly DispatcherTimer timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 0, 1000 / TicksPerSecond) };
+        readonly DispatcherTimer timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 0, 1000/TicksPerSecond) };
 
         protected BaseTimer()
         {

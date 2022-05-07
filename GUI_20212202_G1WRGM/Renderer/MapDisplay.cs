@@ -1,6 +1,7 @@
-﻿using GUI_20212202_G1WRGM.Logic;
+﻿using GUI_20212202_G1WRGM.AlmostLogic;
 using GUI_20212202_G1WRGM.Renderer.Interfaces;
 using Models;
+using Models.SystemComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,11 @@ using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_G1WRGM.Renderer
 {
-    public class MapDisplay : FrameworkElement, IMapDisplay
+    public class MapDisplay : FrameworkElement, IMapDisplay, ITickable
     {
         // Ez meg tulajdonképpen semmi mást nem csinálna csak az adott level nagyságáért felel xpixel*ypixel ++ esetleg alap hátteret állít az egészre meg ilyenek
         public IList<Map> Maps { get; set; }
-        int currentLevel;
-        public System.Drawing.Size size { get; set; }
+        int currentLevel = 1;
 
         public void Resize(System.Drawing.Size size)
         {
@@ -39,22 +39,19 @@ namespace GUI_20212202_G1WRGM.Renderer
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            base.OnRender(drawingContext);
+            //base.OnRender(drawingContext);
+            Map mapToDraw = Maps.FirstOrDefault(x => x.Level == currentLevel);
 
-            //if (map != null)
-            //{
-            //    //Display WorldBuildingElements
-            //    int xElement = 0;
-            //    foreach (WorldBuildingElement worldElement in map.WorldElements)
-            //    {
-            //        drawingContext.DrawRectangle(
-            //            new ImageBrush(new BitmapImage(worldElement.PathToImg)),
-            //            new Pen(Brushes.Black, 0),
-            //            new Rect(xElement, map.Size.Height - map.Size.Height / 24, map.Size.Width / 12, map.Size.Height / 24));
+            drawingContext.DrawRectangle(
+                    new ImageBrush(new BitmapImage(mapToDraw.PathToImg)),
+                    new Pen(Brushes.Black, 0),
+                    new Rect(new Size(mapToDraw.Size.Width, mapToDraw.Size.Height))
+                );
+        }
 
-            //        xElement += map.Size.Width / 12;
-            //    }
-            //}
+        public void TickProcess()
+        {
+            this.InvalidateVisual();
         }
     }
 }

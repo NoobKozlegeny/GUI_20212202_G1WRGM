@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.SystemComponents
 {
-    class InnerClock : BaseTimer
+    public class InnerClock : BaseTimer
     {
         public ICollection<ITickable> Components { get; set; } = new List<ITickable>();
 

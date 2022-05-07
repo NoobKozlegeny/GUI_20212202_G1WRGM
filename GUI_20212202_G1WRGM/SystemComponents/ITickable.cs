@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.SystemComponents
 {
-    interface ITickable
+    public interface ITickable
     {
         public void TickProcess();
     }

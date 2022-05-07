@@ -1,5 +1,6 @@
 ﻿using GUI_20212202_G1WRGM.Renderer.Interfaces;
 using Models;
+using Models.SystemComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_G1WRGM.Renderer
 {
-    public class ItemDisplay : FrameworkElement, IItemDisplay
+    public class ItemDisplay : FrameworkElement, IItemDisplay, ITickable
     {
         // Ez itt érdekes lesz mert lesznek itemek, amiknek van kezdőhelye és változhat, de kevésszer illetve itemek amik pl. folyamat a karakterrel együtt mozognak
         // lehet valami leszármazás kéne ItemD:CharacterD vagy fordítva? és felülírni a renderelést, ami a kerekterrel kell együtt mozogjon azt az ős intézi a többit külön render
@@ -36,6 +37,7 @@ namespace GUI_20212202_G1WRGM.Renderer
             Items = items;
             CharacterDisplay = characterDisplay;
         }
+
 
         protected override void OnRender(DrawingContext drawingContext)
         {
@@ -71,6 +73,12 @@ namespace GUI_20212202_G1WRGM.Renderer
                     }
                 }
             }
+        }
+
+
+        public void TickProcess()
+        {
+            this.InvalidateVisual();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             builder.ToTable("Map");
             builder.HasKey(Pk => Pk.Level);
             builder.Property(Pk => Pk.Level).ValueGeneratedOnAdd();
-            builder.Ignore(MapNavProp => MapNavProp.PathToImg);
+            //builder.Ignore(MapNavProp => MapNavProp.PathToImg);
             builder.Ignore(MapNavProp => MapNavProp.Characters);
             builder.Ignore(MapNavProp => MapNavProp.Items);
             builder.Ignore(MapNavProp => MapNavProp.WorldElements);
@@ -26,6 +26,9 @@ namespace Data.ModelTypeFluentAPIConfigurations
             builder.Property(Map => Map.Size)
                    .HasConversion(Size => JsonSerializer.Serialize(Size, null),
                                   Size => JsonSerializer.Deserialize<Size>(Size, null));
+            builder.Property(Map => Map.PathToImg)
+                   .HasConversion(Image => JsonSerializer.Serialize(Image, null),
+                                  Image => JsonSerializer.Deserialize<Uri>(Image, null));
 
             builder.HasMany(CharacterNavProp => CharacterNavProp.Characters)
                    .WithOne(MapNavProp => MapNavProp.Map)

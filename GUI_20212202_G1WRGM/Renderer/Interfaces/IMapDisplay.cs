@@ -11,7 +11,6 @@ namespace GUI_20212202_G1WRGM.Renderer.Interfaces
     interface IMapDisplay
     {
         //Map map { get; set; }
-        Size size { get; set; }
         void Resize(Size size);
         void SetupMap(IList<Map> map);
     }

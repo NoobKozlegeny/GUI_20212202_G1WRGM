@@ -1,4 +1,6 @@
-﻿using GUI_20212202_G1WRGM.ViewModels;
+﻿using GUI_20212202_G1WRGM.AlmostLogic;
+using GUI_20212202_G1WRGM.Renderer;
+using GUI_20212202_G1WRGM.ViewModels;
 using Logic;
 using Logic.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,17 +34,22 @@ namespace GUI_20212202_G1WRGM
                     .AddSingleton<ICharacterLogic, CharacterLogic>()
                     .AddSingleton<IItemLogic, ItemLogic>()
                     .AddSingleton<IWorldBuildingElementLogic, WorldBuildingElementLogic>()
+                    .AddSingleton<MapDisplay, MapDisplay>()
+                    .AddSingleton<CharacterDisplay, CharacterDisplay>()
+                    .AddSingleton<ItemDisplay, ItemDisplay>()
+                    .AddSingleton<WorldBuildingElementDisplay, WorldBuildingElementDisplay>()
+                    .AddSingleton<PlayerMovementLogic, PlayerMovementLogic>()
                     .BuildServiceProvider()
                 );
         }
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    base.OnStartup(e);
 
-            MainWindow app = new MainWindow();
-            MainWindowViewModel context = new MainWindowViewModel();
-            app.DataContext = context;
-            app.Show();
-        }
+        //    MainWindow app = new MainWindow();
+        //    MainWindowViewModel context = new MainWindowViewModel();
+        //    app.DataContext = context;
+        //    app.Show();
+        //}
     }
 }

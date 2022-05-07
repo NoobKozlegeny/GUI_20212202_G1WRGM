@@ -4,14 +4,16 @@
              xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
              xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels"
-             xmlns:views="clr-namespace:GUI_20212202_G1WRGM.Views">
+             xmlns:views="clr-namespace:GUI_20212202_G1WRGM.Views"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!--Doom Font styles-->
+        
+       <!--
         <Style x:Key="Doom2016" TargetType="Label">
             <Setter Property="FontFamily" Value="/Assets/Others/Doom2016/#Doom 2016 Left"></Setter>
         </Style>
 
-        <!--Flashing button style-->
+      
         <Style x:Key="NoMouseOverEffectButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="Cursor" Value="Hand" />
@@ -26,6 +28,7 @@
             </Setter>
         </Style>
 
+        
         <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
             <views:MainMenuControlView />
         </DataTemplate>
@@ -35,5 +38,8 @@
         <DataTemplate DataType="{x:Type vm:GameLevelViewModel}">
             <views:GameLevelControlView/>
         </DataTemplate>
+        
+        
+        -->
     </Application.Resources>
 </Application>

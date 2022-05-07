@@ -1,5 +1,6 @@
 ﻿using GUI_20212202_G1WRGM.Renderer.Interfaces;
 using Models;
+using Models.SystemComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_G1WRGM.Renderer
 {
-    public class WorldBuildingElementDisplay : FrameworkElement, IWorldBuildingElementDisplay
+    public class WorldBuildingElementDisplay : FrameworkElement, IWorldBuildingElementDisplay, ITickable
     {
         public IList<WorldBuildingElement> WorldBuildingElements { get; set; }
         public System.Drawing.Size size { get; set; }
@@ -45,6 +46,11 @@ namespace GUI_20212202_G1WRGM.Renderer
             }
         }
 
+
+        public void TickProcess()
+        {
+            this.InvalidateVisual();
+        }
 
 
     }

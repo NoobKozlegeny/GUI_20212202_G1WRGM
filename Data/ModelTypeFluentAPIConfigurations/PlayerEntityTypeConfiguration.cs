@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Data.ModelTypeFluentAPIConfigurations
@@ -15,6 +16,10 @@ namespace Data.ModelTypeFluentAPIConfigurations
         public void Configure(EntityTypeBuilder<Player> builder)
         {
             builder.HasBaseType<Character>();
+
+            builder.Property(player => player.PathToImg)
+                   .HasConversion(Image => JsonSerializer.Serialize(Image, null),
+                                  Image => JsonSerializer.Deserialize<Uri>(Image, null));
 
             builder.HasOne(PlayerNavProp => PlayerNavProp.Inventory)
                    .WithOne(InventoryNavProp => InventoryNavProp.Player)

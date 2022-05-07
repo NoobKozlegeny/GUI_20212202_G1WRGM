@@ -21,14 +21,16 @@
     </behaviors:Interaction.Triggers>
 
     <Grid x:Name="grid">
-        <Grid.DataContext>
-            <vm:GameWindowViewModel x:Name="gameWindowViewModel"/>
-        </Grid.DataContext>
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="52*"/>
         </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.DataContext>
+                <vm:GameWindowViewModel x:Name="gameWindowViewModel"/>
+            </Grid.DataContext>
+        </Grid>
 
         <Menu Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
             <Menu.DataContext>
@@ -91,9 +93,18 @@
         <!--2. row-->
 
         
+        
+        
+        
+        <!--
         <renderer:MapDisplay x:Name="mapDisplay"/>
         <renderer:CharacterDisplay x:Name="characterDisplay"/>
         <renderer:ItemDisplay x:Name="itemDisplay"/>
         <renderer:WorldBuildingElementDisplay x:Name="worldBuildingElementDisplay"/>
+        -->
+        
     </Grid>
+
+
+
 </UserControl>

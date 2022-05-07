@@ -18,5 +18,10 @@ namespace Models
         public virtual ICollection<Item> Items { get; set; }
         public int? PlayerId { get; set; }
         public virtual Player Player { get; set; }
+
+        public Inventory()
+        {
+            Items = new HashSet<Item>();
+        }
     }
 }
