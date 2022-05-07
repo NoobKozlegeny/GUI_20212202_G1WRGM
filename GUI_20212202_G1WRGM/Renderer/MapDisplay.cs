@@ -18,6 +18,7 @@ namespace GUI_20212202_G1WRGM.Renderer
         // Ez meg tulajdonképpen semmi mást nem csinálna csak az adott level nagyságáért felel xpixel*ypixel ++ esetleg alap hátteret állít az egészre meg ilyenek
         public IList<Map> Maps { get; set; }
         int currentLevel = 1;
+        public bool DoRender { get; set; } = true;
 
         public void Resize(System.Drawing.Size size)
         {
@@ -51,7 +52,12 @@ namespace GUI_20212202_G1WRGM.Renderer
 
         public void TickProcess()
         {
-            this.InvalidateVisual();
+            if (DoRender)
+            {
+                this.InvalidateVisual();
+                DoRender = false;
+            }
+
         }
     }
 }

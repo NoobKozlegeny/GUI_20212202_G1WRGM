@@ -15,18 +15,57 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
     public class PlayerMovementLogic
     {
         public Player Player { get; set; }
+        public DrawingGroup PlayerGeometry { get; set; }
         public bool IsJumping { get; set; } = false;
+        public bool IsGoingForward { get; set; } = false;
+        public bool IsGoingBackward { get; set; } = false;
         public PlayerMovementLogic()
         {
             Player = Ioc.Default.GetService<CharacterDisplay>().Player;
+            PlayerGeometry = Ioc.Default.GetService<CharacterDisplay>().PlayerGG;
         }
         public void MoveForward()
         {
-            Player.Position = new System.Drawing.Point(Player.Position.X + 75, Player.Position.Y);
+            Task forward = new Task(
+                async () => 
+                {
+                    IsGoingForward = true;
+                    for (int i = 0; i < 15; i++)
+                    {
+                        lock (this)
+                        {
+                            Player.Position = new System.Drawing.Point(Player.Position.X + 8, Player.Position.Y);
+                        }
+                        await Task.Delay(1);
+                    }
+                    IsGoingForward = false;
+                });
+            if (!IsGoingForward)
+            {
+                forward.Start();
+            }
+
         }
         public void MoveBackward()
         {
-            Player.Position = new System.Drawing.Point(Player.Position.X-75, Player.Position.Y);
+            Task backward = new Task(
+                async () =>
+                {
+                    IsGoingBackward = true;
+                    for (int i = 0; i < 15; i++)
+                    {
+                        lock (this)
+                        {
+                            Player.Position = new System.Drawing.Point(Player.Position.X - 8, Player.Position.Y);
+                        }
+                        await Task.Delay(1);
+                    }
+                    IsGoingBackward = false;
+                });
+            if (!IsGoingBackward)
+            {
+                backward.Start();
+            }
         }
 
         public void Jump()
@@ -37,13 +76,19 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     IsJumping = true;
                     for (int i = 10; i > 0; i--)
                     {
-                        Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - 7 * i);
+                        lock (this)
+                        {
+                            Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - 7 * i);
+                        }
                         await Task.Delay(3 * i);
                     }
                     await Task.Delay(100);
                     for (int i = 1; i <= 10; i++)
                     {
-                        Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 7 * i);
+                        lock (this)
+                        {
+                            Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 7 * i);
+                        }
                         await Task.Delay(3 * i);
                     }
                     IsJumping = false;

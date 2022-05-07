@@ -30,6 +30,7 @@ namespace GUI_20212202_G1WRGM
     public partial class MainWindow : Window
     {
         SerializeInput serializeInput;
+        CharacterDisplay characterDisplay = Ioc.Default.GetService<CharacterDisplay>();
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace GUI_20212202_G1WRGM
             //(this.DataContext as MapDisplay).TickProcess();
 
             gameVMGrid.Children.Add(Ioc.Default.GetService<MapDisplay>());
-            gameVMGrid.Children.Add(Ioc.Default.GetService<CharacterDisplay>());
+            gameVMGrid.Children.Add(characterDisplay);
             gameVMGrid.Children.Add(Ioc.Default.GetService<ItemDisplay>());
             gameVMGrid.Children.Add(Ioc.Default.GetService<WorldBuildingElementDisplay>());
             serializeInput = new SerializeInput();
