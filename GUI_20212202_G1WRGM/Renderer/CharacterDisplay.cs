@@ -19,60 +19,67 @@ namespace GUI_20212202_G1WRGM.Renderer
     {
         public IList<Character> Characters { get; set; }
         // find the highest superclass or interface which we can point to any geometry object
-        public IList<DrawingGroup> CharacterGeometries { get; set; }
+        //public IList<DrawingGroup> CharacterGeometries { get; set; }
+        public DrawingGroup PlayerGG { get; set; }
         public Player Player { get; set; }
-        public DrawingGroup PlayerGG { get; set; } = new DrawingGroup();
 
         public void SetupCharacters(IList<Character> characters)
         {
             this.Characters = characters;
-            this.CharacterGeometries = new List<DrawingGroup>();
+            //this.CharacterGeometries = new List<DrawingGroup>();
             Player = Characters.FirstOrDefault(x => x is Player) as Player;
-           
-            PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.PathToImg)), //Player image
-                                new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                                new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height))));
-            PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.Inventory.PathToSelectedItemImg)), //Player's selected item
-                   new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                   new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64))));
-
-
-            int xChar = 150;
-            foreach (NPC npc in Characters.Where(x => x is NPC))
-            {
-                DrawingGroup npcDG = new DrawingGroup();
-
-                //Adding NPC image
-                npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToImg)),
-                new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y, npc.Size.Width, npc.Size.Height))));
-
-                //Adding NPC's weapon
-                npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
-                new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y + 64, 128, 64))));
-
-                CharacterGeometries.Add(npcDG);
-
-                xChar += 150;
-            }
-            
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            base.OnRender(drawingContext);
-            if (PlayerGG != null)
+            if (Characters != null)
             {
+                PlayerGG = new DrawingGroup();
+                PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.PathToImg)), //Player image
+                                new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                                new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height))));
+                
+                PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.Inventory.PathToSelectedItemImg)), //Player's selected item
+                       new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                       new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64))));
+                
                 drawingContext.DrawDrawing(PlayerGG);
-            }
-            if (CharacterGeometries != null)
-            {
-                foreach (var npc in CharacterGeometries)
+
+                int xChar = 150;
+                foreach (NPC npc in Characters.Where(x => x is NPC))
                 {
-                    drawingContext.DrawDrawing(npc);
+                    DrawingGroup npcDG = new DrawingGroup();
+
+                    //Adding NPC image
+                    npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToImg)),
+                    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                    new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y, npc.Size.Width, npc.Size.Height))));
+
+                    //Adding NPC's weapon
+                    npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
+                    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                    new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y + 64, 128, 64))));
+
+                    //CharacterGeometries.Add(npcDG);
+                    drawingContext.DrawDrawing(npcDG);
+                    xChar += 150;
                 }
             }
+            
+
+
+            base.OnRender(drawingContext);
+            //if (PlayerGG != null)
+            //{
+            //    drawingContext.DrawDrawing(PlayerGG);
+            //}
+            //if (CharacterGeometries != null)
+            //{
+            //    foreach (var npc in CharacterGeometries)
+            //    {
+            //        drawingContext.DrawDrawing(npc);
+            //    }
+            //}
         }
 
 

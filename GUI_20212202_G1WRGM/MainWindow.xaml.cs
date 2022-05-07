@@ -74,5 +74,6 @@ namespace GUI_20212202_G1WRGM
         {
             serializeInput.KeyDown(sender, e);
         }
+
     }
 }

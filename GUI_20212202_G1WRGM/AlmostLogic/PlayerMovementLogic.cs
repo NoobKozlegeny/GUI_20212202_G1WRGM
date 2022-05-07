@@ -14,15 +14,15 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
 {
     public class PlayerMovementLogic
     {
-        public DrawingGroup Player { get; set; }
-
+        public Player Player { get; set; }
+        public bool IsJumping { get; set; }
         public PlayerMovementLogic()
         {
-            Player = Ioc.Default.GetService<CharacterDisplay>().PlayerGG;
+            Player = Ioc.Default.GetService<CharacterDisplay>().Player;
         }
         public void MoveForward()
         {
-            Player..Position = new System.Drawing.Point(Player.Position.X+25, Player.Position.Y);
+            Player.Position = new System.Drawing.Point(Player.Position.X+25, Player.Position.Y);
         }
         public void MoveBackward()
         {

@@ -12,7 +12,8 @@
         xmlns:logic="clr-namespace:GUI_20212202_G1WRGM.AlmostLogic"
         mc:Ignorable="d"
         Title="Dude, touch some grass" Height="1080" Width="1500"
-        KeyDown="gameVMGrid_KeyDown">
+        KeyDown="gameVMGrid_KeyDown"
+        >
     
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <ScrollViewer.DataContext>
