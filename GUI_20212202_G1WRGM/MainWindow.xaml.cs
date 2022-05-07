@@ -75,5 +75,9 @@ namespace GUI_20212202_G1WRGM
             serializeInput.KeyDown(sender, e);
         }
 
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            serializeInput.MousePosition(sender, e.GetPosition(gameVMGrid));
+        }
     }
 }

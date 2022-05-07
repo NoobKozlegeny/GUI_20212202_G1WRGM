@@ -90,7 +90,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
             clock.Register(worldBuildingElementDisplay);
             clock.Register(characterDisplay);
             clock.Register(itemDisplay);
-            
+
         }
 
         public void StartGame()

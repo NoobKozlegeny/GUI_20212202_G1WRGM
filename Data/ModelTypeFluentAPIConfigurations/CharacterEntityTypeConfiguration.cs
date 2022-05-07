@@ -22,7 +22,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             builder.Property(Pk => Pk.Id)
                    .ValueGeneratedOnAdd();
             builder.Ignore(MapNavProp => MapNavProp.Map);
-            //builder.Ignore(MapNavProp => MapNavProp.PathToImg);
+            builder.Ignore(Character => Character.IsTransform);
             builder.Property(CharacterFk => CharacterFk.MapLevel)
                    .IsRequired(false);
 

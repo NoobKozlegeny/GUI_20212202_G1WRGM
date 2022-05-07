@@ -37,7 +37,6 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 PathToSelectedItemImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute),
                 Id = 1,
                 PlayerId = 1,
-                Items = new List<Item>(),
                 SelectedItemId = 1
             });
         }

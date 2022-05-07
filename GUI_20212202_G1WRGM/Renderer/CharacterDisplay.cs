@@ -32,18 +32,51 @@ namespace GUI_20212202_G1WRGM.Renderer
 
         protected override void OnRender(DrawingContext drawingContext)
         {
+            Random r = new Random();
             if (Characters != null)
             {
+                //Renders the Player and his weapon in the default state
                 PlayerGG = new DrawingGroup();
                 PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.PathToImg)), //Player image
                                 new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
                                 new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height))));
-                
+
                 PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.Inventory.PathToSelectedItemImg)), //Player's selected item
                        new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
                        new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64))));
-                
+
+                //GeometryDrawing PlayerWeaponDG = new GeometryDrawing(new ImageBrush(new BitmapImage(Player.Inventory.PathToSelectedItemImg)), //Player's selected item
+                //       new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                //       new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64)));
+
+                //Transform player's weapon
+                if (Player.Inventory.SelectedItem != null 
+                    && Player.Inventory.SelectedItem.DirectionToLook.X != 0 
+                    && Player.Inventory.SelectedItem.DirectionToLook.Y != 0)
+                {
+                    double angle = Math.Atan2((double)Player.Inventory.SelectedItem.DirectionToLook.Y, (double)Player.Inventory.SelectedItem.DirectionToLook.X);
+                    angle = angle * (180 / Math.PI);
+
+                    //PlayerWeaponDG.Geometry.Transform = new RotateTransform(
+                    //    angle, //Angle
+                    //    Player.Position.X + 64, //CenterX
+                    //    Player.Position.Y + 64 //CenterY
+                    //    );
+                }
+
+                //Transforms the player if the mouse X position is bigger than the player's X position
+                if (Player.IsTransform)
+                {
+                    PlayerGG.Transform = new ScaleTransform(
+                        -1, //Flips horizontally if -1. Stays the same when 1
+                         1, //Flips vertically
+                        Player.Position.X + 64, //CenterX
+                        Player.Position.Y + 64 //CenterY
+                        );
+                }
+
                 drawingContext.DrawDrawing(PlayerGG);
+                //drawingContext.DrawDrawing(PlayerWeaponDG);
 
                 int xChar = 150;
                 foreach (NPC npc in Characters.Where(x => x is NPC))

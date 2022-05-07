@@ -13,8 +13,6 @@ namespace Data.ModelTypeFluentAPIConfigurations
 {
     class WeaponEntityTypeConfiguration : IEntityTypeConfiguration<Weapon>
     {
-        int id = 1;
-
         public void Configure(EntityTypeBuilder<Weapon> builder)
         {
             builder.HasBaseType<Item>();
@@ -42,14 +40,12 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", weaponImg), UriKind.RelativeOrAbsolute),
                 AmmoAmount = ammo,
                 Damage = damage,
-                Id = id,
-                //InventoryId = 1,
+                Id = 1,
+                InventoryId = 1,
                 MapLevel = mapLevel,
                 Position = position,
                 Size = new Size(128, 64)
             });
-
-            id++;
         }
     }
 }
