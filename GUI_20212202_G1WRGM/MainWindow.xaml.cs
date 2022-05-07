@@ -70,7 +70,7 @@ namespace GUI_20212202_G1WRGM
 
         }
 
-        private void gameVMGrid_KeyDown(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             serializeInput.KeyDown(sender, e);
         }
