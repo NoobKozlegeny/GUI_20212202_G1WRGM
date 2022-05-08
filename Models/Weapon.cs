@@ -26,6 +26,7 @@ namespace Models
         public TimeSpan ReloadRedy { get; set; }
         public int AmmoAmount { get; set; }
         public int MaxAmmo { get; }
+        public Uri PathToBulletImg { get; set; }
 
         public void ResetFireRate()
         {

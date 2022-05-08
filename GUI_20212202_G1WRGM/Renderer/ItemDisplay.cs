@@ -53,8 +53,8 @@ namespace GUI_20212202_G1WRGM.Renderer
                     if (item.IsPickedUp)
                     {
                         //Gets the rendered Player's X and Y coords
-                        double playerPosX = CharacterDisplay.PlayerGG.Children.First().Bounds.X;
-                        double playerPosY = CharacterDisplay.PlayerGG.Children.First().Bounds.Y;
+                        double playerPosX = CharacterDisplay.PlayerDG.Children.First().Bounds.X;
+                        double playerPosY = CharacterDisplay.PlayerDG.Children.First().Bounds.Y;
 
                         //Adding the selected item to the player (The rendering will take place in the CharacterDisplay)
                         //CharacterDisplay.PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(item.PathToImg)), //Player's selected item

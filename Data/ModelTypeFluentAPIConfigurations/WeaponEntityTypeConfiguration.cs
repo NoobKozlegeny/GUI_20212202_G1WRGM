@@ -38,6 +38,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 Name = weaponImg.Split('.')[0],
                 IsPickedUp = false,
                 PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", weaponImg), UriKind.RelativeOrAbsolute),
+                PathToBulletImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "bullet.png"), UriKind.RelativeOrAbsolute),
                 AmmoAmount = ammo,
                 Damage = damage,
                 Id = 1,

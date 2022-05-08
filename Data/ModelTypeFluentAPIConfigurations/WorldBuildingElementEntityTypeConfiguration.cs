@@ -50,11 +50,11 @@ namespace Data.ModelTypeFluentAPIConfigurations
             int randomResult;
 
             //Adding wall sprites on the left
-            for (int i = id; i < 4; i++)
-            {
-                CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(0, 1016 - XElement), 1, new Size(128, 384));
-                XElement += 384;
-            }
+            //for (int i = id; i < 4; i++)
+            //{
+            //    CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(0, 1016 - XElement), 1, new Size(128, 384));
+            //    XElement += 384;
+            //}
 
             //Adding the bottom sprites
             XElement = 0;
