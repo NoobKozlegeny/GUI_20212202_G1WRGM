@@ -14,30 +14,22 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
     class CollisionSystem
     {
         public static ICollection<Rect> worldBuildings { get; set; } = Ioc.Default.GetService<WorldBuildingElementDisplay>().WorldBuildingElementGeometries;
-        // How to get the dynamically changing player object here to check collision?
-        // get it from cDisplay and then always redraw through points from logic?
-        // do it in logic and here only get the result geometry to check? 
-
-
-        // 200 iq tactic 
-        // in display before render contruct all geomertry stuff
-        // and then use it only in render (i.e. for player it can be even stored by IoC singletone or just referenc the collection in display)
-        // if logic, collision and everything else can acces constructed object before render then without useless calls and memory waste we can alter
-        // (if we acces the constructed geometry position, center, etc)
-        // Holisit this can work and even spare useless geometry construct time in every tick ???
+       
+        // something is fucked up here, afeter 1 collision something stuck 
         public static bool CollideForward(Rect player)
+        {
+            Rect forwardCollisionSpace = new Rect(player.Right, player.Y - 10, 3, player.Height-20);
+            return worldBuildings.Any(worldElement => worldElement.IntersectsWith(forwardCollisionSpace));
+        }
+        public static bool CollideBackward()
+        {
+            return false;
+        }
+        public static bool CollideUpway(Rect player)
         {
             return worldBuildings.Any(worldElement => worldElement.IntersectsWith(player));
         }
-        public bool CollideBackward()
-        {
-            return false;
-        }
-        public bool CollideUpway()
-        {
-            return false;
-        }
-        public bool CollideDownway()
+        public static bool CollideDownway()
         {
             return false;
         }
