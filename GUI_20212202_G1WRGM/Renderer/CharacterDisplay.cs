@@ -37,6 +37,15 @@ namespace GUI_20212202_G1WRGM.Renderer
             Random r = new Random();
             if (Characters != null)
             {
+                //DEBUG
+                //DrawingGroup debug = new DrawingGroup();
+                //debug.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.PathToImg)), //Player image
+                //                new System.Windows.Media.Pen(System.Windows.Media.Brushes.Red, 5),
+                //                new RectangleGeometry(new Rect(new System.Windows.Point(Player.Position.X + 8, Player.Position.Y), new System.Windows.Point(Player.Size.Width, Player.Size.Height)))));
+
+                //drawingContext.DrawDrawing(debug);
+
+
                 //Renders the Player and his weapon in the default state
                 PlayerDG = new DrawingGroup();
                 PlayerDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.PathToImg)), //Player image
@@ -61,6 +70,8 @@ namespace GUI_20212202_G1WRGM.Renderer
                         new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
                         new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64)) //Player's selected item
                        );
+
+                    PlayerWeaponDG.Geometry.Transform = new RotateTransform(angle, Player.Position.X + 64, Player.Position.Y + 64);
 
                     PlayerDG.Children.Add(PlayerWeaponDG);
                 }
@@ -124,11 +135,11 @@ namespace GUI_20212202_G1WRGM.Renderer
 
         public double CalculateAngle(System.Drawing.Point mousePosition, System.Drawing.Point objectPosition)
         {
-            //double xLength = Math.Abs(mousePosition.X - objectPosition.X);
-            //double yLength = Math.Abs(mousePosition.Y - objectPosition.Y);
-            double angle = Math.Atan2(mousePosition.Y, mousePosition.X) * 180 / Math.PI;
+            double xLength = Math.Abs(mousePosition.X - objectPosition.X);
+            double yLength = Math.Abs(mousePosition.Y - objectPosition.Y);
+            double angle = Math.Atan2(yLength, xLength) * 180 / Math.PI;
 
-            return (1 / angle) * 180;
+            return mousePosition.Y <= objectPosition.Y ? angle : angle * -1;
         }
     }
 }
