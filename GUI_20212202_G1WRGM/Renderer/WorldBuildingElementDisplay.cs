@@ -15,8 +15,9 @@ namespace GUI_20212202_G1WRGM.Renderer
     public class WorldBuildingElementDisplay : FrameworkElement, IWorldBuildingElementDisplay, ITickable
     {
         public IList<WorldBuildingElement> WorldBuildingElements { get; set; }
+        public IList<Rect> WorldBuildingElementGeometries { get; set; }
         public System.Drawing.Size size { get; set; }
-
+        public bool DoRender { get; set; } = true;
         public void Resize(System.Drawing.Size size)
         {
             this.size = size;
@@ -25,23 +26,22 @@ namespace GUI_20212202_G1WRGM.Renderer
         public void SetupWorldBuildingElements(IList<WorldBuildingElement> worldBuildingElements)
         {
             this.WorldBuildingElements = worldBuildingElements;
+            WorldBuildingElementGeometries = new List<Rect>();
+            
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            // na és akkor itt csak a listában lévő dolgokat rajzolgatja ki, amihez jelenleg nincsenek képeim stb.
-            // de ha bármi egyéb dolog kell akkor elsősorban ne függőséggel oldjuk meg hanem pl.: a modelbe csapjunk oda +1 property ha azzal megoldható
-            // ++ csak ne felejtsük el EF-ben hogy kell a mappelni, hogy ha nem .Ignore() stb.
-
             if (WorldBuildingElements != null)
             {
-                //Display WorldBuildingElements
-                foreach (WorldBuildingElement worldElement in WorldBuildingElements)
+                foreach (var worldElement in WorldBuildingElements)
                 {
+                    Rect rect = new Rect(worldElement.Position.X, worldElement.Position.Y, worldElement.Area.Width, worldElement.Area.Height);
+                    WorldBuildingElementGeometries.Add(rect);
                     drawingContext.DrawRectangle(
                         new ImageBrush(new BitmapImage(worldElement.PathToImg)),
                         new Pen(Brushes.Black, 0),
-                        new Rect(worldElement.Position.X, worldElement.Position.Y, worldElement.Area.Width, worldElement.Area.Height));
+                        rect);
                 }
             }
         }
@@ -49,7 +49,12 @@ namespace GUI_20212202_G1WRGM.Renderer
 
         public void TickProcess()
         {
-            this.InvalidateVisual();
+            if (DoRender)
+            {
+                this.InvalidateVisual();
+                DoRender = false;
+            }
+
         }
 
 

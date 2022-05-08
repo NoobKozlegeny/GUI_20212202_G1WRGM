@@ -18,14 +18,14 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
     public class PlayerMovementLogic
     {
         public Player Player { get; set; }
-        public DrawingGroup PlayerGeometry { get; set; }
+        public IList<Rect> WorldBuildingElementGeometries { get; set; }
         public bool IsJumping { get; set; } = false;
         public bool IsGoingForward { get; set; } = false;
         public bool IsGoingBackward { get; set; } = false;
         public PlayerMovementLogic()
         {
             Player = Ioc.Default.GetService<CharacterDisplay>().Player;
-            PlayerGeometry = Ioc.Default.GetService<CharacterDisplay>().PlayerGG;
+            WorldBuildingElementGeometries = Ioc.Default.GetService<WorldBuildingElementDisplay>().WorldBuildingElementGeometries;
         }
         public void MoveForward()
         {
@@ -37,6 +37,10 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     {
                         lock (this)
                         {
+                            if (CollisionSystem.CollideForward(new Rect(new System.Windows.Point(Player.Position.X + 8, Player.Position.Y), new System.Windows.Point(Player.Size.Width, Player.Size.Height))))
+                            {
+                                return;
+                            }
                             Player.Position = new System.Drawing.Point(Player.Position.X + 8, Player.Position.Y);
                         }
                         await Task.Delay(1);

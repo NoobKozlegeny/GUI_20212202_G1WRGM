@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace GUI_20212202_G1WRGM.AlmostLogic
 {
     class CollisionSystem
     {
-        public ICollection<WorldBuildingElement> worldBuildings { get; set; } = Ioc.Default.GetService<WorldBuildingElementDisplay>().WorldBuildingElements;
+        public static ICollection<Rect> worldBuildings { get; set; } = Ioc.Default.GetService<WorldBuildingElementDisplay>().WorldBuildingElementGeometries;
         // How to get the dynamically changing player object here to check collision?
         // get it from cDisplay and then always redraw through points from logic?
         // do it in logic and here only get the result geometry to check? 
@@ -24,9 +25,9 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
         // if logic, collision and everything else can acces constructed object before render then without useless calls and memory waste we can alter
         // (if we acces the constructed geometry position, center, etc)
         // Holisit this can work and even spare useless geometry construct time in every tick ???
-        public bool CollideForward(DrawingGroup player)
+        public static bool CollideForward(Rect player)
         {
-            return false;
+            return worldBuildings.Any(worldElement => worldElement.IntersectsWith(player));
         }
         public bool CollideBackward()
         {
