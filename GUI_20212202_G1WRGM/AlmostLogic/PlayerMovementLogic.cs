@@ -36,11 +36,11 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
         // mozgásoknál még nézni kell majd hogy ha esetleg valamire fel voltunk ugorva akkor essünk le ha lelépünk
         public void MoveForward()
         {
-            //if (!IsGravityWorking)
-            //{
-            //    Gravity();
-            //    IsGravityWorking = false;
-            //}
+            if (!IsGravityWorking)
+            {
+                Gravity();
+                IsGravityWorking = true;
+            }
             Task forward = new Task(
                 async () => 
                 {
@@ -104,7 +104,7 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     {
                         lock (this)
                         {
-                            if (CollisionSystem.CollideUpway(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
+                            if (CollisionSystem.CollideUpway(new Rect(Player.Position.X, Player.Position.Y-7*i, Player.Size.Width, Player.Size.Height)))
                             {
                                 // Here we have to put down the player since moving "gravity" will only hit if he moves
                                 IsJumping = false;
@@ -119,7 +119,7 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     {
                         lock (this)
                         {
-                            if (CollisionSystem.CollideDownway(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
+                            if (CollisionSystem.CollideDownway(new Rect(Player.Position.X, Player.Position.Y + 7*i, Player.Size.Width, Player.Size.Height)))
                             {
                                 IsJumping = false;
                                 return;
@@ -186,7 +186,7 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                             {
                                 Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 10);
                             }
-                            await Task.Delay(25);
+                            await Task.Delay(10);
                         }
 
                     }

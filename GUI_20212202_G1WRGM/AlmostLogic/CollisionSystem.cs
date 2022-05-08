@@ -23,8 +23,8 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
         public static bool CollideForward(Rect player)
         {
             var x = player.Right;
-            var y = player.Y-10;
-            var height = player.Height - 20;
+            var y = player.Y-15;
+            var height = player.Height - 30;
 
             Rect forwardCollisionSpace = new Rect(x, y, 3, height);
             return worldBuildings.Any(worldElement => worldElement.IntersectsWith(forwardCollisionSpace));
@@ -32,8 +32,8 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
         public static bool CollideBackward(Rect player)
         {
             var x = player.Left;
-            var y = player.Y-10;
-            var height = player.Height;
+            var y = player.Y-15;
+            var height = player.Height - 30;
 
             Rect backwardCollisionSpace = new Rect(x,y,3,height);
             return worldBuildings.Any(worldElement => worldElement.IntersectsWith(backwardCollisionSpace));
