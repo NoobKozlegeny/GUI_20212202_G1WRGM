@@ -42,11 +42,11 @@ namespace GUI_20212202_G1WRGM
             gameVMGrid.Children.Add(characterDisplay);
             gameVMGrid.Children.Add(Ioc.Default.GetService<ItemDisplay>());
             gameVMGrid.Children.Add(Ioc.Default.GetService<WorldBuildingElementDisplay>());
-            serializeInput = new SerializeInput();
+            
 
             air.StartGame();
-            
-            
+
+            serializeInput = new SerializeInput();
 
             //Ioc.Default.GetService<Data.DudeDbContext>();
 

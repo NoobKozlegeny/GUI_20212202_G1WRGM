@@ -13,25 +13,48 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
 {
     class CollisionSystem
     {
-        public static ICollection<Rect> worldBuildings { get; set; } = Ioc.Default.GetService<WorldBuildingElementDisplay>().WorldBuildingElementGeometries;
-       
-        // something is fucked up here, afeter 1 collision something stuck 
+        public static ICollection<Rect> worldBuildings { get; set; }
+        static CollisionSystem()
+        {
+            worldBuildings = Ioc.Default.GetService<WorldBuildingElementDisplay>().WorldBuildingElementGeometries;
+
+        }
+        // fixed, should work as intended, fucking bool prop messed up in logic task 
         public static bool CollideForward(Rect player)
         {
-            Rect forwardCollisionSpace = new Rect(player.Right, player.Y - 10, 3, player.Height-20);
+            var x = player.Right;
+            var y = player.Y-10;
+            var height = player.Height - 20;
+
+            Rect forwardCollisionSpace = new Rect(x, y, 3, height);
             return worldBuildings.Any(worldElement => worldElement.IntersectsWith(forwardCollisionSpace));
         }
-        public static bool CollideBackward()
+        public static bool CollideBackward(Rect player)
         {
-            return false;
+            var x = player.Left;
+            var y = player.Y-10;
+            var height = player.Height;
+
+            Rect backwardCollisionSpace = new Rect(x,y,3,height);
+            return worldBuildings.Any(worldElement => worldElement.IntersectsWith(backwardCollisionSpace));
         }
         public static bool CollideUpway(Rect player)
         {
-            return worldBuildings.Any(worldElement => worldElement.IntersectsWith(player));
+            var x = player.X - 10;
+            var y = player.Y;
+            var width = player.Width - 20;
+
+            Rect upwayCollisionSpace = new Rect(x,y,width,3);
+            return worldBuildings.Any(worldElement => worldElement.IntersectsWith(upwayCollisionSpace));
         }
-        public static bool CollideDownway()
+        public static bool CollideDownway(Rect player)
         {
-            return false;
+            var x = player.Left + 10;
+            var y = player.Bottom;
+            var width = player.Width - 20;
+
+            Rect downwayCollisionSpace = new Rect(x,y,width,3);
+            return worldBuildings.Any(worldElement => worldElement.IntersectsWith(downwayCollisionSpace));
         }
 
 

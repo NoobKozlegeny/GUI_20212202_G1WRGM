@@ -97,19 +97,19 @@ namespace GUI_20212202_G1WRGM.Renderer
                 }
 
                 //Renders the shooting process
-                if (Player.WillShoot && Player.Inventory.SelectedItem is Weapon weapon)
-                {
-                    weapon.AmmoAmount -= 1;
-                    //Bullets.RemoveAt(0);
+                //if (Player.WillShoot && Player.Inventory.SelectedItem is Weapon weapon)
+                //{
+                //    weapon.AmmoAmount -= 1;
+                //    //Bullets.RemoveAt(0);
 
-                    GeometryDrawing BulletGD =
-                        new GeometryDrawing(new ImageBrush(new BitmapImage(weapon.PathToBulletImg)),
-                        new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                        new RectangleGeometry(new Rect(Player.Position.X + 128, Player.Position.Y + 64, 32, 16)) //Bullet
-                       );
+                //    GeometryDrawing BulletGD =
+                //        new GeometryDrawing(new ImageBrush(new BitmapImage(weapon.PathToBulletImg)),
+                //        new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                //        new RectangleGeometry(new Rect(Player.Position.X + 128, Player.Position.Y + 64, 32, 16)) //Bullet
+                //       );
 
-                    drawingContext.DrawDrawing(BulletGD);
-                }
+                //    drawingContext.DrawDrawing(BulletGD);
+                //}
 
                 drawingContext.DrawDrawing(PlayerDG);
 

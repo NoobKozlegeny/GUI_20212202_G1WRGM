@@ -17,11 +17,16 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
 {
     public class PlayerMovementLogic
     {
+        /*
+         * Consider maybe a grativy which pulls down player in every thick? but then how to check jumping effect? especially from moving task/thread ???
+         * 
+         * */
         public Player Player { get; set; }
         public IList<Rect> WorldBuildingElementGeometries { get; set; }
         public bool IsJumping { get; set; } = false;
         public bool IsGoingForward { get; set; } = false;
         public bool IsGoingBackward { get; set; } = false;
+        public bool IsGravityWorking { get; set; } = false;
         public PlayerMovementLogic()
         {
             Player = Ioc.Default.GetService<CharacterDisplay>().Player;
@@ -31,21 +36,27 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
         // mozgásoknál még nézni kell majd hogy ha esetleg valamire fel voltunk ugorva akkor essünk le ha lelépünk
         public void MoveForward()
         {
+            //if (!IsGravityWorking)
+            //{
+            //    Gravity();
+            //    IsGravityWorking = false;
+            //}
             Task forward = new Task(
                 async () => 
                 {
                     IsGoingForward = true;
-                    for (int i = 0; i < 15; i++)
+                    for (int i = 0; i < 1; i++)
                     {
                         lock (this)
                         {
-                            if (CollisionSystem.CollideForward(new Rect(Player.Position.X + 8, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
+                            if (CollisionSystem.CollideForward(new Rect(Player.Position.X + 80, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
                             {
+                                IsGoingForward = false;
                                 return;
                             }
-                            Player.Position = new System.Drawing.Point(Player.Position.X + 8, Player.Position.Y);
+                            Player.Position = new System.Drawing.Point(Player.Position.X + 80, Player.Position.Y);
                         }
-                        await Task.Delay(1);
+                        await Task.Delay(25);
                     }
                     IsGoingForward = false;
                 });
@@ -65,6 +76,12 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     {
                         lock (this)
                         {
+                            // test this later
+                            if (CollisionSystem.CollideBackward(new Rect(Player.Position.X-8, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
+                            {
+                                IsGoingBackward = false;
+                                return;
+                            }
                             Player.Position = new System.Drawing.Point(Player.Position.X - 8, Player.Position.Y);
                         }
                         await Task.Delay(1);
@@ -79,23 +96,6 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
 
         public void Jump()
         {
-            //Task up = new Task(
-            //    async () =>
-            //    {
-            //        IsJumping = true;
-            //        for (int i = 10; i > 0; i--)
-            //        {
-            //            lock (this)
-            //            {
-            //                Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - 7 * i);
-            //            }
-            //            await Task.Delay(3 * i);
-            //        }
-            //        await Task.Delay(100);
-            //    });
-
-
-
             Task jump = new Task(
                 async () =>
                 {
@@ -104,6 +104,12 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     {
                         lock (this)
                         {
+                            if (CollisionSystem.CollideUpway(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
+                            {
+                                // Here we have to put down the player since moving "gravity" will only hit if he moves
+                                IsJumping = false;
+                                return;
+                            }
                             Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - 7 * i);
                         }
                         await Task.Delay(3 * i);
@@ -113,6 +119,11 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     {
                         lock (this)
                         {
+                            if (CollisionSystem.CollideDownway(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
+                            {
+                                IsJumping = false;
+                                return;
+                            }
                             Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 7 * i);
                         }
                         await Task.Delay(3 * i);
@@ -143,20 +154,46 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                 Player.IsTransform = false;
             }
         }
-
+        // Ha itt kitöröltem valamit a modelből sorry, conflicton sorozatát oldottam utolsó pushal a sok kódszemét miatt modellekben.....
         public void Shoot()
         {
             if (Player.Inventory.SelectedItem is Weapon weapon)
             {
-                if (weapon.AmmoAmount > 0)
-                {
-                    Player.WillShoot = true;
-                }
-                else
-                {
-                    Player.WillShoot = false;
-                }
+                //if (weapon.AmmoAmount > 0)
+                //{
+                //    Player.WillShoot = true;
+                //}
+                //else
+                //{
+                //    Player.WillShoot = false;
+                //}
             }
+        }
+
+
+        // if player currently not jumping then pull him down until downway collision in every tick?
+        // call it once and while true will do the trick
+        public void Gravity()
+        {
+            Task gravity = new Task(
+                async () =>
+                {
+                    while (true)
+                    {
+                        if (!IsJumping && !CollisionSystem.CollideDownway(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
+                        {
+                            lock (this)
+                            {
+                                Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 10);
+                            }
+                            await Task.Delay(25);
+                        }
+
+                    }
+
+                });
+
+            gravity.Start();
         }
     }
 }

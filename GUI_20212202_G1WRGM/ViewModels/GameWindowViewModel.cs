@@ -52,7 +52,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
         IWorldBuildingElementLogic worldBuildingElementLogic;
         public GameWindowViewModel()
             :this(IsInDesignMode ? 
-                (null,null,null,null) : 
+                (null,null,null,null): 
                 (Ioc.Default.GetService<IMapLogic>(), 
                 Ioc.Default.GetService<ICharacterLogic>(), 
                 Ioc.Default.GetService<IItemLogic>(), 
@@ -65,7 +65,8 @@ namespace GUI_20212202_G1WRGM.ViewModels
                                        ICharacterLogic characterLogic,
                                        IItemLogic itemLogic,
                                        IWorldBuildingElementLogic worldBuildingElementLogic) 
-                                       logic)
+                                       logic
+                                  )
         {
             this.mapLogic = logic.mapLogic;
             this.characterLogic = logic.characterLogic;
