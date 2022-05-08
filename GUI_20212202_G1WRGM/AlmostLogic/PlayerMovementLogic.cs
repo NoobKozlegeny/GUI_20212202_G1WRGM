@@ -17,10 +17,6 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
 {
     public class PlayerMovementLogic
     {
-        /*
-         * Consider maybe a grativy which pulls down player in every thick? but then how to check jumping effect? especially from moving task/thread ???
-         * 
-         * */
         public Player Player { get; set; }
         public IList<Rect> WorldBuildingElementGeometries { get; set; }
         public bool IsJumping { get; set; } = false;
@@ -45,18 +41,18 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                 async () => 
                 {
                     IsGoingForward = true;
-                    for (int i = 0; i < 1; i++)
+                    for (int i = 0; i < 10; i++)
                     {
                         lock (this)
                         {
-                            if (CollisionSystem.CollideForward(new Rect(Player.Position.X + 80, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
+                            if (CollisionSystem.CollideForward(new Rect(Player.Position.X + 7, Player.Position.Y, Player.Size.Width, Player.Size.Height)))
                             {
                                 IsGoingForward = false;
                                 return;
                             }
-                            Player.Position = new System.Drawing.Point(Player.Position.X + 80, Player.Position.Y);
+                            Player.Position = new System.Drawing.Point(Player.Position.X + 7, Player.Position.Y);
                         }
-                        await Task.Delay(25);
+                        await Task.Delay(i);
                     }
                     IsGoingForward = false;
                 });
@@ -104,29 +100,34 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     {
                         lock (this)
                         {
-                            if (CollisionSystem.CollideUpway(new Rect(Player.Position.X, Player.Position.Y-7*i, Player.Size.Width, Player.Size.Height)))
+                            int tempi = 7;
+                            for (int j = 0; j < i; j++)
                             {
-                                // Here we have to put down the player since moving "gravity" will only hit if he moves
-                                IsJumping = false;
-                                return;
+                                if (CollisionSystem.CollideUpway(new Rect(Player.Position.X, Player.Position.Y - tempi, Player.Size.Width, Player.Size.Height)))
+                                {
+                                    Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - tempi);
+                                    IsJumping = false;
+                                    return;
+                                }
+                                tempi += 7;
                             }
                             Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - 7 * i);
                         }
-                        await Task.Delay(3 * i);
+                        await Task.Delay(2*i);
                     }
                     await Task.Delay(100);
                     for (int i = 1; i <= 10; i++)
                     {
                         lock (this)
                         {
-                            if (CollisionSystem.CollideDownway(new Rect(Player.Position.X, Player.Position.Y + 7*i, Player.Size.Width, Player.Size.Height)))
+                            if (CollisionSystem.CollideDownway(new Rect(Player.Position.X, Player.Position.Y + 7, Player.Size.Width, Player.Size.Height)))
                             {
                                 IsJumping = false;
                                 return;
                             }
-                            Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 7 * i);
+                            Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 7);
                         }
-                        await Task.Delay(3 * i);
+                        await Task.Delay(2*i);
                     }
                     IsJumping = false;
                 });
