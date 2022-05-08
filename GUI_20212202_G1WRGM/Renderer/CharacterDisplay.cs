@@ -1,4 +1,5 @@
-﻿using GUI_20212202_G1WRGM.Renderer.Interfaces;
+﻿using GUI_20212202_G1WRGM.Others;
+using GUI_20212202_G1WRGM.Renderer.Interfaces;
 using Models;
 using Models.SystemComponents;
 using System;
@@ -20,7 +21,8 @@ namespace GUI_20212202_G1WRGM.Renderer
         public IList<Character> Characters { get; set; }
         // find the highest superclass or interface which we can point to any geometry object
         //public IList<DrawingGroup> CharacterGeometries { get; set; }
-        public DrawingGroup PlayerGG { get; set; }
+        public DrawingGroup PlayerDG { get; set; }
+        //public List<DrawingGroup> NPCsDG { get; set; }
         public Player Player { get; set; }
 
         public void SetupCharacters(IList<Character> characters)
@@ -36,38 +38,37 @@ namespace GUI_20212202_G1WRGM.Renderer
             if (Characters != null)
             {
                 //Renders the Player and his weapon in the default state
-                PlayerGG = new DrawingGroup();
-                PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.PathToImg)), //Player image
+                PlayerDG = new DrawingGroup();
+                PlayerDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.PathToImg)), //Player image
                                 new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
                                 new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height))));
-
-                PlayerGG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(Player.Inventory.PathToSelectedItemImg)), //Player's selected item
-                       new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                       new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64))));
-
-                //GeometryDrawing PlayerWeaponDG = new GeometryDrawing(new ImageBrush(new BitmapImage(Player.Inventory.PathToSelectedItemImg)), //Player's selected item
-                //       new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                //       new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64)));
 
                 //Transform player's weapon
                 if (Player.Inventory.SelectedItem != null 
                     && Player.Inventory.SelectedItem.DirectionToLook.X != 0 
                     && Player.Inventory.SelectedItem.DirectionToLook.Y != 0)
                 {
-                    double angle = Math.Atan2((double)Player.Inventory.SelectedItem.DirectionToLook.Y, (double)Player.Inventory.SelectedItem.DirectionToLook.X);
-                    angle = angle * (180 / Math.PI);
+                    //Calculates the angle lol XDDDDDD
+                    double angle = CalculateAngle(Player.Inventory.SelectedItem.DirectionToLook, new System.Drawing.Point(Player.Position.X, Player.Position.Y + 64));
 
-                    //PlayerWeaponDG.Geometry.Transform = new RotateTransform(
-                    //    angle, //Angle
-                    //    Player.Position.X + 64, //CenterX
-                    //    Player.Position.Y + 64 //CenterY
-                    //    );
+                    //Rotates the image
+                    ImageBrush rotatedImageBrush = new ImageBrush(new BitmapImage(Player.Inventory.PathToSelectedItemImg));
+                    rotatedImageBrush.RelativeTransform = new RotateTransform(angle, 0.5, 0.5); //
+
+                    //Creating the Drawing which will be added to the DrawingGroup (PlayerDG)
+                    GeometryDrawing PlayerWeaponDG = 
+                        new GeometryDrawing(rotatedImageBrush,
+                        new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                        new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64)) //Player's selected item
+                       );
+
+                    PlayerDG.Children.Add(PlayerWeaponDG);
                 }
 
                 //Transforms the player if the mouse X position is bigger than the player's X position
                 if (Player.IsTransform)
                 {
-                    PlayerGG.Transform = new ScaleTransform(
+                    PlayerDG.Transform = new ScaleTransform(
                         -1, //Flips horizontally if -1. Stays the same when 1
                          1, //Flips vertically
                         Player.Position.X + 64, //CenterX
@@ -75,7 +76,7 @@ namespace GUI_20212202_G1WRGM.Renderer
                         );
                 }
 
-                drawingContext.DrawDrawing(PlayerGG);
+                drawingContext.DrawDrawing(PlayerDG);
                 //drawingContext.DrawDrawing(PlayerWeaponDG);
 
                 int xChar = 150;
@@ -102,9 +103,9 @@ namespace GUI_20212202_G1WRGM.Renderer
 
 
             base.OnRender(drawingContext);
-            //if (PlayerGG != null)
+            //if (PlayerDG != null)
             //{
-            //    drawingContext.DrawDrawing(PlayerGG);
+            //    drawingContext.DrawDrawing(PlayerDG);
             //}
             //if (CharacterGeometries != null)
             //{
@@ -121,5 +122,13 @@ namespace GUI_20212202_G1WRGM.Renderer
             this.InvalidateVisual();
         }
 
+        public double CalculateAngle(System.Drawing.Point mousePosition, System.Drawing.Point objectPosition)
+        {
+            //double xLength = Math.Abs(mousePosition.X - objectPosition.X);
+            //double yLength = Math.Abs(mousePosition.Y - objectPosition.Y);
+            double angle = Math.Atan2(mousePosition.Y, mousePosition.X) * 180 / Math.PI;
+
+            return (1 / angle) * 180;
+        }
     }
 }
