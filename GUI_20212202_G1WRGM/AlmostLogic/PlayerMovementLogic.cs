@@ -37,8 +37,6 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     {
                         lock (this)
                         {
-                            
-
                             if (CollisionSystem.CollideForward(new Rect(new System.Windows.Point(Player.Position.X + 8, Player.Position.Y), new System.Windows.Point(Player.Size.Width, Player.Size.Height))))
                             {
                                 return;
@@ -127,6 +125,19 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
             }
         }
 
-
+        public void Shoot()
+        {
+            if (Player.Inventory.SelectedItem is Weapon weapon)
+            {
+                if (weapon.AmmoAmount > 0)
+                {
+                    Player.WillShoot = true;
+                }
+                else
+                {
+                    Player.WillShoot = false;
+                }
+            }
+        }
     }
 }

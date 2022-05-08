@@ -19,6 +19,7 @@
     <None Remove="Assets\Items\Collectibles\Comment.png" />
     <None Remove="Assets\Items\items-20220417-231209.piskel" />
     <None Remove="Assets\Items\Others\RedBarrel.png" />
+    <None Remove="Assets\Items\Weapons\bullet.png" />
     <None Remove="Assets\Items\Weapons\Chaingun.png" />
     <None Remove="Assets\Items\Weapons\Pistol.png" />
     <None Remove="Assets\Items\Weapons\SuperShotgun.png" />
@@ -92,6 +93,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Items\Others\RedBarrel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Weapons\bullet.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Items\Weapons\Chaingun.png">

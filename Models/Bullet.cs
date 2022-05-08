@@ -11,12 +11,12 @@ namespace Models
     public class Bullet 
     {
         
-        private Vector2 position;
+        private Point position;
         private Vector2 direction;
         private int damage;
         private bool isPlayer;
 
-        public Bullet(Vector2 position, int damage, Vector2 direction, int velocity, bool isPlayer)
+        public Bullet(Point position, int damage, Vector2 direction, int velocity, bool isPlayer)
         {
             this.position = position;
             this.damage = damage;
@@ -30,7 +30,7 @@ namespace Models
             set { isPlayer = value; }
         }
 
-        public Vector2 Position
+        public Point Position
         {
             get { return position; }
             set { position = value; }

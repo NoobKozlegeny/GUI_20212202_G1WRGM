@@ -80,5 +80,10 @@ namespace GUI_20212202_G1WRGM
         {
             serializeInput.MousePosition(sender, e.GetPosition(gameVMGrid));
         }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            serializeInput.MouseLeftClick(sender, e);
+        }
     }
 }

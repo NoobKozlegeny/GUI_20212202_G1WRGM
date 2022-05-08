@@ -15,7 +15,7 @@ namespace Models
         public bool IsInvincibly { get; set; }
         public virtual Inventory Inventory { get; set; }
         //public Item SelectedItem { get => Inventory.SelectedItem; }
-
+        public bool WillShoot { get; set; } = false;
         public bool isRolling(int deltatime)
         {
             

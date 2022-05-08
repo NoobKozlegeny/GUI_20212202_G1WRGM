@@ -17,6 +17,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
         {
             builder.HasBaseType<Character>();
 
+            //builder.Ignore(PlayerNavProp => PlayerNavProp.CanShoot);
+
             builder.Property(player => player.PathToImg)
                    .HasConversion(Image => JsonSerializer.Serialize(Image, null),
                                   Image => JsonSerializer.Deserialize<Uri>(Image, null));
