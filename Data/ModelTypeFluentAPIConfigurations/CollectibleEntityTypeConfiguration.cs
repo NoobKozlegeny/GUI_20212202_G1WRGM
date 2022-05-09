@@ -27,7 +27,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
         public void ConfigureYoutubeLevel(EntityTypeBuilder<Collectible> builder)
         {
             //Collectibles scattered on the ground, waiting for to be picked up
-            CreateCollectible(builder, new Point(64, 448 - 80), "Comment.png", "Hello there Obi-wan", 1);
+            CreateCollectible(builder, new Point(64, 448 - 112), "Comment.png", "Hello there Obi-wan", 1);
+            CreateCollectible(builder, new Point(4096, 448 - 32), "Comment.png", "Hello there Obi-wan", 1);
         }
 
         public void CreateCollectible(EntityTypeBuilder<Collectible> builder, Point position, string collectibleImg, string description, int mapLevel)

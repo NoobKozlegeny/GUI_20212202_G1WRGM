@@ -13,6 +13,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
 {
     class WeaponEntityTypeConfiguration : IEntityTypeConfiguration<Weapon>
     {
+        int id = 5;
         public void Configure(EntityTypeBuilder<Weapon> builder)
         {
             builder.HasBaseType<Item>();
@@ -28,7 +29,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
         {
             //Weapons scattered on the ground, waiting for to be picked up
             CreateWeapon(builder, new Point(128, 696 - 80), "SuperShotgun.png", 12, 2, 1);
-            //CreateWeapon(builder, new Point(1024, 448), "Chaingun.png", 88, 1, 1);
+            //CreateWeapon(builder, new Point(4224, 448), "Chaingun.png", 88, 1, 1);
         }
 
         public void CreateWeapon(EntityTypeBuilder<Weapon> builder, Point position, string weaponImg, int ammo, int damage, int mapLevel)
@@ -47,6 +48,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 Position = position,
                 Size = new Size(128, 64)
             });
+
+            id++;
         }
     }
 }

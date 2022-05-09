@@ -27,7 +27,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
         public void ConfigureYoutubeLevel(EntityTypeBuilder<Buff> builder)
         {
             //Collectibles scattered on the ground, waiting for to be picked up
-            CreateBuff(builder, new Point(768, 448 - 80), new Size(64, 64), "Protein.png", new TimeSpan(7000), BuffType.Damage, 1);
+            CreateBuff(builder, new Point(768, 448 - 112), new Size(64, 64), "Protein.png", new TimeSpan(7000), BuffType.Damage, 1);
+            CreateBuff(builder, new Point(3232, 448 - 32), new Size(64, 64), "Protein.png", new TimeSpan(7000), BuffType.Damage, 1);
         }
 
         public void CreateBuff(EntityTypeBuilder<Buff> builder, Point position, Size size, string buffImg, TimeSpan duration, BuffType affected, int mapLevel)

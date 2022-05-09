@@ -9,10 +9,13 @@
 
   <ItemGroup>
     <None Remove="Assets\Background\GameLevelBackground.png" />
+    <None Remove="Assets\Background\GameLevelBackground.xcf" />
     <None Remove="Assets\Characters\Chad.png" />
     <None Remove="Assets\Characters\DreadsChad.png" />
     <None Remove="Assets\Characters\NPCS\AngryDoge.png" />
     <None Remove="Assets\Characters\NPCS\DreamStan.png" />
+    <None Remove="Assets\Characters\NPCS\KoviBossFinal.png" />
+    <None Remove="Assets\Characters\NPCS\KoviBossFinal2.png" />
     <None Remove="Assets\Characters\NPCS\MLGShrek.png" />
     <None Remove="Assets\Characters\NPCS\NikoAvocado.png" />
     <None Remove="Assets\Characters\NPCS\TwistBrainlet.png" />
@@ -69,10 +72,19 @@
     <Content Include="Assets\Background\GameLevelBackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Background\GameLevelBackground.xcf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Characters\NPCS\AngryDoge.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Characters\NPCS\DreamStan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Characters\NPCS\KoviBossFinal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Characters\NPCS\KoviBossFinal2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Characters\NPCS\MLGShrek.png">
