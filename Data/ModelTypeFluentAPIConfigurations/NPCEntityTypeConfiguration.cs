@@ -26,8 +26,8 @@ namespace Data.ModelTypeFluentAPIConfigurations
 
         public void ConfigureYoutubeLevel(EntityTypeBuilder<NPC> builder)
         {
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(768, 888), 1, 2, 1, 1);
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(1536, 888), 1, 2, 1, 1);
+            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(768, 888 - 80), 1, 2, 1, 1);
+            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(1536, 888 - 80), 1, 2, 1, 1);
         }
 
         public void CreateNPC(EntityTypeBuilder<NPC> builder, string NPCImg, string WeaponImg, Point position, int armour, int health, int speed, int mapLevel)

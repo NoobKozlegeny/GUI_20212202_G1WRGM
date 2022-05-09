@@ -71,7 +71,7 @@ namespace GUI_20212202_G1WRGM
 
             //Ioc.Default.GetService<IWorldBuildingElementLogic>();
 
-
+            
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

@@ -27,7 +27,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
         public void ConfigureYoutubeLevel(EntityTypeBuilder<Weapon> builder)
         {
             //Weapons scattered on the ground, waiting for to be picked up
-            CreateWeapon(builder, new Point(128, 696), "SuperShotgun.png", 12, 2, 1);
+            CreateWeapon(builder, new Point(128, 696 - 80), "SuperShotgun.png", 12, 2, 1);
             //CreateWeapon(builder, new Point(1024, 448), "Chaingun.png", 88, 1, 1);
         }
 

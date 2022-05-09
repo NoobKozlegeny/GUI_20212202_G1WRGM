@@ -19,7 +19,7 @@
         <ScrollViewer.DataContext>
             <vms:GameWindowViewModel x:Name="air"/>
         </ScrollViewer.DataContext>
-        <Grid x:Name="gameVMGrid" Width="15000" Height="1000" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        <Grid x:Name="gameVMGrid" Width="8032" Height="1000" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
             <!--
             <Grid.DataContext>
