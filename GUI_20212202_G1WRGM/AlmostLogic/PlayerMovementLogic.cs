@@ -179,9 +179,9 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     bb.Angle = Math.Atan2(yLength, xLength) * 180 / Math.PI;
 
                     int ditanceTraveled = 10;
-                    while (ditanceTraveled < 200)
+                    while (ditanceTraveled < 2000)
                     {
-                        bb.Position = new System.Drawing.Point(bb.Position.X + ditanceTraveled, bb.Position.Y + ditanceTraveled);
+                        bb.Position = new System.Drawing.Point(bb.Position.X + ditanceTraveled, bb.Position.Y - ditanceTraveled);
                         await Task.Delay(100);
                         ditanceTraveled += 10;
                     }
