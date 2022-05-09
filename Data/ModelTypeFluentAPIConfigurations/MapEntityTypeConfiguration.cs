@@ -45,7 +45,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
 
             builder.HasData(new Map()
             {
-                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Background", "GameLevelBackground.png"), UriKind.RelativeOrAbsolute),
                 Level = 1,
                 Size = new System.Drawing.Size(8000, 1080),
                 Characters = new List<Character>(),
@@ -54,7 +54,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             },
             new Map()
             {
-                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Reddit", "Reddit.jpg"), UriKind.RelativeOrAbsolute),
+                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Background", "GameLevelBackground.png"), UriKind.RelativeOrAbsolute),
                 Level = 2,
                 Size = new System.Drawing.Size(8000, 1080),
                 Characters = new List<Character>(),

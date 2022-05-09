@@ -66,50 +66,53 @@ namespace GUI_20212202_G1WRGM.Views
                 }
             }
 
-            //Map list
-            List<Map> maps = new List<Map>();
-            maps.Add(new Map()
-            {
-                PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
-                Level = 1,
-                Size = new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight),
-                Characters = new List<Character>(),
-                Items = new List<Item>(),
-                WorldElements = new List<WorldBuildingElement>()
-            });
+            ////Map list
+            //List<Map> maps = new List<Map>();
+            //maps.Add(new Map()
+            //{
+            //    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
+            //    Level = 1,
+            //    Size = new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight),
+            //    Characters = new List<Character>(),
+            //    Items = new List<Item>(),
+            //    WorldElements = new List<WorldBuildingElement>()
+            //});
 
-            //Character list (player and enemies)
-            List<Character> characters = new List<Character>()
-            {
-                new Player() { Name = "Player", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute),
-                            Inventory = new Inventory() { PathToSelectedItemImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) }},
-                new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute), 
-                            PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Watergun.png"), UriKind.RelativeOrAbsolute) },
-                new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute),
-                            PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Watergun.png"), UriKind.RelativeOrAbsolute) },
-            };
+            ////Character list (player and enemies)
+            //List<Character> characters = new List<Character>()
+            //{
+            //    new Player() { Name = "Player", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute),
+            //                Inventory = new Inventory() { PathToSelectedItemImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) }},
+            //    new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute), 
+            //                PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Watergun.png"), UriKind.RelativeOrAbsolute) },
+            //    new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute),
+            //                PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Watergun.png"), UriKind.RelativeOrAbsolute) },
+            //};
 
-            //Item List (collectibles, weapons etc)
-            List<Item> items = new List<Item>()
-            {
-                new Weapon() { Name = "Super Shotgun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) },
-                new Weapon() { Name = "Chaingun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
-                new Weapon() { Name = "Chaingun", IsPickedUp = true, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
-            };
+            ////Item List (collectibles, weapons etc)
+            //List<Item> items = new List<Item>()
+            //{
+            //    new Weapon() { Name = "Super Shotgun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) },
+            //    new Weapon() { Name = "Chaingun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
+            //    new Weapon() { Name = "Chaingun", IsPickedUp = true, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
+            //};
 
-            //WorldBuildingElements lists (platforms, walls etc)
-            List<WorldBuildingElement> worldBuildingElements = new List<WorldBuildingElement>();
-            for (int i = 0; i < 21; i++)
-            {
-                worldBuildingElements.Add(new WorldBuildingElement()
-                {
-                    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{r.Next(1, 3)}.png"),
-                UriKind.RelativeOrAbsolute)
-                });
-            }
+            ////WorldBuildingElements lists (platforms, walls etc)
+            //List<WorldBuildingElement> worldBuildingElements = new List<WorldBuildingElement>();
+            //for (int i = 0; i < 21; i++)
+            //{
+            //    worldBuildingElements.Add(new WorldBuildingElement()
+            //    {
+            //        PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{r.Next(1, 3)}.png"),
+            //    UriKind.RelativeOrAbsolute)
+            //    });
+            //}
 
             //Set level specific background img
-            grid.Background = new ImageBrush(new BitmapImage(maps[0].PathToImg));
+            //grid.Background = new ImageBrush(new BitmapImage(maps[0].PathToImg));
+            //ImageBrush imageBrush = new ImageBrush(new BitmapImage(maps[0].PathToImg));
+            //imageBrush.TileMode = TileMode.FlipXY;
+            //grid.Background = imageBrush;
 
             //Setup displays and renders them
             //mapDisplay.SetupMap(maps);

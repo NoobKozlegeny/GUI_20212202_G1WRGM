@@ -42,9 +42,16 @@ namespace GUI_20212202_G1WRGM.Renderer
         {
             //base.OnRender(drawingContext);
             Map mapToDraw = Maps.FirstOrDefault(x => x.Level == currentLevel);
-
+            // <ImageBrush x:Key="SimpleBitmap" ImageSource="Assets\BitmapImage.png" TileMode="FlipY"      Stretch="Uniform"AlignmentY="Top" Viewport="0,0,10,10" ViewportUnits="Absolute" />
+            ImageBrush imageBrush = new ImageBrush(new BitmapImage(mapToDraw.PathToImg));
+            imageBrush.TileMode = TileMode.Tile;
+            imageBrush.Stretch = Stretch.Uniform;
+            imageBrush.AlignmentY = AlignmentY.Top;
+            imageBrush.Viewport = new Rect(0,0,2000,1096);
+            imageBrush.ViewportUnits = BrushMappingMode.Absolute;
+            
             drawingContext.DrawRectangle(
-                    new ImageBrush(new BitmapImage(mapToDraw.PathToImg)),
+                    imageBrush,
                     new Pen(Brushes.Black, 0),
                     new Rect(new Size(mapToDraw.Size.Width, mapToDraw.Size.Height))
                 );

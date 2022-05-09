@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Background\GameLevelBackground.png" />
     <None Remove="Assets\Characters\Chad.png" />
     <None Remove="Assets\Characters\DreadsChad.png" />
     <None Remove="Assets\Characters\NPCS\AngryDoge.png" />
@@ -65,6 +66,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Background\GameLevelBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Characters\NPCS\AngryDoge.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
