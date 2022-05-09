@@ -1,15 +1,11 @@
-﻿using GUI_20212202_G1WRGM.Others;
-using GUI_20212202_G1WRGM.Renderer.Interfaces;
+﻿using GUI_20212202_G1WRGM.Renderer.Interfaces;
 using Models;
-using Models.SystemComponents;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,7 +14,7 @@ using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_G1WRGM.Renderer
 {
-    public class CharacterDisplay : FrameworkElement, ICharacterDisplay, ITickable
+    public class CharacterDisplay : FrameworkElement, ICharacterDisplay
     {
         public IList<Character> Characters { get; set; }
         // find the highest superclass or interface which we can point to any geometry object
@@ -34,7 +30,7 @@ namespace GUI_20212202_G1WRGM.Renderer
             Player = Characters.FirstOrDefault(x => x is Player) as Player;
 
             Bullets = new List<Bullet>();
-            
+
         }
 
         protected override void OnRender(DrawingContext drawingContext)
@@ -49,8 +45,8 @@ namespace GUI_20212202_G1WRGM.Renderer
                                 new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y, Player.Size.Width, Player.Size.Height))));
 
                 //Transform player's weapon
-                if (Player.Inventory.SelectedItem != null 
-                    && Player.Inventory.SelectedItem.DirectionToLook.X != 0 
+                if (Player.Inventory.SelectedItem != null
+                    && Player.Inventory.SelectedItem.DirectionToLook.X != 0
                     && Player.Inventory.SelectedItem.DirectionToLook.Y != 0)
                 {
                     //Calculates the angle lol XDDDDDD
@@ -61,7 +57,7 @@ namespace GUI_20212202_G1WRGM.Renderer
                     rotatedImageBrush.RelativeTransform = new RotateTransform(angle, 0.5, 0.5); //
 
                     //Creating the Drawing which will be added to the DrawingGroup (PlayerDG)
-                    GeometryDrawing PlayerWeaponGD = 
+                    GeometryDrawing PlayerWeaponGD =
                         new GeometryDrawing(rotatedImageBrush,
                         new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
                         new RectangleGeometry(new Rect(Player.Position.X, Player.Position.Y + 64, 128, 64)) //Player's selected item

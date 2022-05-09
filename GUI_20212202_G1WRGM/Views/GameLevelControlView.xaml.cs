@@ -1,4 +1,7 @@
-﻿using GUI_20212202_G1WRGM.ViewModels;
+﻿using GUI_20212202_G1WRGM.AlmostLogic;
+using GUI_20212202_G1WRGM.Renderer;
+using GUI_20212202_G1WRGM.ViewModels;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -23,10 +26,48 @@ namespace GUI_20212202_G1WRGM.Views
     public partial class GameLevelControlView : UserControl
     {
         static Random r = new Random();
+        SerializeInput serializeInput;
+        CharacterDisplay characterDisplay = Ioc.Default.GetService<CharacterDisplay>();
 
         public GameLevelControlView()
         {
+            Ioc.Default.GetService<Data.DudeDbContext>();
+
             InitializeComponent();
+            //var air = (this.gameVMGrid.DataContext as ViewModels.GameWindowViewModel);
+
+            //(this.DataContext as MapDisplay).TickProcess();
+
+            gameVMGrid.Children.Add(Ioc.Default.GetService<MapDisplay>());
+            gameVMGrid.Children.Add(characterDisplay);
+            gameVMGrid.Children.Add(Ioc.Default.GetService<ItemDisplay>());
+            gameVMGrid.Children.Add(Ioc.Default.GetService<WorldBuildingElementDisplay>());
+
+
+            air.StartGame();
+
+            serializeInput = new SerializeInput();
+
+
+            //Ioc.Default.GetService<Data.DudeDbContext>();
+
+            //Ioc.Default.GetService<Data.DudeDbContext>();
+
+            //Ioc.Default.GetService<Repository.Interfaces.IMapRepository>();
+
+            //Ioc.Default.GetService<Repository.Interfaces.ICharacterRepository>();
+
+            //Ioc.Default.GetService<Repository.Interfaces.IItemRepository>();
+
+            //Ioc.Default.GetService<Repository.Interfaces.IWorldBuildingElementRepository>();
+
+            //Ioc.Default.GetService<IMapLogic>();
+
+            //Ioc.Default.GetService<ICharacterLogic>();
+
+            //Ioc.Default.GetService<IItemLogic>();
+
+            //Ioc.Default.GetService<IWorldBuildingElementLogic>();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -45,14 +86,7 @@ namespace GUI_20212202_G1WRGM.Views
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //mapDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //itemDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //worldBuildingElementDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //mapDisplay.InvalidateVisual();
-            //characterDisplay.InvalidateVisual();
-            //itemDisplay.InvalidateVisual();
-            //worldBuildingElementDisplay.InvalidateVisual();
+
         }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
@@ -66,72 +100,27 @@ namespace GUI_20212202_G1WRGM.Views
                 }
             }
 
-            ////Map list
-            //List<Map> maps = new List<Map>();
-            //maps.Add(new Map()
-            //{
-            //    PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", "bunnygirlcpp.jpg"), UriKind.RelativeOrAbsolute),
-            //    Level = 1,
-            //    Size = new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight),
-            //    Characters = new List<Character>(),
-            //    Items = new List<Item>(),
-            //    WorldElements = new List<WorldBuildingElement>()
-            //});
-
-            ////Character list (player and enemies)
-            //List<Character> characters = new List<Character>()
-            //{
-            //    new Player() { Name = "Player", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "Players", "Chad.png"), UriKind.RelativeOrAbsolute),
-            //                Inventory = new Inventory() { PathToSelectedItemImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) }},
-            //    new NPC() { Name = "NPC1", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute), 
-            //                PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Watergun.png"), UriKind.RelativeOrAbsolute) },
-            //    new NPC() { Name = "NPC2", PathToImg = new Uri(System.IO.Path.Combine("Assets", "Characters", "NPCS", "TwistBrainlet.png"), UriKind.RelativeOrAbsolute),
-            //                PathToWeaponImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Watergun.png"), UriKind.RelativeOrAbsolute) },
-            //};
-
-            ////Item List (collectibles, weapons etc)
-            //List<Item> items = new List<Item>()
-            //{
-            //    new Weapon() { Name = "Super Shotgun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "SuperShotgun.png"), UriKind.RelativeOrAbsolute) },
-            //    new Weapon() { Name = "Chaingun", IsPickedUp = false, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
-            //    new Weapon() { Name = "Chaingun", IsPickedUp = true, PathToImg = new Uri(System.IO.Path.Combine("Assets", "Items", "Weapons", "Chaingun.png"), UriKind.RelativeOrAbsolute) },
-            //};
-
-            ////WorldBuildingElements lists (platforms, walls etc)
-            //List<WorldBuildingElement> worldBuildingElements = new List<WorldBuildingElement>();
-            //for (int i = 0; i < 21; i++)
-            //{
-            //    worldBuildingElements.Add(new WorldBuildingElement()
-            //    {
-            //        PathToImg = new Uri(System.IO.Path.Combine("Assets", "Levels", "Youtube", $"yt_platform-{r.Next(1, 3)}.png"),
-            //    UriKind.RelativeOrAbsolute)
-            //    });
-            //}
-
-            //Set level specific background img
-            //grid.Background = new ImageBrush(new BitmapImage(maps[0].PathToImg));
-            //ImageBrush imageBrush = new ImageBrush(new BitmapImage(maps[0].PathToImg));
-            //imageBrush.TileMode = TileMode.FlipXY;
-            //grid.Background = imageBrush;
-
-            //Setup displays and renders them
-            //mapDisplay.SetupMap(maps);
-            //worldBuildingElementDisplay.SetupWorldBuildingElements(worldBuildingElements);
-            //itemDisplay.SetupItems(items, characterDisplay);
-            //characterDisplay.SetupCharacters(characters);
-            //mapDisplay.InvalidateVisual();
-            //worldBuildingElementDisplay.InvalidateVisual();
-            //itemDisplay.InvalidateVisual();
-            //characterDisplay.InvalidateVisual();
-
-            //Starts sound
+            ////Starts sound
             GameLevelViewModel.mediaPlayer.Stop();
             GameLevelViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "TheOnlyThing.mp3"), UriKind.RelativeOrAbsolute));
             GameLevelViewModel.mediaPlayer.Play();
 
             //gameWindowViewModel.Init(mapDisplay, characterDisplay, itemDisplay, worldBuildingElementDisplay);
         }
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            serializeInput.KeyDown(sender, e);
+        }
 
-        
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            serializeInput.MousePosition(sender, e.GetPosition(gameVMGrid));
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            serializeInput.MouseLeftClick(sender, e.MouseDevice.GetPosition(this));
+        }
+
     }
 }

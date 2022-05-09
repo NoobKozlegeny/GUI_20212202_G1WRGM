@@ -16,11 +16,6 @@ using System.IO;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using Microsoft.Win32;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
-using Logic.Interfaces;
-using GUI_20212202_G1WRGM.Renderer;
-using Models.SystemComponents;
-using GUI_20212202_G1WRGM.AlmostLogic;
 
 namespace GUI_20212202_G1WRGM
 {
@@ -29,64 +24,46 @@ namespace GUI_20212202_G1WRGM
     /// </summary>
     public partial class MainWindow : Window
     {
-        SerializeInput serializeInput;
-        CharacterDisplay characterDisplay = Ioc.Default.GetService<CharacterDisplay>();
+
+        static Random r = new Random();
+        public MediaPlayer mediaPlayer = new MediaPlayer();
+
         public MainWindow()
         {
-            Ioc.Default.GetService<Data.DudeDbContext>();
-
             InitializeComponent();
-            //var air = (this.gameVMGrid.DataContext as ViewModels.GameWindowViewModel);
-            
-            //(this.DataContext as MapDisplay).TickProcess();
-
-            gameVMGrid.Children.Add(Ioc.Default.GetService<MapDisplay>());
-            gameVMGrid.Children.Add(characterDisplay);
-            gameVMGrid.Children.Add(Ioc.Default.GetService<ItemDisplay>());
-            gameVMGrid.Children.Add(Ioc.Default.GetService<WorldBuildingElementDisplay>());
-            
-
-            air.StartGame();
-
-            serializeInput = new SerializeInput();
-
-
-            //Ioc.Default.GetService<Data.DudeDbContext>();
-
-            //Ioc.Default.GetService<Data.DudeDbContext>();
-
-            //Ioc.Default.GetService<Repository.Interfaces.IMapRepository>();
-
-            //Ioc.Default.GetService<Repository.Interfaces.ICharacterRepository>();
-
-            //Ioc.Default.GetService<Repository.Interfaces.IItemRepository>();
-
-            //Ioc.Default.GetService<Repository.Interfaces.IWorldBuildingElementRepository>();
-
-            //Ioc.Default.GetService<IMapLogic>();
-
-            //Ioc.Default.GetService<ICharacterLogic>();
-
-            //Ioc.Default.GetService<IItemLogic>();
-
-            //Ioc.Default.GetService<IWorldBuildingElementLogic>();
-
-            
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        //Creates a Listbox for the scoreboard
+        private void Scoreboard_Click(object sender, RoutedEventArgs e)
         {
-            serializeInput.KeyDown(sender, e);
+
         }
 
-        private void Window_MouseMove(object sender, MouseEventArgs e)
+        private void StartGame_Click(object sender, RoutedEventArgs e)
         {
-            serializeInput.MousePosition(sender, e.GetPosition(gameVMGrid));
+            //Removes all objects in the grid, like buttons, labels, stackpanels etc except the Display.
+            //foreach (var item in grid.Children)
+            //{
+            //    if (item is StackPanel)
+            //    {
+            //        (item as StackPanel).Children.Clear();
+            //    }
+            //}
+
+            //Starts sound
+            mediaPlayer.Stop();
+            mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "imgonnacoom.mp3"), UriKind.RelativeOrAbsolute));
+            mediaPlayer.Play();
         }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            serializeInput.MouseLeftClick(sender, e.MouseDevice.GetPosition(this));
+
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
         }
     }
 }
