@@ -33,6 +33,8 @@ namespace GUI_20212202_G1WRGM
         CharacterDisplay characterDisplay = Ioc.Default.GetService<CharacterDisplay>();
         public MainWindow()
         {
+            Ioc.Default.GetService<Data.DudeDbContext>();
+
             InitializeComponent();
             //var air = (this.gameVMGrid.DataContext as ViewModels.GameWindowViewModel);
             
