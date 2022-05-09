@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -34,20 +35,20 @@ namespace GUI_20212202_G1WRGM.Renderer
 
             //Adding bullets
             Bullets = new List<Bullet>();
-            Weapon weapon = Player.Inventory.SelectedItem as Weapon;
-            for (int i = 0; i < weapon.AmmoAmount; i++)
-            {
-                Bullet bullet = new Bullet(
-                    new System.Drawing.Point(Player.Position.X, Player.Position.Y + 64),
-                    1,
-                    new Vector2(
-                        Math.Abs(Player.Inventory.SelectedItem.DirectionToLook.X - Player.Position.X),
-                        Math.Abs(Player.Inventory.SelectedItem.DirectionToLook.Y - Player.Position.Y + 64)
-                        ),
-                    5,
-                    true
-                );
-            }
+            //Weapon weapon = Player.Inventory.SelectedItem as Weapon;
+            //for (int i = 0; i < weapon.AmmoAmount; i++)
+            //{
+            //    Bullet bullet = new Bullet(
+            //        new System.Drawing.Point(Player.Position.X, Player.Position.Y + 64),
+            //        1,
+            //        new Vector2(
+            //            Math.Abs(Player.Inventory.SelectedItem.DirectionToLook.X - Player.Position.X),
+            //            Math.Abs(Player.Inventory.SelectedItem.DirectionToLook.Y - Player.Position.Y + 64)
+            //            ),
+            //        5,
+            //        true
+            //    );
+            //}
         }
 
         protected override void OnRender(DrawingContext drawingContext)
@@ -133,8 +134,25 @@ namespace GUI_20212202_G1WRGM.Renderer
                     xChar += 150;
                 }
             }
-            
 
+            if (Bullets != null && Bullets.Count > 0)
+            {
+
+                foreach (var bullet in Bullets)
+                {
+                    ImageBrush bulletImage = new ImageBrush(new BitmapImage(new Uri(Path.Combine("Assets", "Items", "Weapons", "bullet.png"), UriKind.RelativeOrAbsolute)));
+                    bulletImage.RelativeTransform = new RotateTransform(bullet.Angle, 0.5, 0.5);
+
+                    GeometryDrawing bulletGeometry = new GeometryDrawing(
+                                bulletImage,
+                                new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 1),
+                                new RectangleGeometry(new Rect(bullet.Position.X, bullet.Position.Y, bullet.Size.Width, bullet.Size.Height))
+                            );
+                    bulletGeometry.Geometry.Transform = new RotateTransform(bullet.Angle, bullet.Position.X, bullet.Position.Y);
+                    drawingContext.DrawDrawing(bulletGeometry);
+                }
+
+            }
 
             base.OnRender(drawingContext);
             //if (PlayerDG != null)

@@ -12,14 +12,14 @@
         xmlns:logic="clr-namespace:GUI_20212202_G1WRGM.AlmostLogic"
         mc:Ignorable="d"
         Title="Dude, touch some grass" Height="1080" Width="1500"
-        KeyDown="Window_KeyDown" MouseMove="Window_MouseMove" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        KeyDown="Window_KeyDown" MouseMove="Window_MouseMove"
         >
-    
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+    <ScrollViewer x:Name="scroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <ScrollViewer.DataContext>
             <vms:GameWindowViewModel x:Name="air"/>
         </ScrollViewer.DataContext>
-        <Grid x:Name="gameVMGrid" Width="25000" Height="1080">
+        <Grid x:Name="gameVMGrid" Width="25000" Height="1080" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
             <!--
             <Grid.DataContext>

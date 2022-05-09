@@ -18,6 +18,7 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
     public class PlayerMovementLogic
     {
         public Player Player { get; set; }
+        public IList<Bullet> Bullets { get; set; }
         public IList<Rect> WorldBuildingElementGeometries { get; set; }
         public bool IsJumping { get; set; } = false;
         public bool IsGoingForward { get; set; } = false;
@@ -27,6 +28,7 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
         {
             Player = Ioc.Default.GetService<CharacterDisplay>().Player;
             WorldBuildingElementGeometries = Ioc.Default.GetService<WorldBuildingElementDisplay>().WorldBuildingElementGeometries;
+            Bullets = Ioc.Default.GetService<CharacterDisplay>().Bullets;
         }
 
         // mozgásoknál még nézni kell majd hogy ha esetleg valamire fel voltunk ugorva akkor essünk le ha lelépünk
@@ -113,21 +115,28 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                             }
                             Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y - 7 * i);
                         }
-                        await Task.Delay(2*i);
+                        await Task.Delay(3*i);
                     }
                     await Task.Delay(100);
                     for (int i = 1; i <= 10; i++)
                     {
                         lock (this)
                         {
-                            if (CollisionSystem.CollideDownway(new Rect(Player.Position.X, Player.Position.Y + 7, Player.Size.Width, Player.Size.Height)))
+                            int tempi = 7;
+                            for (int j = 0; j < i; j++)
                             {
-                                IsJumping = false;
-                                return;
+                                if (CollisionSystem.CollideDownway(new Rect(Player.Position.X, Player.Position.Y + tempi, Player.Size.Width, Player.Size.Height)))
+                                {
+                                    Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + tempi);
+                                    IsJumping = false;
+                                    return;
+                                }
+                                tempi += 7;
                             }
-                            Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 7);
+                            
+                            Player.Position = new System.Drawing.Point(Player.Position.X, Player.Position.Y + 7 * i);
                         }
-                        await Task.Delay(2*i);
+                        await Task.Delay(3 * i);
                     }
                     IsJumping = false;
                 });
@@ -155,20 +164,50 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                 Player.IsTransform = false;
             }
         }
-        // Ha itt kitöröltem valamit a modelből sorry, conflicton sorozatát oldottam utolsó pushal a sok kódszemét miatt modellekben.....
-        public void Shoot()
+
+        public void Shoot(System.Windows.Point targetDirection)
         {
+            Task bullet = new Task(
+                async () =>
+                {
+                    Bullet bb = new Bullet(Player.Position.X, Player.Position.Y, 10, 10);
+                    Bullets.Add(bb);
+                    Vector direction = new Vector(targetDirection.X - bb.Position.X, targetDirection.Y - bb.Position.Y);
+
+                    double xLength = Math.Abs(targetDirection.X - bb.Position.X);
+                    double yLength = Math.Abs(targetDirection.Y - bb.Position.Y);
+                    bb.Angle = Math.Atan2(yLength, xLength) * 180 / Math.PI;
+
+                    int ditanceTraveled = 10;
+                    while (ditanceTraveled < 200)
+                    {
+                        bb.Position = new System.Drawing.Point(bb.Position.X + ditanceTraveled, bb.Position.Y + ditanceTraveled);
+                        await Task.Delay(100);
+                        ditanceTraveled += 10;
+                    }
+                    Bullets.Remove(bb);
+                });
+
             if (Player.Inventory.SelectedItem is Weapon weapon)
             {
-                //if (weapon.AmmoAmount > 0)
-                //{
-                //    Player.WillShoot = true;
-                //}
-                //else
-                //{
-                //    Player.WillShoot = false;
-                //}
+                if (weapon.AmmoAmount > 0)
+                {
+                    bullet.Start();
+                    weapon.AmmoAmount--;
+                }
             }
+
+            //if (Player.Inventory.SelectedItem is Weapon weapon)
+            //{
+            //    //if (weapon.AmmoAmount > 0)
+            //    //{
+            //    //    Player.WillShoot = true;
+            //    //}
+            //    //else
+            //    //{
+            //    //    Player.WillShoot = false;
+            //    //}
+            //}
         }
 
 

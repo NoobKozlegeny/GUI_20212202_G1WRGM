@@ -49,9 +49,9 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
             }
         }
 
-        public void MouseLeftClick(object sender, MouseButtonEventArgs e)
+        public void MouseLeftClick(object sender, System.Windows.Point targetDirection)
         {
-            playerMovementLogic.Shoot();
+            playerMovementLogic.Shoot(targetDirection);
         }
 
         public void MousePosition(object sender, System.Windows.Point mousePosition)

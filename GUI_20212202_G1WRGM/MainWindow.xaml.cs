@@ -48,6 +48,7 @@ namespace GUI_20212202_G1WRGM
 
             serializeInput = new SerializeInput();
 
+
             //Ioc.Default.GetService<Data.DudeDbContext>();
 
             //Ioc.Default.GetService<Data.DudeDbContext>();
@@ -83,7 +84,7 @@ namespace GUI_20212202_G1WRGM
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            serializeInput.MouseLeftClick(sender, e);
+            serializeInput.MouseLeftClick(sender, e.MouseDevice.GetPosition(this));
         }
     }
 }
