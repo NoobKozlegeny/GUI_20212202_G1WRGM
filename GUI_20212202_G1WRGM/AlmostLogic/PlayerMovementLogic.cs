@@ -170,22 +170,30 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
             Task bullet = new Task(
                 async () =>
                 {
-                    Bullet bb = new Bullet(Player.Position.X, Player.Position.Y, 10, 10);
-                    Bullets.Add(bb);
-                    Vector direction = new Vector(targetDirection.X - bb.Position.X, targetDirection.Y - bb.Position.Y);
-
-                    double xLength = Math.Abs(targetDirection.X - bb.Position.X);
-                    double yLength = Math.Abs(targetDirection.Y - bb.Position.Y);
-                    bb.Angle = Math.Atan2(yLength, xLength) * 180 / Math.PI;
-
-                    int ditanceTraveled = 10;
-                    while (ditanceTraveled < 2000)
+                    Bullet bb = new Bullet(Player.Position.X + Player.Size.Width/2, Player.Position.Y + Player.Size.Height/2, 130, 60);
+                    lock (this)
                     {
-                        bb.Position = new System.Drawing.Point(bb.Position.X + ditanceTraveled, bb.Position.Y - ditanceTraveled);
-                        await Task.Delay(100);
-                        ditanceTraveled += 10;
+                        Bullets.Add(bb);
                     }
-                    Bullets.Remove(bb);
+
+                    double distanceVectorX = Math.Abs(targetDirection.X - bb.Position.X);
+                    double distanceVectorY = Math.Abs(targetDirection.Y - bb.Position.Y);
+                    bb.Angle = Math.Atan2(distanceVectorY, distanceVectorX) * 180 / Math.PI;
+
+
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        lock (this)
+                        {
+                            bb.Position = new System.Drawing.Point(Convert.ToInt32(bb.Position.X + distanceVectorX/ 10), Convert.ToInt32(bb.Position.Y - distanceVectorY / 10));
+                        }
+                        await Task.Delay(100);
+                    }
+                    lock (this)
+                    {
+                        Bullets.Remove(bb);
+                    }
                 });
 
             if (Player.Inventory.SelectedItem is Weapon weapon)

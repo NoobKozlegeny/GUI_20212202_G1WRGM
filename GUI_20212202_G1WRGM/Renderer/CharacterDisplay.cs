@@ -33,22 +33,8 @@ namespace GUI_20212202_G1WRGM.Renderer
             //this.CharacterGeometries = new List<DrawingGroup>();
             Player = Characters.FirstOrDefault(x => x is Player) as Player;
 
-            //Adding bullets
             Bullets = new List<Bullet>();
-            //Weapon weapon = Player.Inventory.SelectedItem as Weapon;
-            //for (int i = 0; i < weapon.AmmoAmount; i++)
-            //{
-            //    Bullet bullet = new Bullet(
-            //        new System.Drawing.Point(Player.Position.X, Player.Position.Y + 64),
-            //        1,
-            //        new Vector2(
-            //            Math.Abs(Player.Inventory.SelectedItem.DirectionToLook.X - Player.Position.X),
-            //            Math.Abs(Player.Inventory.SelectedItem.DirectionToLook.Y - Player.Position.Y + 64)
-            //            ),
-            //        5,
-            //        true
-            //    );
-            //}
+            
         }
 
         protected override void OnRender(DrawingContext drawingContext)
@@ -97,21 +83,6 @@ namespace GUI_20212202_G1WRGM.Renderer
                         );
                 }
 
-                //Renders the shooting process
-                //if (Player.WillShoot && Player.Inventory.SelectedItem is Weapon weapon)
-                //{
-                //    weapon.AmmoAmount -= 1;
-                //    //Bullets.RemoveAt(0);
-
-                //    GeometryDrawing BulletGD =
-                //        new GeometryDrawing(new ImageBrush(new BitmapImage(weapon.PathToBulletImg)),
-                //        new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                //        new RectangleGeometry(new Rect(Player.Position.X + 128, Player.Position.Y + 64, 32, 16)) //Bullet
-                //       );
-
-                //    drawingContext.DrawDrawing(BulletGD);
-                //}
-
                 drawingContext.DrawDrawing(PlayerDG);
 
                 int xChar = 150;
@@ -137,35 +108,24 @@ namespace GUI_20212202_G1WRGM.Renderer
 
             if (Bullets != null && Bullets.Count > 0)
             {
-
-                foreach (var bullet in Bullets)
+                lock (this)
                 {
-                    ImageBrush bulletImage = new ImageBrush(new BitmapImage(new Uri(Path.Combine("Assets", "Items", "Weapons", "bullet.png"), UriKind.RelativeOrAbsolute)));
-                    bulletImage.RelativeTransform = new RotateTransform(bullet.Angle, 0.5, 0.5);
-
-                    GeometryDrawing bulletGeometry = new GeometryDrawing(
-                                bulletImage,
-                                new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 1),
-                                new RectangleGeometry(new Rect(bullet.Position.X, bullet.Position.Y, bullet.Size.Width, bullet.Size.Height))
-                            );
-                    bulletGeometry.Geometry.Transform = new RotateTransform(bullet.Angle, bullet.Position.X, bullet.Position.Y);
-                    drawingContext.DrawDrawing(bulletGeometry);
+                    foreach (var bullet in Bullets)
+                    {
+                        ImageBrush bulletImage = new ImageBrush(new BitmapImage(new Uri(Path.Combine("Assets", "Items", "Weapons", "bullet.png"), UriKind.RelativeOrAbsolute)));
+                        bulletImage.RelativeTransform = new RotateTransform(bullet.Angle, 0.5, 0.5);
+                        GeometryDrawing bulletGeometry = new GeometryDrawing(
+                                    bulletImage,
+                                    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                                    new RectangleGeometry(new Rect(bullet.Position.X, bullet.Position.Y, bullet.Size.Width, bullet.Size.Height))
+                                );
+                        bulletGeometry.Geometry.Transform = new RotateTransform(bullet.Angle, bullet.Position.X + 65, bullet.Position.Y + 30);
+                        drawingContext.DrawDrawing(bulletGeometry);
+                    }
                 }
-
             }
 
             base.OnRender(drawingContext);
-            //if (PlayerDG != null)
-            //{
-            //    drawingContext.DrawDrawing(PlayerDG);
-            //}
-            //if (CharacterGeometries != null)
-            //{
-            //    foreach (var npc in CharacterGeometries)
-            //    {
-            //        drawingContext.DrawDrawing(npc);
-            //    }
-            //}
         }
 
 
