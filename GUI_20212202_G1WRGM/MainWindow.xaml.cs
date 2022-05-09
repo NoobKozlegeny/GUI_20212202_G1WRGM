@@ -29,64 +29,24 @@ namespace GUI_20212202_G1WRGM
     /// </summary>
     public partial class MainWindow : Window
     {
-        SerializeInput serializeInput;
-        CharacterDisplay characterDisplay = Ioc.Default.GetService<CharacterDisplay>();
+        static Random r = new Random();
+        public MediaPlayer mediaPlayer = new MediaPlayer();
         public MainWindow()
         {
-            Ioc.Default.GetService<Data.DudeDbContext>();
-
-            InitializeComponent();
-            //var air = (this.gameVMGrid.DataContext as ViewModels.GameWindowViewModel);
-            
-            //(this.DataContext as MapDisplay).TickProcess();
-
-            gameVMGrid.Children.Add(Ioc.Default.GetService<MapDisplay>());
-            gameVMGrid.Children.Add(characterDisplay);
-            gameVMGrid.Children.Add(Ioc.Default.GetService<ItemDisplay>());
-            gameVMGrid.Children.Add(Ioc.Default.GetService<WorldBuildingElementDisplay>());
-            
-
-            air.StartGame();
-
-            serializeInput = new SerializeInput();
-
-
-            //Ioc.Default.GetService<Data.DudeDbContext>();
-
-            //Ioc.Default.GetService<Data.DudeDbContext>();
-
-            //Ioc.Default.GetService<Repository.Interfaces.IMapRepository>();
-
-            //Ioc.Default.GetService<Repository.Interfaces.ICharacterRepository>();
-
-            //Ioc.Default.GetService<Repository.Interfaces.IItemRepository>();
-
-            //Ioc.Default.GetService<Repository.Interfaces.IWorldBuildingElementRepository>();
-
-            //Ioc.Default.GetService<IMapLogic>();
-
-            //Ioc.Default.GetService<ICharacterLogic>();
-
-            //Ioc.Default.GetService<IItemLogic>();
-
-            //Ioc.Default.GetService<IWorldBuildingElementLogic>();
-
-            
+            InitializeComponent();         
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            serializeInput.KeyDown(sender, e);
+
         }
 
-        private void Window_MouseMove(object sender, MouseEventArgs e)
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            serializeInput.MousePosition(sender, e.GetPosition(gameVMGrid));
-        }
-
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            serializeInput.MouseLeftClick(sender, e.MouseDevice.GetPosition(this));
+            //display.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            //characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
+            //display.InvalidateVisual();
+            //characterDisplay.InvalidateVisual();
         }
     }
 }

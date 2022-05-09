@@ -12,26 +12,14 @@
         xmlns:logic="clr-namespace:GUI_20212202_G1WRGM.AlmostLogic"
         mc:Ignorable="d"
         Title="Dude, touch some grass" Height="1000" Width="1500"
-        KeyDown="Window_KeyDown" MouseMove="Window_MouseMove"
+        WindowStyle="None" WindowState="Maximized" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged"
         >
 
-    <ScrollViewer x:Name="scroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <ScrollViewer.DataContext>
-            <vms:GameWindowViewModel x:Name="air"/>
-        </ScrollViewer.DataContext>
-        <Grid x:Name="gameVMGrid" Width="8032" Height="1000" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
-            <!--
-            <Grid.DataContext>
-                <logic:SerializeInput x:Name="input"/>
-            </Grid.DataContext>
+    <Grid>
+        <ContentControl Content="{Binding CurrentPageViewModel}" />
+    </Grid>
 
-            -->
 
-        </Grid>
-    </ScrollViewer>
-    
-    
-    
-    
+
 </Window>

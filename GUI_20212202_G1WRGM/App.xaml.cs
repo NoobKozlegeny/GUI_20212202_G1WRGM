@@ -23,6 +23,21 @@ namespace GUI_20212202_G1WRGM
     {
         public App()
         {
+            IocInit();
+            
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            MainWindow app = new MainWindow();
+            MainWindowViewModel context = new MainWindowViewModel();
+            app.DataContext = context;
+            app.Show();
+        }
+
+        public async void IocInit()
+        {
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                     .AddSingleton<Data.DudeDbContext, Data.DudeDbContext>()
@@ -42,14 +57,5 @@ namespace GUI_20212202_G1WRGM
                     .BuildServiceProvider()
                 );
         }
-        //protected override void OnStartup(StartupEventArgs e)
-        //{
-        //    base.OnStartup(e);
-
-        //    MainWindow app = new MainWindow();
-        //    MainWindowViewModel context = new MainWindowViewModel();
-        //    app.DataContext = context;
-        //    app.Show();
-        //}
     }
 }

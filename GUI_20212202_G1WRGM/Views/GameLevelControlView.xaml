@@ -20,7 +20,9 @@
         </behaviors:EventTrigger>
     </behaviors:Interaction.Triggers>
 
-    <Grid x:Name="grid">
+    <Grid>
+
+        <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="52*"/>
@@ -104,7 +106,22 @@
         -->
         
     </Grid>
+        
+        <ScrollViewer x:Name="scroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer.DataContext>
+                <vm:GameWindowViewModel x:Name="air"/>
+            </ScrollViewer.DataContext>
+            <Grid x:Name="gameVMGrid" Width="8032" Height="1000" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
+                <!--
+            <Grid.DataContext>
+                <logic:SerializeInput x:Name="input"/>
+            </Grid.DataContext>
 
+            -->
 
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
 </UserControl>
