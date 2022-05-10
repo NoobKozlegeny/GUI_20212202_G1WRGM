@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace GUI_20212202_G1WRGM.AlmostLogic
@@ -41,9 +42,6 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
                     playerMovementLogic.Jump();
                     break;
                
-
-
-
                 default:
                     break;
             }

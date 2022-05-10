@@ -23,7 +23,30 @@ namespace GUI_20212202_G1WRGM
     {
         public App()
         {
-            IocInit();
+            Task initIoC = new Task(
+                    () =>
+                    {
+                        Ioc.Default.ConfigureServices(
+                            new ServiceCollection()
+                                .AddSingleton<Data.DudeDbContext, Data.DudeDbContext>()
+                                .AddSingleton<Repository.Interfaces.IMapRepository, Repository.MapRepository>()
+                                .AddSingleton<Repository.Interfaces.ICharacterRepository, Repository.CharacterRepository>()
+                                .AddSingleton<Repository.Interfaces.IItemRepository, Repository.ItemRepository>()
+                                .AddSingleton<Repository.Interfaces.IWorldBuildingElementRepository, Repository.WorldBuildingElementRepository>()
+                                .AddSingleton<IMapLogic, MapLogic>()
+                                .AddSingleton<ICharacterLogic, CharacterLogic>()
+                                .AddSingleton<IItemLogic, ItemLogic>()
+                                .AddSingleton<IWorldBuildingElementLogic, WorldBuildingElementLogic>()
+                                .AddSingleton<MapDisplay, MapDisplay>()
+                                .AddSingleton<CharacterDisplay, CharacterDisplay>()
+                                .AddSingleton<ItemDisplay, ItemDisplay>()
+                                .AddSingleton<WorldBuildingElementDisplay, WorldBuildingElementDisplay>()
+                                .AddSingleton<PlayerMovementLogic, PlayerMovementLogic>()
+                                .BuildServiceProvider()
+                            );
+                    }
+                );
+            initIoC.Start();
             
         }
         protected override void OnStartup(StartupEventArgs e)
@@ -36,26 +59,6 @@ namespace GUI_20212202_G1WRGM
             app.Show();
         }
 
-        public async void IocInit()
-        {
-            Ioc.Default.ConfigureServices(
-                new ServiceCollection()
-                    .AddSingleton<Data.DudeDbContext, Data.DudeDbContext>()
-                    .AddSingleton<Repository.Interfaces.IMapRepository, Repository.MapRepository>()
-                    .AddSingleton<Repository.Interfaces.ICharacterRepository, Repository.CharacterRepository>()
-                    .AddSingleton<Repository.Interfaces.IItemRepository, Repository.ItemRepository>()
-                    .AddSingleton<Repository.Interfaces.IWorldBuildingElementRepository, Repository.WorldBuildingElementRepository>()
-                    .AddSingleton<IMapLogic, MapLogic>()
-                    .AddSingleton<ICharacterLogic, CharacterLogic>()
-                    .AddSingleton<IItemLogic, ItemLogic>()
-                    .AddSingleton<IWorldBuildingElementLogic, WorldBuildingElementLogic>()
-                    .AddSingleton<MapDisplay, MapDisplay>()
-                    .AddSingleton<CharacterDisplay, CharacterDisplay>()
-                    .AddSingleton<ItemDisplay, ItemDisplay>()
-                    .AddSingleton<WorldBuildingElementDisplay, WorldBuildingElementDisplay>()
-                    .AddSingleton<PlayerMovementLogic, PlayerMovementLogic>()
-                    .BuildServiceProvider()
-                );
-        }
+        
     }
 }

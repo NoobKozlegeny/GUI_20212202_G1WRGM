@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Drawing;
 using GUI_20212202_G1WRGM.Others;
+using System.Windows.Controls;
 
 namespace GUI_20212202_G1WRGM.AlmostLogic
 {
@@ -170,7 +171,7 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
             Task bullet = new Task(
                 async () =>
                 {
-                    Bullet bb = new Bullet(Player.Position.X + Player.Size.Width/2, Player.Position.Y + Player.Size.Height/2, 130, 60);
+                    Bullet bb = new Bullet(Player.Position.X + Player.Size.Width/2, Player.Position.Y + Player.Size.Height/2, 10, 10);
                     lock (this)
                     {
                         Bullets.Add(bb);

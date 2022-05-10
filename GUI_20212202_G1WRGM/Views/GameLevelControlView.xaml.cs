@@ -25,20 +25,18 @@ namespace GUI_20212202_G1WRGM.Views
     /// </summary>
     public partial class GameLevelControlView : UserControl
     {
-        static Random r = new Random();
         SerializeInput serializeInput;
-        CharacterDisplay characterDisplay = Ioc.Default.GetService<CharacterDisplay>();
         public GameLevelControlView()
         {
-            Ioc.Default.GetService<Data.DudeDbContext>();
-
+            
             InitializeComponent();
+          
             //var air = (this.gameVMGrid.DataContext as ViewModels.GameWindowViewModel);
 
             //(this.DataContext as MapDisplay).TickProcess();
 
             gameVMGrid.Children.Add(Ioc.Default.GetService<MapDisplay>());
-            gameVMGrid.Children.Add(characterDisplay);
+            gameVMGrid.Children.Add(Ioc.Default.GetService<CharacterDisplay>());
             gameVMGrid.Children.Add(Ioc.Default.GetService<ItemDisplay>());
             gameVMGrid.Children.Add(Ioc.Default.GetService<WorldBuildingElementDisplay>());
 
@@ -107,6 +105,7 @@ namespace GUI_20212202_G1WRGM.Views
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             serializeInput.MouseLeftClick(sender, e.MouseDevice.GetPosition(this));
+        
         }
     }
 }
