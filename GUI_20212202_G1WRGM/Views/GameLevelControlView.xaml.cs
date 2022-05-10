@@ -76,6 +76,15 @@ namespace GUI_20212202_G1WRGM.Views
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             serializeInput.KeyDown(sender, e);
+            if (e.Key.Equals(Key.D))
+            {
+                scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset + 60);
+            }
+            if (e.Key.Equals(Key.A))
+            {
+                scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - 60);
+            }
+          
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)

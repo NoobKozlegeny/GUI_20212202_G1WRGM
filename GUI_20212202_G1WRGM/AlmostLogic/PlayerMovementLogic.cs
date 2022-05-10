@@ -199,24 +199,12 @@ namespace GUI_20212202_G1WRGM.AlmostLogic
 
             if (Player.Inventory.SelectedItem is Weapon weapon)
             {
-                if (weapon.AmmoAmount > 0)
+                //if (weapon.AmmoAmount > 0)
                 {
                     bullet.Start();
                     weapon.AmmoAmount--;
                 }
             }
-
-            //if (Player.Inventory.SelectedItem is Weapon weapon)
-            //{
-            //    //if (weapon.AmmoAmount > 0)
-            //    //{
-            //    //    Player.WillShoot = true;
-            //    //}
-            //    //else
-            //    //{
-            //    //    Player.WillShoot = false;
-            //    //}
-            //}
         }
 
 
