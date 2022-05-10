@@ -36,6 +36,7 @@
     <None Remove="Assets\Levels\Youtube\yt_platform-3.png" />
     <None Remove="Assets\Levels\Youtube\yt_platform-4.png" />
     <None Remove="Assets\Levels\Youtube\yt_platform-5.png" />
+    <None Remove="Assets\Levels\Youtube\yt_platform-6-cropped.png" />
     <None Remove="Assets\Levels\Youtube\yt_platform-6.png" />
     <None Remove="Assets\MainMenuBackground.png" />
     <None Remove="Assets\Others\CloseGame.png" />
@@ -164,6 +165,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Levels\Youtube\yt_platform-5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Levels\Youtube\yt_platform-6-cropped.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Levels\Youtube\yt_platform-6.png">

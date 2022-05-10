@@ -36,7 +36,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
 
 
 
-            CreateNPC(builder, "KoviBossFinal2.png", "Empty.png", new Point(7520, 386), 1, 2, 1, 1, new Size(384, 576));
+            CreateNPC(builder, "KoviBossFinal2.png", "Empty.png", new Point(7520, 386), 10, 69, 1, 1, new Size(384, 576));
         }
 
         public void CreateNPC(EntityTypeBuilder<NPC> builder, string NPCImg, string WeaponImg, Point position, int armour, int health, int speed, int mapLevel, Size size)

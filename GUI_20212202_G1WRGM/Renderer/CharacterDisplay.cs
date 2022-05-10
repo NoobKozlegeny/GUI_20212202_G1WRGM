@@ -96,9 +96,12 @@ namespace GUI_20212202_G1WRGM.Renderer
                     new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y, npc.Size.Width, npc.Size.Height))));
 
                     //Adding NPC's weapon
-                    npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
-                    new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
-                    new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y + 64, 128, 64))));
+                    if (!npc.PathToWeaponImg.OriginalString.Contains("Empty.png"))
+                    {
+                        npcDG.Children.Add(new GeometryDrawing(new ImageBrush(new BitmapImage(npc.PathToWeaponImg)),
+                        new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 0),
+                        new RectangleGeometry(new Rect(npc.Position.X, npc.Position.Y + 64, 128, 64))));
+                    }
 
                     //CharacterGeometries.Add(npcDG);
                     drawingContext.DrawDrawing(npcDG);

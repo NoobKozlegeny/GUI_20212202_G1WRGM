@@ -56,6 +56,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(0, 1016 - YElement), 1, new Size(128, 384));
                 YElement += 384;
             }
+            CreateWorldBuildingElement(builder, "yt_platform-6-cropped.png", new Point(0, 1016 - YElement + 128), 1, new Size(128, 256));
 
             //Adding the bottom sprites
             XElement = 0;
@@ -142,6 +143,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(7936, 552 - YElement + 80), 1, new Size(128, 384));
                 YElement += 384;
             }
+            CreateWorldBuildingElement(builder, "yt_platform-6-cropped.png", new Point(7936, 552 - YElement + 128 + 80), 1, new Size(128, 256));
         }
 
         public void CreateWorldBuildingElement(EntityTypeBuilder<WorldBuildingElement> builder, string WBEImg, Point position, int mapLevel, Size size)
