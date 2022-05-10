@@ -64,7 +64,13 @@
     <None Remove="Assets\Sounds\Songs\mainMenu_MarchTemplars.mp3" />
     <None Remove="Assets\Sounds\Songs\mainMenu_NSO.mp3" />
     <None Remove="Assets\Sounds\Songs\XPShutdown.mp3" />
+    <None Remove="Assets\Sounds\Songs\Youtube\ArmyOfTheNight.mp3" />
+    <None Remove="Assets\Sounds\Songs\Youtube\BlendS.mp3" />
+    <None Remove="Assets\Sounds\Songs\Youtube\BokuNoPico.mp3" />
+    <None Remove="Assets\Sounds\Songs\Youtube\ChikaDance.mp3" />
+    <None Remove="Assets\Sounds\Songs\Youtube\CultistBase.mp3" />
     <None Remove="Assets\Sounds\Songs\Youtube\imgonnacoom.mp3" />
+    <None Remove="Assets\Sounds\Songs\Youtube\JojoTheme.mp3" />
     <None Remove="Assets\Sounds\Songs\Youtube\TheOnlyThing.mp3" />
   </ItemGroup>
 
@@ -222,7 +228,25 @@
     <Content Include="Assets\Sounds\Songs\XPShutdown.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Sounds\Songs\Youtube\ArmyOfTheNight.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\Youtube\BlendS.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\Youtube\BokuNoPico.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\Youtube\ChikaDance.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\Youtube\CultistBase.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Sounds\Songs\Youtube\imgonnacoom.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\Songs\Youtube\JojoTheme.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Sounds\Songs\Youtube\TheOnlyThing.mp3">

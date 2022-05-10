@@ -51,9 +51,9 @@ namespace Data.ModelTypeFluentAPIConfigurations
             int randomResult;
 
             //Adding wall sprites on the left
-            for (int i = id; i < 5; i++)
+            for (int i = id; i < 4; i++)
             {
-                CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(0, 1016 - YElement - 80), 1, new Size(128, 384));
+                CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(0, 1016 - YElement), 1, new Size(128, 384));
                 YElement += 384;
             }
 
@@ -63,7 +63,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
             {
                 if (i != 29)
                 {
-                    CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(1, 3)}.png", new Point(XElement, 1016 - 80), 1, new Size(128, 64));
+                    CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(1, 3)}.png", new Point(XElement, 1016), 1, new Size(128, 64));
                 }
                 XElement += 128;
             }
@@ -71,28 +71,28 @@ namespace Data.ModelTypeFluentAPIConfigurations
             //Above bottom sprites but not floating ones
             //CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(960, 1080 - 192 - 80), 1, new Size(128, 128));
             //CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(1280, 632 - 80), 1, new Size(128, 384));
-            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(2240, 808), 1, new Size(128, 128));
-            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(2368, 808), 1, new Size(128, 128));
-            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(2368, 680), 1, new Size(128, 128));
-            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(3584, 808), 1, new Size(128, 128));
-            CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(2496, 552), 1, new Size(128, 384));
+            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(2240, 808 + 80), 1, new Size(128, 128));
+            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(2368, 808 + 80), 1, new Size(128, 128));
+            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(2368, 680 + 80), 1, new Size(128, 128));
+            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(3584, 808 + 80), 1, new Size(128, 128));
+            CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(2496, 552 + 80), 1, new Size(128, 384));
             
             XElement = 5376;
             for (int i = id; i < 75; i++)
             {
-                CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(XElement, 552), 1, new Size(128, 384));
+                CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(XElement, 552 + 80), 1, new Size(128, 384));
                 XElement += 128;
             }
 
-            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(5120, 808), 1, new Size(128, 128));
-            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(5248, 808), 1, new Size(128, 128));
-            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(5248, 680), 1, new Size(128, 128));
+            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(5120, 808 + 80), 1, new Size(128, 128));
+            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(5248, 808 + 80), 1, new Size(128, 128));
+            CreateWorldBuildingElement(builder, $"yt_platform-{r.Next(4, 6)}.png", new Point(5248, 680 + 80), 1, new Size(128, 128));
 
             //Floating sprites
             XElement = 256;
             for (int i = id; i < 83; i++)
             {
-                CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement + 64, 760 - 80), 1, new Size(128, 32));
+                CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement + 64, 760), 1, new Size(128, 32));
                 XElement += 128;
             }
 
@@ -101,11 +101,11 @@ namespace Data.ModelTypeFluentAPIConfigurations
             {
                 if (XElement < 1152)
                 {
-                    CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 480 - 80), 1, new Size(128, 32));
+                    CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 480), 1, new Size(128, 32));
                 }
                 else if (XElement > 1408)
                 {
-                    CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 480 - 80), 1, new Size(128, 32));
+                    CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 480), 1, new Size(128, 32));
                 }
 
                 XElement += 128;
@@ -114,14 +114,14 @@ namespace Data.ModelTypeFluentAPIConfigurations
             XElement = 2624;
             for (int i = id; i < 91; i++)
             {
-                CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 552), 1, new Size(128, 32));
+                CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 552 + 80), 1, new Size(128, 32));
                 XElement += 128;
             }
 
             XElement = 3840;
             for (int i = id; i < 94; i++)
             {
-                CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 680), 1, new Size(128, 32));
+                CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 680 + 80), 1, new Size(128, 32));
                 XElement += 128;
             }
 
@@ -130,16 +130,16 @@ namespace Data.ModelTypeFluentAPIConfigurations
             {
                 if (i != 97)
                 {
-                    CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 488), 1, new Size(128, 32));
+                    CreateWorldBuildingElement(builder, "yt_platform-3.png", new Point(XElement, 488 + 80), 1, new Size(128, 32));
                 }
                 XElement += 128;
             }
 
             //Adding wall sprites on the right
             YElement = 0;
-            for (int i = id; i < 104; i++)
+            for (int i = id; i < 103; i++)
             {
-                CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(7936, 552 - YElement), 1, new Size(128, 384));
+                CreateWorldBuildingElement(builder, "yt_platform-6.png", new Point(7936, 552 - YElement + 80), 1, new Size(128, 384));
                 YElement += 384;
             }
         }

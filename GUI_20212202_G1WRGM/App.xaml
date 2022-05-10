@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:GUI_20212202_G1WRGM"
              xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels"
              xmlns:views="clr-namespace:GUI_20212202_G1WRGM.Views"
-             StartupUri="MainWindow.xaml">
+             >
     <Application.Resources>
         <!--Doom Font styles-->
         <Style x:Key="Doom2016" TargetType="Label">

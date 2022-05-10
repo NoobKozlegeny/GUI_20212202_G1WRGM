@@ -8,7 +8,7 @@
              xmlns:vm="clr-namespace:GUI_20212202_G1WRGM.ViewModels" 
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors" 
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged"
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded"
              >
 
     
@@ -22,90 +22,76 @@
 
     <Grid>
 
-        <Grid x:Name="grid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="52*"/>
-        </Grid.RowDefinitions>
+        <Grid x:Name="grid" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="52*"/>
+            </Grid.RowDefinitions>
 
-        <Grid>
-            <Grid.DataContext>
-                <vm:GameWindowViewModel x:Name="gameWindowViewModel"/>
-            </Grid.DataContext>
+            <!--<Grid>
+                <Grid.DataContext>
+                    <vm:GameWindowViewModel x:Name="gameWindowViewModel"/>
+                </Grid.DataContext>
+            </Grid>-->
+
+            <Menu Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
+                <Menu.DataContext>
+                    <vm:GameLevelViewModel/>
+                </Menu.DataContext>
+
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+
+                <Menu.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="DarkGray" Offset="0.0"/>
+                        <GradientStop Color="Orange" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </Menu.Background>
+
+                <MenuItem Header="Select OST" VerticalAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Others/SelectOST.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Doom" Command="{Binding StartDoomOSTCommand}" MinHeight="30" Foreground="White">
+                        <MenuItem.Icon>
+                            <Image Source="/Assets/Others/RPG.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/Assets/Others/doomGuyEternal.jpg"/>
+                        </MenuItem.Background>
+                    </MenuItem>
+                    <MenuItem Header="Crusader" Command="{Binding StartCrusaderOSTCommand}" MinHeight="30" Foreground="White">
+                        <MenuItem.Icon>
+                            <Image Source="/Assets/Others/shotgun.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/Assets/Others/Crusader.jpg"/>
+                        </MenuItem.Background>
+                    </MenuItem>
+                    <MenuItem Header="Be the degenerate" Command="{Binding StartWeebOSTCommand}" MinHeight="30">
+                        <MenuItem.Icon>
+                            <Image Source="/Assets/Others/streamer.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/Assets/Others/NSO.jpg"/>
+                        </MenuItem.Background>
+                    </MenuItem>
+                </MenuItem>
+
+                <!--2. column-->
+
+                <!--3. column-->
+                <MenuItem Header="Exit" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Command="{Binding CloseGameCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/Others/windows.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
         </Grid>
-
-        <Menu Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
-            <Menu.DataContext>
-                <vm:GameLevelViewModel/>
-            </Menu.DataContext>
-            
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <DockPanel HorizontalAlignment="Stretch"/>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
-            
-            <Menu.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="DarkGray" Offset="0.0"/>
-                    <GradientStop Color="Orange" Offset="0.5"/>
-                </LinearGradientBrush>
-            </Menu.Background>
-
-            <MenuItem Header="Select OST" VerticalAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">
-                <MenuItem.Icon>
-                    <Image Source="/Assets/Others/SelectOST.png"/>
-                </MenuItem.Icon>
-                <MenuItem Header="Doom" Command="{Binding StartDoomOSTCommand}" MinHeight="30" Foreground="White">
-                    <MenuItem.Icon>
-                        <Image Source="/Assets/Others/RPG.png"/>
-                    </MenuItem.Icon>
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/Assets/Others/doomGuyEternal.jpg"/>
-                    </MenuItem.Background>
-                </MenuItem>
-                <MenuItem Header="Crusader" Command="{Binding StartCrusaderOSTCommand}" MinHeight="30" Foreground="White">
-                    <MenuItem.Icon>
-                        <Image Source="/Assets/Others/shotgun.png"/>
-                    </MenuItem.Icon>
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/Assets/Others/Crusader.jpg"/>
-                    </MenuItem.Background>
-                </MenuItem>
-                <MenuItem Header="Be the degenerate" Command="{Binding StartWeebOSTCommand}" MinHeight="30">
-                    <MenuItem.Icon>
-                        <Image Source="/Assets/Others/streamer.png"/>
-                    </MenuItem.Icon>
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/Assets/Others/NSO.jpg"/>
-                    </MenuItem.Background>
-                </MenuItem>
-            </MenuItem>
-
-            <!--2. column-->
-
-            <!--3. column-->
-            <MenuItem Header="Exit" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Command="{Binding CloseGameCommand}">
-                <MenuItem.Icon>
-                    <Image Source="/Assets/Others/windows.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
-        </Menu>
-
-        <!--2. row-->
-
-        
-        
-        
-        
-        <!--
-        <renderer:MapDisplay x:Name="mapDisplay"/>
-        <renderer:CharacterDisplay x:Name="characterDisplay"/>
-        <renderer:ItemDisplay x:Name="itemDisplay"/>
-        <renderer:WorldBuildingElementDisplay x:Name="worldBuildingElementDisplay"/>
-        -->
-        
-    </Grid>
         
         <ScrollViewer x:Name="scroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <ScrollViewer.DataContext>

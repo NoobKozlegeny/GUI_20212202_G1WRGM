@@ -44,7 +44,7 @@ namespace Data.ModelTypeFluentAPIConfigurations
                 HealthPoints = 5,
                 Speed = 1,
                 MapLevel = 1,
-                Position = new Point(128, 888 - 80),
+                Position = new Point(128, 888),
                 Size = new Size(128, 128),
                 Id = 1,
             });
