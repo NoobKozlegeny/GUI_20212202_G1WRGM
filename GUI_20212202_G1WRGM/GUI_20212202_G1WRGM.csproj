@@ -25,6 +25,7 @@
     <None Remove="Assets\Items\Others\RedBarrel.png" />
     <None Remove="Assets\Items\Weapons\bullet.png" />
     <None Remove="Assets\Items\Weapons\Chaingun.png" />
+    <None Remove="Assets\Items\Weapons\Empty.png" />
     <None Remove="Assets\Items\Weapons\Pistol.png" />
     <None Remove="Assets\Items\Weapons\SuperShotgun.png" />
     <None Remove="Assets\Items\Weapons\Watergun.png" />
@@ -121,6 +122,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Items\Weapons\Chaingun.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Weapons\Empty.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Items\Weapons\Pistol.png">

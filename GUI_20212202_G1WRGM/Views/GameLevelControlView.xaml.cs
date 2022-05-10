@@ -42,7 +42,7 @@ namespace GUI_20212202_G1WRGM.Views
             gameVMGrid.Children.Add(Ioc.Default.GetService<ItemDisplay>());
             gameVMGrid.Children.Add(Ioc.Default.GetService<WorldBuildingElementDisplay>());
 
-            air.StartGame();
+            gameWindowViewModel.StartGame();
             serializeInput = new SerializeInput();
         }
 
