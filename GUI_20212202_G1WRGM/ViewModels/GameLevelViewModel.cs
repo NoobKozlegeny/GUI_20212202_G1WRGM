@@ -16,7 +16,6 @@ namespace GUI_20212202_G1WRGM.ViewModels
     {
         Random r = new Random();
 
-        public ICommand StartDefaultOSTCommand { get; set; }
         public ICommand StartDoomOSTCommand { get; set; }
         public ICommand StartCrusaderOSTCommand { get; set; }
         public ICommand StartWeebOSTCommand { get; set; }
@@ -26,43 +25,34 @@ namespace GUI_20212202_G1WRGM.ViewModels
 
         public GameLevelViewModel()
         {
-            StartDefaultOSTCommand = new RelayCommand(
-                () =>
-                {
-                    DispatcherTimer dt = new DispatcherTimer(TimeSpan.Zero, DispatcherPriority.ApplicationIdle, DispatcherTimer_Tick, Application.Current.Dispatcher)
-                    {
-                        Interval = TimeSpan.FromMinutes(5)
-                    };
-                    dt.Start();                  
-                    mediaPlayer.Play();
-                },
-                () => !mediaPlayer.HasAudio
-                );
-
             StartDoomOSTCommand = new RelayCommand(
                 () =>
                 {
                     mediaPlayer.Stop();
-                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute)); }
-                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute)); }
+                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "CultistBase.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "TheOnlyThing.mp3"), UriKind.RelativeOrAbsolute)); }
                     mediaPlayer.Play();
+                    currentlySelectedOST = OST.Doom;
                 });
 
             StartCrusaderOSTCommand = new RelayCommand(
                 () =>
                 {
                     mediaPlayer.Stop();
-                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_MarchTemplars.mp3"), UriKind.RelativeOrAbsolute));
+                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "ArmyOfTheNight.mp3"), UriKind.RelativeOrAbsolute));
                     mediaPlayer.Play();
+                    currentlySelectedOST = OST.Crusader;
                 });
 
             StartWeebOSTCommand = new RelayCommand(
                 () =>
                 {
                     mediaPlayer.Stop();
-                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_NSO.mp3"), UriKind.RelativeOrAbsolute)); }
-                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_BoobaSword.mp3"), UriKind.RelativeOrAbsolute)); }
+                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "JojoTheme.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "ChikaDance.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "BlendS.mp3"), UriKind.RelativeOrAbsolute)); }
                     mediaPlayer.Play();
+                    currentlySelectedOST = OST.Weebshit;
                 });
 
             CloseGameCommand = new RelayCommand(
@@ -77,10 +67,31 @@ namespace GUI_20212202_G1WRGM.ViewModels
             LoadLevelCommand = new RelayCommand(
                 () =>
                 {
-
+                    mediaPlayer.MediaEnded += SussySound_MediaEnded;
                 }
-
                 );
+        }
+
+        private void SussySound_MediaEnded(object sender, EventArgs e)
+        {
+            switch (currentlySelectedOST)
+            {
+                case OST.Doom:
+                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "CultistBase.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "TheOnlyThing.mp3"), UriKind.RelativeOrAbsolute)); }
+                    break;
+                case OST.Crusader:
+                    mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "ArmyOfTheNight.mp3"), UriKind.RelativeOrAbsolute));
+                    break;
+                case OST.Weebshit:
+                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "JojoTheme.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "ChikaDance.mp3"), UriKind.RelativeOrAbsolute)); }
+                    else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "BlendS.mp3"), UriKind.RelativeOrAbsolute)); }
+                    break;
+                default:
+                    break;
+            }
+            mediaPlayer.Play();
         }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
@@ -90,9 +101,8 @@ namespace GUI_20212202_G1WRGM.ViewModels
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute)); }
-            else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute)); }
-            mediaPlayer.Play();
+            //Starts sound
+           
         }
     }
 }

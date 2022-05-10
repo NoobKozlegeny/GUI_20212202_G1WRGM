@@ -76,6 +76,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
                     if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_DoomEternal.mp3"), UriKind.RelativeOrAbsolute)); }
                     else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_Doom2016.mp3"), UriKind.RelativeOrAbsolute)); }
                     mediaPlayer.Play();
+                    BaseViewModel.currentlySelectedOST = OST.Doom;
                 });
 
             StartCrusaderOSTCommand = new RelayCommand(
@@ -84,6 +85,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
                     mediaPlayer.Stop();
                     mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_MarchTemplars.mp3"), UriKind.RelativeOrAbsolute));
                     mediaPlayer.Play();
+                    BaseViewModel.currentlySelectedOST = OST.Crusader;
                 });
 
             StartWeebOSTCommand = new RelayCommand(
@@ -93,6 +95,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
                     if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_NSO.mp3"), UriKind.RelativeOrAbsolute)); }
                     else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_BoobaSword.mp3"), UriKind.RelativeOrAbsolute)); }
                     mediaPlayer.Play();
+                    BaseViewModel.currentlySelectedOST = OST.Weebshit;
                 });
 
             CloseGameCommand = new RelayCommand(

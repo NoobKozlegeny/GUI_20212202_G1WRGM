@@ -9,9 +9,6 @@
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors" 
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1600">
-    <!--<Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>-->
 
     <!--Starts main menu song when UI starts-->
     <behaviors:Interaction.Triggers>

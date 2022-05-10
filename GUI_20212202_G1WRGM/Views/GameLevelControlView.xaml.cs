@@ -40,16 +40,14 @@ namespace GUI_20212202_G1WRGM.Views
             gameVMGrid.Children.Add(Ioc.Default.GetService<ItemDisplay>());
             gameVMGrid.Children.Add(Ioc.Default.GetService<WorldBuildingElementDisplay>());
 
-
-            air.StartGame();
-
+            gameWindowViewModel.StartGame();
             serializeInput = new SerializeInput();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             //Adds main menu's background for the illusion of still being on the main menu
-            grid.Background = new ImageBrush(new BitmapImage(new Uri(System.IO.Path.Combine("Assets", "Background", "MainMenuBackground.png"), UriKind.RelativeOrAbsolute)));
+            grid.Background = new ImageBrush(new BitmapImage(new Uri(System.IO.Path.Combine("Assets", "Background", "GameLevelBackground.png"), UriKind.RelativeOrAbsolute)));
 
             //Plays sussy sound
             GameLevelViewModel.mediaPlayer.Stop();
@@ -58,18 +56,6 @@ namespace GUI_20212202_G1WRGM.Views
 
             //Loads the level when the sus stops
             GameLevelViewModel.mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-        }
-
-        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            //mapDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //itemDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //worldBuildingElementDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //mapDisplay.InvalidateVisual();
-            //characterDisplay.InvalidateVisual();
-            //itemDisplay.InvalidateVisual();
-            //worldBuildingElementDisplay.InvalidateVisual();
         }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
@@ -83,13 +69,8 @@ namespace GUI_20212202_G1WRGM.Views
                 }
             }
 
+            //grid.Background = new ImageBrush(new BitmapImage(new Uri(System.IO.Path.Combine("Assets", "Background", "GameLevelBackground.png"), UriKind.RelativeOrAbsolute)));
 
-            //Starts sound
-            GameLevelViewModel.mediaPlayer.Stop();
-            GameLevelViewModel.mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "Youtube", "TheOnlyThing.mp3"), UriKind.RelativeOrAbsolute));
-            GameLevelViewModel.mediaPlayer.Play();
-
-            //gameWindowViewModel.Init(mapDisplay, characterDisplay, itemDisplay, worldBuildingElementDisplay);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

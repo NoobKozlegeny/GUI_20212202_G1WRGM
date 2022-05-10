@@ -29,24 +29,9 @@ namespace GUI_20212202_G1WRGM
     /// </summary>
     public partial class MainWindow : Window
     {
-        static Random r = new Random();
-        public MediaPlayer mediaPlayer = new MediaPlayer();
         public MainWindow()
         {
             InitializeComponent();         
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            //display.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //characterDisplay.Resize(new System.Drawing.Size((int)grid.ActualWidth, (int)grid.ActualHeight));
-            //display.InvalidateVisual();
-            //characterDisplay.InvalidateVisual();
         }
     }
 }

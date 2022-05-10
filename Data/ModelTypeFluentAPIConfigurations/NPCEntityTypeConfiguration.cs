@@ -26,17 +26,17 @@ namespace Data.ModelTypeFluentAPIConfigurations
 
         public void ConfigureYoutubeLevel(EntityTypeBuilder<NPC> builder)
         {
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(768, 888 - 80), 1, 2, 1, 1, new Size(128, 128));
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(1536, 888 - 80), 1, 2, 1, 1, new Size(128, 128));
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(2688, 888 - 80), 1, 2, 1, 1, new Size(128, 128));
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(3360, 888 - 80), 1, 2, 1, 1, new Size(128, 128));
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(4096, 888 - 80), 1, 2, 1, 1, new Size(128, 128));
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(4352, 888 - 80), 1, 2, 1, 1, new Size(128, 128));
-            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(4608, 888 - 80), 1, 2, 1, 1, new Size(128, 128));
+            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(768, 888), 1, 2, 1, 1, new Size(128, 128));
+            CreateNPC(builder, "DreamStan.png", "Watergun.png", new Point(1536, 888), 1, 2, 1, 1, new Size(128, 128));
+            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(2688, 888), 1, 2, 1, 1, new Size(128, 128));
+            CreateNPC(builder, "AngryDoge.png", "Watergun.png", new Point(3360, 888), 1, 2, 1, 1, new Size(128, 128));
+            CreateNPC(builder, "NikoAvocado.png", "Watergun.png", new Point(4096, 888), 1, 2, 1, 1, new Size(128, 128));
+            CreateNPC(builder, "DreamStan.png", "Watergun.png", new Point(4352, 888), 1, 2, 1, 1, new Size(128, 128));
+            CreateNPC(builder, "TwistBrainlet.png", "Watergun.png", new Point(4608, 888), 1, 2, 1, 1, new Size(128, 128));
 
 
 
-            CreateNPC(builder, "KoviBossFinal2.png", "Watergun.png", new Point(7520, 386), 1, 2, 1, 1, new Size(384, 576));
+            CreateNPC(builder, "KoviBossFinal2.png", "Empty.png", new Point(7520, 386), 1, 2, 1, 1, new Size(384, 576));
         }
 
         public void CreateNPC(EntityTypeBuilder<NPC> builder, string NPCImg, string WeaponImg, Point position, int armour, int health, int speed, int mapLevel, Size size)

@@ -22,21 +22,21 @@
 
     <Grid>
 
-        <Grid x:Name="grid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="52*"/>
-        </Grid.RowDefinitions>
+        <Grid x:Name="grid" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="52*"/>
+            </Grid.RowDefinitions>
 
-        <Grid>
-            <Grid.DataContext>
-                <vm:GameWindowViewModel x:Name="gameWindowViewModel"/>
-            </Grid.DataContext>
-        </Grid>
+            <!--<Grid>
+                <Grid.DataContext>
+                    <vm:GameWindowViewModel x:Name="gameWindowViewModel"/>
+                </Grid.DataContext>
+            </Grid>-->
 
-            <Menu Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
+            <Menu Grid.ColumnSpan="3" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center">
                 <Menu.DataContext>
-                    <vm:GameLevelViewModel/>
+                    <vm:MainMenuViewModel/>
                 </Menu.DataContext>
 
                 <Menu.ItemsPanel>
@@ -51,6 +51,9 @@
                         <GradientStop Color="Orange" Offset="0.5"/>
                     </LinearGradientBrush>
                 </Menu.Background>
+
+
+                <!--1. column-->
 
                 <MenuItem Header="Select OST" VerticalAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">
                     <MenuItem.Icon>
@@ -95,7 +98,7 @@
         
         <ScrollViewer x:Name="scroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <ScrollViewer.DataContext>
-                <vm:GameWindowViewModel x:Name="air"/>
+                <vm:GameWindowViewModel x:Name="gameWindowViewModel"/>
             </ScrollViewer.DataContext>
             <Grid x:Name="gameVMGrid" Width="8032" Height="1000" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 

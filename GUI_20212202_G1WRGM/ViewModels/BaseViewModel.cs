@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI_20212202_G1WRGM.Others;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -11,9 +12,8 @@ namespace GUI_20212202_G1WRGM.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
-        //Mediaplayer is kinda slow on responding when the music has just started.
         public static MediaPlayer mediaPlayer = new MediaPlayer();
-
+        public static OST currentlySelectedOST = OST.Doom;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
