@@ -242,7 +242,7 @@
     <Content Include="Assets\Sounds\Songs\Youtube\BlendS.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Sounds\Songs\Youtube\BokuNoPico.mp3">
+    <Content Include="Assets\Sounds\Songs\BokuNoPico.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Sounds\Songs\Youtube\ChikaDance.mp3">

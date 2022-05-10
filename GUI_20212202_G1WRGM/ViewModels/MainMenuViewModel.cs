@@ -92,7 +92,7 @@ namespace GUI_20212202_G1WRGM.ViewModels
                 () =>
                 {
                     mediaPlayer.Stop();
-                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_NSO.mp3"), UriKind.RelativeOrAbsolute)); }
+                    if (r.Next(0, 2) == 0) { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "BokuNoPico.mp3"), UriKind.RelativeOrAbsolute)); }
                     else { mediaPlayer.Open(new Uri(System.IO.Path.Combine("Assets", "Sounds", "Songs", "mainMenu_BoobaSword.mp3"), UriKind.RelativeOrAbsolute)); }
                     mediaPlayer.Play();
                     BaseViewModel.currentlySelectedOST = OST.Weebshit;
